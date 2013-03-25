@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.javass.newfile.lucene.SearchNewMsg;
-import cn.javass.newfile.lucene.crawl.CrawlInternet;
 import cn.javass.newfile.lucene.manger.LuceneIndexManager;
 import cn.javass.newfile.newmsg.entity.NewsEntity;
 import cn.javass.newfile.newmsg.service.NewService;
@@ -27,23 +26,6 @@ public class NewAction
 	@Autowired
 	@Qualifier("NewService")
 	private NewService newService;
-
-	@RequestMapping(value = "/downNews", method = { RequestMethod.GET})
-	public String index(HttpServletRequest request, Model model)
-	{
-		CrawlInternet crawIntrnet = new CrawlInternet(newService);
-		int succNum = 0;
-		try
-		{
-			crawIntrnet.start();
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		model.addAttribute("returnValue", succNum);
-		return "newMsg/index";
-	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "/news/search", method = { RequestMethod.POST })

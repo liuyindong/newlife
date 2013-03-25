@@ -76,6 +76,9 @@ public class WritePath
 			}
 
 			FileOutputStream fw = new FileOutputStream(writefile, addStr);
+			
+	//		content = new String(content.getBytes(),"gbk");
+			
 			fw.write(content.getBytes());
 			fw.flush();
 			fw.close();

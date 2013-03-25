@@ -35,6 +35,5 @@ public class JsoupConnect
 			}
 		}
 		return doc;
-		
 	}
 }
