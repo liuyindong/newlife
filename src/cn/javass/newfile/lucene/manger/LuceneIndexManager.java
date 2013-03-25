@@ -3,9 +3,11 @@ package cn.javass.newfile.lucene.manger;
 import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import cn.javass.newfile.newmsg.entity.NewsEntity;
+import cn.javass.util.Config;
 
 /**
  * 主要对index进行初始化，对索引进行更新、删除、添加方法。
@@ -16,6 +18,9 @@ import cn.javass.newfile.newmsg.entity.NewsEntity;
 public class LuceneIndexManager
 {
 
+	@Autowired
+	private Config config;
+	
 	private LuceneIndexSettings indexSettings;
 	private LuceneIndex luceneIndex;
 
@@ -28,7 +33,7 @@ public class LuceneIndexManager
 	{
 		Analyzer analyzer = new IKAnalyzer();
 		this.indexSettings = new LuceneIndexSettings(analyzer);
-		this.indexSettings.createFSDirectory(LuceneUtils.lucenePath);
+		this.indexSettings.createFSDirectory(config.getLucenePath());
 		this.luceneIndex = new LuceneIndex(this.indexSettings);
 		this.luceneIndexSearch = new LuceneIndexSearch(indexSettings, new LuceneResultCollector(indexSettings));
 	}
