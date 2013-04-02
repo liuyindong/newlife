@@ -51,12 +51,13 @@ public class LuceneIndexSearch
 			this.indexSearcher = new IndexSearcher(indexReader);
 
 			// 输出现在的索引
-			// for(int i =0; i<indexReader.numDocs();i++){
-			// System.out.println(indexReader.document(i));
-			// System.out.println("文件名称："+indexReader.document(i).get("fileName")+"\t文件描述:"+indexReader.document(i).get("fileDesc")+"\t文件ID："+indexReader.document(i).get("fileId")+"\t创建者："+indexReader.document(i).get("fileCreator"));
-			// }
-			// System.out.println("索引版本:" + indexReader.getCoreCacheKey());
-			// System.out.println("索引内文档数量："+indexReader.numDocs());
+			for (int i = 0; i < indexReader.numDocs(); i++)
+			{
+			//	System.out.println(indexReader.document(i));
+				System.out.println("标题：" + indexReader.document(i).get("title"));
+			}
+			System.out.println("索引版本:" + indexReader.getCoreCacheKey());
+			System.out.println("索引内文档数量：" + indexReader.numDocs());
 		}
 		catch (Exception e)
 		{
@@ -79,10 +80,10 @@ public class LuceneIndexSearch
 		// Term t = new Term("fileName", searchString);
 		// TermQuery query = new TermQuery(t);
 		ScoreDoc[] docs = this.indexSearcher.search(query, 100).scoreDocs;
-		
+
 		List<Object> result = null;
-		
-		if(docs.length == 0)
+
+		if (docs.length == 0)
 		{
 			result = new ArrayList<Object>();
 			return result;
@@ -122,4 +123,5 @@ public class LuceneIndexSearch
 	{
 		return this.Search(searchString, this.contentCollector, queryType, pageSize, currentPage);
 	}
+	
 }

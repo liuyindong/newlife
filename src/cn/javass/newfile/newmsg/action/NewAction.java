@@ -46,7 +46,7 @@ public class NewAction
 		else
 		{
 			NewsEntity newsMsg = new NewsEntity();
-			newsMsg.setNewMsgOne("<h2>亲,搜你这个问题我鸭梨山大啊,你能换个问题搜么?<img src='/DownMsgProject/images/biaoqin/wugu.gif'/></h2>");
+			newsMsg.setNewMsgOne("<h2>亲,搜你这个问题我鸭梨山大啊,你能换个问题搜么?<img src='/"+request.getContextPath()+"/images/biaoqin/wugu.gif'/></h2>");
 			listSearch.add(newsMsg);
 			model.addAttribute("page", listSearch);
 		}

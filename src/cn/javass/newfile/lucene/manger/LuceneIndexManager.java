@@ -33,7 +33,7 @@ public class LuceneIndexManager
 	{
 		Analyzer analyzer = new IKAnalyzer();
 		this.indexSettings = new LuceneIndexSettings(analyzer);
-		this.indexSettings.createFSDirectory(config.getLucenePath());
+		this.indexSettings.createFSDirectory("D://lucene");//config.getLucenePath()
 		this.luceneIndex = new LuceneIndex(this.indexSettings);
 		this.luceneIndexSearch = new LuceneIndexSearch(indexSettings, new LuceneResultCollector(indexSettings));
 	}
@@ -103,6 +103,11 @@ public class LuceneIndexManager
 	public List<?> search(String searchString,String queryType, int pageSize, int currentPage) throws Exception
 	{
 		return this.luceneIndexSearch.serarchFile(searchString,queryType,pageSize,currentPage);
+	}
+	
+	public void createIndexSearch()
+	{
+		this.luceneIndexSearch.createIndexSearch();
 	}
 
 	public LuceneIndex getLuceneIndex()

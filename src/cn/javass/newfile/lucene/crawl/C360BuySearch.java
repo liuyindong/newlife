@@ -18,7 +18,7 @@ public class C360BuySearch extends Thread
 
 	// private static final String DOWN_DATE_TIME = "yyyy-MM-dd HH";
 
-	static String str = "藏机图";
+	static String str = "台式内存条";
 
 	private final static String downInternet = "http://search.jd.com/Search?keyword=" + str + "&enc=utf-8";
 

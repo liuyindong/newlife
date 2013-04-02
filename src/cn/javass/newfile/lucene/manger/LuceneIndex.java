@@ -123,7 +123,6 @@ public class LuceneIndex
 	{
 		synchronized (MUTEX)
 		{
-			System.out.println("进来没有");
 			IndexWriterConfig indexWriterConfig = null;
 			IndexWriter indexWriter = null;
 			try
@@ -133,9 +132,15 @@ public class LuceneIndex
 				indexWriter = new IndexWriter(this.indexSettings.getDirectory(), indexWriterConfig);
 				// 调用创建document的方法
 				List<Document> docs = createDocumentAll(list);
-				System.out.println("一共有：:" + docs.size());
+				System.out.println("总共需要创建:" + docs.size());
 				for (int i = 0; i < docs.size(); i++)
 				{
+					
+					if(i == 10000 || i == 15000 || i == 25000){
+						System.gc();
+						Runtime.getRuntime().gc()  ;
+					}
+					
 					indexWriter.addDocument((Document) docs.get(i));
 				}
 			}

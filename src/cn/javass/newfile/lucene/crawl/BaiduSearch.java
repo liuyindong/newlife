@@ -18,7 +18,7 @@ public class BaiduSearch
 	
 	public static void main(String[] args)
 	{
-		String str = "炊事班的故事3";
+		String str = "MIUIV5";
 		String url = "http://www.baidu.com/s?wd="+str;
 		try
 		{

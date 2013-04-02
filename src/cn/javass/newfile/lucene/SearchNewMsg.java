@@ -1,5 +1,6 @@
 package cn.javass.newfile.lucene;
 
+import java.util.Iterator;
 import java.util.List;
 
 import cn.javass.newfile.lucene.manger.LuceneIndexManager;
@@ -32,5 +33,24 @@ public class SearchNewMsg
 			e.printStackTrace();
 		}
 		return false;
+	}
+	public static void main(String[] args)
+	{
+		try
+		{
+			
+			List<NewsEntity> list = (List<NewsEntity>) searchNews("诺基亚", "title", 1000, 10);
+			for (Iterator iterator = list.iterator(); iterator.hasNext();)
+			{
+				NewsEntity newsEntity = (NewsEntity) iterator.next();
+				System.out.println(newsEntity.getTitle());
+			}
+			
+		}
+		catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -1,6 +1,8 @@
 package cn.javass.common.pagination;
 
 import org.apache.taglibs.standard.tag.common.core.UrlSupport;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -16,7 +18,8 @@ import java.io.IOException;
 public class NavigationTag extends TagSupport
 {
 	static final long serialVersionUID = 2372405317744358833L;
-	// private static final Log LOGGER = LogFactory.getLog(NavigationTag.class);
+	
+	private static final Logger logger = LoggerFactory.getLogger(NavigationTag.class);
 
 	/**
 	 * request 中用于保存Page<E> 对象的变量名,默认为“page”
