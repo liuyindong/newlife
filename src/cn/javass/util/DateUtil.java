@@ -1,5 +1,7 @@
 package cn.javass.util;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -92,12 +94,13 @@ public class DateUtil
 	 * @param imgTypeFor
 	 * @return
 	 */
-	public static String addressRadom(String imgTypeFor)
+	public static String addressRadom()
 	{
 		Date date = new Date();
 		String uploadMM = DateUtil.timeToString(date, "yyyy/MM");
 		String uploadDD = DateUtil.timeToString(date, "dd");
-		String uploadDir = uploadMM + "/" + uploadDD + "/" + imgTypeFor + "/";
+		String uploadDir = uploadMM + "/" + uploadDD + "/";
+		
 		return uploadDir;
 	}
 

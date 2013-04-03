@@ -51,13 +51,11 @@ public class LuceneIndexSearch
 			this.indexSearcher = new IndexSearcher(indexReader);
 
 			// 输出现在的索引
-			for (int i = 0; i < indexReader.numDocs(); i++)
-			{
+		//	for (int i = 0; i < indexReader.numDocs(); i++)
+		//	{
 			//	System.out.println(indexReader.document(i));
-				System.out.println("标题：" + indexReader.document(i).get("title"));
-			}
-			System.out.println("索引版本:" + indexReader.getCoreCacheKey());
-			System.out.println("索引内文档数量：" + indexReader.numDocs());
+		//	}
+		//	System.out.println("索引内文档数量：" + indexReader.numDocs());
 		}
 		catch (Exception e)
 		{
@@ -85,6 +83,7 @@ public class LuceneIndexSearch
 
 		if (docs.length == 0)
 		{
+			System.out.println("没有查询到");
 			result = new ArrayList<Object>();
 			return result;
 		}

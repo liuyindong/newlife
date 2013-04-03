@@ -33,8 +33,11 @@ public class NewAction
 	{
 		LuceneIndexManager lim = new LuceneIndexManager();
 		lim.indexInit();
-//		List<NewsEntity> listNews = newService.listAll("from NewsEntity order by downDate");
-//    	lim.createALL(listNews);
+		List<NewsEntity> listNews = newService.listAll("from NewsEntity order by downDate");
+		
+		System.out.println("查询到数据：" + listNews.size());
+		
+    	lim.createALL(listNews);
 		
 		String searchName = request.getParameter("searchName");
 		List listSearch = SearchNewMsg.searchNews(searchName, "title", 1000, 1);

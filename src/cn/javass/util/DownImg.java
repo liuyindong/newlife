@@ -2,19 +2,28 @@ package cn.javass.util;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
  * 下载图片
+ * 
  * @author LD
- *
+ * 
  */
 public class DownImg
 {
-	public static boolean saveUrlAs(String fileUrl, String savePath)/* fileUrl网络资源地址 */
+	public static boolean saveUrlAs(String fileUrl, String savePath) throws Exception/* fileUrl网络资源地址 */
 	{
+		File dirname = new File(savePath);
+		if (!dirname.isDirectory())
+		{ // 目录不存在
+			dirname.getParentFile().mkdirs();  
+			dirname.createNewFile(); 
+		}
 
 		try
 		{
@@ -24,7 +33,7 @@ public class DownImg
 			DataInputStream in = new DataInputStream(connection.getInputStream());
 			/* 此处也可用BufferedInputStream与BufferedOutputStream */
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(savePath));
-			
+
 			/* 将参数savePath，即将截取的图片的存储在本地地址赋值给out输出流所指定的地址 */
 			byte[] buffer = new byte[4096];
 			int count = 0;

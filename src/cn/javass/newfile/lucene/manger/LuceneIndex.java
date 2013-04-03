@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.TextField;
 import org.apache.lucene.document.Field.Store;
 import org.apache.lucene.document.StringField;
 import org.apache.lucene.index.DirectoryReader;
@@ -135,12 +136,6 @@ public class LuceneIndex
 				System.out.println("总共需要创建:" + docs.size());
 				for (int i = 0; i < docs.size(); i++)
 				{
-					
-					if(i == 10000 || i == 15000 || i == 25000){
-						System.gc();
-						Runtime.getRuntime().gc()  ;
-					}
-					
 					indexWriter.addDocument((Document) docs.get(i));
 				}
 			}
@@ -227,8 +222,8 @@ public class LuceneIndex
 		//TextField
 		Document document = new Document();
 		document.add(new StringField("downdate", newMsg.getDownDate(), Store.YES));
-		document.add(new StringField("newMsg", newMsg.getNewMsgOne(), Store.YES));
-		document.add(new StringField("title", newMsg.getTitle(), Store.YES));
+		document.add(new TextField("newMsg", newMsg.getNewMsgOne(), Store.YES));
+		document.add(new TextField("title", newMsg.getTitle(), Store.YES));
 		document.add(new StringField("msgId", newMsg.getId()+"", Store.YES));
 		return document;
 	}
@@ -248,8 +243,8 @@ public class LuceneIndex
 			String newMsgText = Jsoup.clean(newMsg.getNewMsgOne(), Whitelist.basicWithImages());
 			Document document = new Document();
 			document.add(new StringField("downdate", newMsg.getDownDate(), Store.YES));
-			document.add(new StringField("newMsg", newMsgText, Store.YES));
-			document.add(new StringField("title", newMsg.getTitle(), Store.YES));
+			document.add(new TextField("newMsg", newMsgText, Store.YES));
+			document.add(new TextField("title", newMsg.getTitle(), Store.YES));
 			document.add(new StringField("msgId", newMsg.getId()+"", Store.YES));
 			documents.add(document);
 		}

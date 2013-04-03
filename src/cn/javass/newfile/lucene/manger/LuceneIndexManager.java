@@ -33,7 +33,7 @@ public class LuceneIndexManager
 	{
 		Analyzer analyzer = new IKAnalyzer();
 		this.indexSettings = new LuceneIndexSettings(analyzer);
-		this.indexSettings.createFSDirectory("D://lucene");//config.getLucenePath()
+		this.indexSettings.createFSDirectory("D:\\lucene\\indexlucene");//config.getLucenePath()
 		this.luceneIndex = new LuceneIndex(this.indexSettings);
 		this.luceneIndexSearch = new LuceneIndexSearch(indexSettings, new LuceneResultCollector(indexSettings));
 	}

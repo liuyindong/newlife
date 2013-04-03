@@ -39,7 +39,7 @@ public class SearchNewMsg
 		try
 		{
 			
-			List<NewsEntity> list = (List<NewsEntity>) searchNews("诺基亚", "title", 1000, 10);
+			List<NewsEntity> list = (List<NewsEntity>) searchNews("诺基亚", "title", 1000, 1);
 			for (Iterator iterator = list.iterator(); iterator.hasNext();)
 			{
 				NewsEntity newsEntity = (NewsEntity) iterator.next();
