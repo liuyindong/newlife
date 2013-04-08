@@ -9,6 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * 下载图片
  * 
@@ -17,12 +20,10 @@ import java.net.URL;
  */
 public class DownImg
 {
+	private static final Logger logger = LoggerFactory.getLogger(DownImg.class);
+	
 	public static boolean saveUrlAs(String fileUrl, String savePath) throws Exception/* fileUrl网络资源地址 */
 	{
-		System.out.println(savePath);
-
-		try
-		{
 			URL url = new URL(fileUrl);/* 将网络资源地址传给,即赋值给url */
 			/* 此为联系获得网络资源的固定格式用法，以便后面的in变量获得url截取网络资源的输入流 */
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -50,13 +51,6 @@ public class DownImg
 			in.close();
 			connection.disconnect();
 			return true;/* 网络资源截取并存储本地成功返回true */
-
-		}
-		catch (Exception e)
-		{
-			System.out.println(e + fileUrl + savePath);
-			return false;
-		}
 	}
 
 	public static String returnType(String fileUrl) throws Exception
