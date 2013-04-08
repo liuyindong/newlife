@@ -14,24 +14,21 @@ public class JsoupConnect
 		while (true)
 		{
 			Connection conn = Jsoup.connect(url);
-			conn.header("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
+			conn.header("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.8; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
 			try
 			{
-				doc = Jsoup.connect(url).timeout(5000).get();
+				doc = conn.timeout(5000).get();
 			}
 			catch (IOException e)
 			{
 				System.out.println("抓取超时等待10秒继续");
 				Thread.sleep(10000);
 			}
-			if(doc == null)
-			{
-				System.out.println("抓取到的是空的等待--10秒继续");
-				Thread.sleep(10000);
-			}else
+			if(doc != null)
 			{
 				break;
 			}
+			
 		}
 		return doc;
 	}

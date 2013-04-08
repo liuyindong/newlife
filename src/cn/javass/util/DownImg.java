@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -18,18 +19,22 @@ public class DownImg
 {
 	public static boolean saveUrlAs(String fileUrl, String savePath) throws Exception/* fileUrl网络资源地址 */
 	{
-		File dirname = new File(savePath);
-		if (!dirname.isDirectory())
-		{ // 目录不存在
-			dirname.getParentFile().mkdirs();  
-			dirname.createNewFile(); 
-		}
+		System.out.println(savePath);
 
 		try
 		{
 			URL url = new URL(fileUrl);/* 将网络资源地址传给,即赋值给url */
 			/* 此为联系获得网络资源的固定格式用法，以便后面的in变量获得url截取网络资源的输入流 */
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+			File dirname = new File(savePath);
+
+			if (!dirname.isDirectory())
+			{
+				dirname.getParentFile().mkdirs();
+				dirname.createNewFile();
+			}
+
 			DataInputStream in = new DataInputStream(connection.getInputStream());
 			/* 此处也可用BufferedInputStream与BufferedOutputStream */
 			DataOutputStream out = new DataOutputStream(new FileOutputStream(savePath));
@@ -51,6 +56,46 @@ public class DownImg
 		{
 			System.out.println(e + fileUrl + savePath);
 			return false;
+		}
+	}
+
+	public static String returnType(String fileUrl) throws Exception
+	{
+
+		URL url = new URL(fileUrl);
+
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+
+		String pathname;
+
+		try
+		{
+			pathname = new String((connection.getHeaderField("content-disposition")).getBytes("ISO-8859-1"), "utf8");
+			
+			if (pathname != null && pathname.indexOf("=") != -1)
+			{
+				String[] fileName = pathname.split("="); 
+				pathname = fileName[1].replaceAll("\"", "");
+				
+			}
+		}
+		catch (Exception e)
+		{
+			int random = fileUrl.lastIndexOf("/");
+			pathname = fileUrl.substring(random);
+		}
+		return pathname;
+	}
+
+	public static void main(String[] args) throws Exception
+	{
+		String pathname = "D://2013/04/07/电影/[720P]兄弟出头天 Stand Up Guys (2013).720P 中英字幕 高清下载 4.37G/地址/[www.tiantangbbs.com][电影天堂论坛][720P]兄弟出头天 Stand Up Guys (2013).720P 中英字幕 高清下载.torrent";
+		File dirname = new File(pathname);
+
+		if (!dirname.isDirectory())
+		{
+			dirname.getParentFile().mkdirs();
+			dirname.createNewFile();
 		}
 	}
 }

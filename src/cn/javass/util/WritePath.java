@@ -67,11 +67,11 @@ public class WritePath
 			boolean addStr = append;
 
 			writefile = new File(path);
-
-			// 如果文本文件不存在则建立 它
-			if (writefile.exists() == false)
-			{
-				writefile.createNewFile();
+			
+			if (!writefile.isDirectory())
+			{ // 目录不存在
+				writefile.getParentFile().mkdirs();  
+				writefile.createNewFile(); 
 				writefile = new File(path); // 重新实例化
 			}
 

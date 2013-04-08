@@ -22,7 +22,6 @@ public class SinaItGn extends Thread
 {
 
 	private final static String downInternet = "http://roll.tech.sina.com.cn/it/gn/";
-	// http://roll.tech.sina.com.cn/it/gn/index_2.shtml
 	private final static Logger logger = LoggerFactory.getLogger(SinaItGn.class);
 
 	private  Element message;
