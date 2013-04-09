@@ -13,7 +13,7 @@
 							<li><a href="#">网站地图</a></li>
 							<li><a href="">模版</a></li>
 							<li><a href="">联系我们</a></li>
-							<li><a href="${path}/user/listUser">联系我们</a></li>
+							<li><a href="${path}/user/listUser">用户</a></li>
 						</ul>
 					</div>
 				</div>

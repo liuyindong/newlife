@@ -37,7 +37,7 @@ public class IndexController
 	@RequestMapping(value = "/index")
 	public String index(ModelMap model) throws Exception
 	{
-		NewMsgCache newMsg = NewMsgCache.getInstance();
+		/*NewMsgCache newMsg = NewMsgCache.getInstance();
 		List<?> listSearch = newMsg.listNews("indexMsg");
 		if(listSearch == null)
 		{
@@ -47,9 +47,9 @@ public class IndexController
 			String HQL_SELE_NEWS_BY_CREATEDATE = "from NewsEntity n where n.downDate BETWEEN '"+todayDate+"' and '"+nowDate+"' order by n.downDate desc";
 			listSearch = newService.listAll(HQL_SELE_NEWS_BY_CREATEDATE);
 			newMsg.putMsgList("indexMsg", listSearch);
-		}
-		model.addAttribute("listNewMsg", listSearch);
-		return "newMsg/index";
+		}*/
+	//	model.addAttribute("listNewMsg", listSearch);
+		return "newMsg/createtree";
 	//	return "user/list";
 	}
 	@RequestMapping(value = "/user/listUser")

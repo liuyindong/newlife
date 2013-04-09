@@ -42,7 +42,7 @@ public class GirlAtlas extends Thread
 
 		logger.info("数据加载完成:" + nextpaglist.size());
 
-		ExecutorService pool = Executors.newFixedThreadPool(nextpaglist.size());
+		ExecutorService pool = Executors.newFixedThreadPool(10);
 
 		for (int i = 0; i < nextpaglist.size(); i++)
 		{
