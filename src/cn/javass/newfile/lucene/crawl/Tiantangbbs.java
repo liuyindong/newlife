@@ -15,13 +15,14 @@ import cn.javass.newfile.lucene.crawl.util.JsoupConnect;
 import cn.javass.util.Ai2YCOM;
 import cn.javass.util.DateUtil;
 import cn.javass.util.DownImg;
+import cn.javass.util.LdUtils;
 import cn.javass.util.WritePath;
 
 public class Tiantangbbs extends Thread
 {
 	private static Logger logger = LoggerFactory.getLogger(Tiantangbbs.class);
 
-	private final String movpathF = "D://2013/电影种子/";
+	private final String movpathF = "D://2013/电影种子85/";
 
 	private String movpath;
 
@@ -38,7 +39,7 @@ public class Tiantangbbs extends Thread
 		{
 			ExecutorService pool = Executors.newFixedThreadPool(10);
 
-			for (int i = 1; i <= 109; i++)
+			for (int i = 85; i <= 109; i++)
 			{
 				String internet = "http://www.tiantangbbs.com/forum.php?mod=forumdisplay&fid=2&ortid=1&page=" + i;
 				Thread thread = new Tiantangbbs(internet);
@@ -77,13 +78,21 @@ public class Tiantangbbs extends Thread
 
 			Element moviemsg = elem.select("a").last();
 
-			this.movpath = this.movpathF + moviemsg.attr("title");
+			this.movpath = this.movpathF + LdUtils.StringFilter(moviemsg.attr("title"));
 			// System.out.println(moviemsg.attr("title"));
 			// System.out.println(moviemsg.select("img").attr("abs:src"));
 
-			// System.out.println(elem.select("em.xs0").last());
+			Element today = elem.select("em.xs0").last();
 
-			downmoviemsg(moviemsg.attr("abs:href"));
+		//	if (DateUtil.timeToString(new Date(), "yyyy-M-d").equals(today.text()))
+		//	{
+				downmoviemsg(moviemsg.attr("abs:href"));
+		//	}
+		//	else
+		//	{
+		//		return;
+		//	}
+			
 
 			// return;
 
@@ -137,69 +146,50 @@ public class Tiantangbbs extends Thread
 				}
 				catch (Exception e)
 				{
-					logger.error("下载视频图片：" + img + "失败，浏览器地址：" + this.downInternet + " 存储地址：" + localRar + "错误信息:" + e);
+					// logger.error("下载视频图片：" + img + "失败，浏览器地址：" +
+					// this.downInternet + " 存储地址：" + localRar + "错误信息:" + e);
 				}
 				// logger.info("图片介绍:" + img);
 			}
 
 			// 视频资源地址
 
-			Element downmovpath = doc.select("ignore_js_op").last();
+			Elements downmovpaths = null;
+
+			downmovpaths = doc.select("ignore_js_op span a");
+
+			if (downmovpaths.size() <= 0)
+			{
+				downmovpaths = doc.select("td td span a");
+			}
 
 			String downUrl = null;
-			
-			try
-			{
-				downUrl = downmovpath.select("span a").first().attr("abs:href");
-			}
-			catch (Exception e)
-			{
-				downUrl = downmovpath.select("p a").first().attr("abs:href");
-			}
-			
-			String filePath = Ai2YCOM.TOADY + "下载错误信息/" + UUID.randomUUID().toString() + ".txt";
-			
-			if(downUrl == null)
-			{
-				WritePath.writeFile(filePath, downmovpath.html() + Ai2YCOM.BLANK, true);
-				
-				StringBuilder sb = new StringBuilder();
-				
-				sb.append("下载视频：" + downUrl + Ai2YCOM.BLANK);
-				sb.append("存储地址：" + localRar + Ai2YCOM.BLANK);
-				sb.append("浏览器地址：" + this.downInternet + Ai2YCOM.BLANK);
-				
-				WritePath.writeFile(filePath, sb.toString(), true);
-				
-				return;
-			}
 
-			String orderMovName = DownImg.returnType(downUrl);
-
-			orderMovName = Ai2YCOM.YUMINAIYCOM + orderMovName.substring(orderMovName.lastIndexOf("["));
-
-			localRar = this.movpath + "/地址/" + orderMovName;
-
-			try
+			for (Element downmovpath : downmovpaths)
 			{
-				DownImg.saveUrlAs(downUrl, localRar);
-			}
-			catch (Exception e)
-			{
-				logger.error("下载视频：" + downUrl + "失败，浏览器地址：" + this.downInternet + " 存储地址：" + localRar + "错误信息:" + e);
-				while (true)
+
+				downUrl = downmovpath.attr("abs:href");
+
+				String orderMovName = DownImg.returnType(downUrl);
+
+				try
 				{
-					try
-					{
-						Thread.sleep(10000);
-						logger.debug("等待10秒继续下载：" + downUrl + " 存储地址：" + localRar );
-						DownImg.saveUrlAs(downUrl, localRar);
-						break;
-					}
-					catch (Exception es)
-					{
-						logger.debug("等待10秒继续下载错误" + e);
-					}
+					orderMovName = Ai2YCOM.YUMINAIYCOM + orderMovName.substring(orderMovName.lastIndexOf("["));
+				}
+				catch (Exception e)
+				{
+					orderMovName = DownImg.returnType(downUrl);
+				}
+
+				localRar = this.movpath + "/地址/" + orderMovName;
+
+				try
+				{
+					DownImg.saveUrlAs(downUrl, localRar);
+				}
+				catch (Exception e)
+				{
+					logger.error("下载视频：" + url + "失败，浏览器地址：" + this.downInternet + " 存储地址：" + localRar + "错误信息:" + e);
 				}
 			}
 
