@@ -18,6 +18,7 @@ import cn.javass.newfile.newmsg.entity.NewsEntity;
 import cn.javass.newfile.newmsg.service.NewService;
 
 @Controller
+@RequestMapping("/news")
 public class NewAction
 {
 	
@@ -28,7 +29,7 @@ public class NewAction
 	private NewService newService;
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@RequestMapping(value = "/news/search", method = { RequestMethod.POST })
+	@RequestMapping(value = "/search", method = { RequestMethod.POST })
 	public String searchNews(Model model, HttpServletRequest request) throws Exception
 	{
 		LuceneIndexManager lim = new LuceneIndexManager();
@@ -57,7 +58,7 @@ public class NewAction
 		return "newMsg/srarchList";
 	}
 
-	@RequestMapping(value = "/news/{id}/search", method = { RequestMethod.GET })
+	@RequestMapping(value = "/{id}/search", method = { RequestMethod.GET })
 	public String searchNewsById(Model model, @PathVariable Integer id) throws Exception
 	{
 		List<?> listSearch = SearchNewMsg.searchNews(id + "", "msgId", 100, 1);

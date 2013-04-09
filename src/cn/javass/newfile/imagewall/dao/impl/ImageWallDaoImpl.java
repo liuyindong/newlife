@@ -6,7 +6,7 @@ import cn.javass.common.dao.hibernate4.BaseHibernateDao;
 import cn.javass.newfile.imagewall.dao.ImageWallDao;
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 
-@Repository("ImageDao")
+@Repository("ImageWallDao")
 public class ImageWallDaoImpl extends BaseHibernateDao<ImageWallEntity, Integer> implements ImageWallDao
 {
 

@@ -8,7 +8,9 @@ import java.util.Date;
 
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 import cn.javass.util.DateUtil;
+import cn.javass.util.ImageCut;
 import cn.javass.util.JdbcUtil;
+import cn.javass.util.WritePath;
 
 public class AddImgWallTest
 {
@@ -38,37 +40,15 @@ public class AddImgWallTest
 	}
 	public static void main(String[] args)
 	{
-		String url="D:\\2013\\美女";
-		
-		File file = new File(url);
+		String pp = "D://Workspaces/eclipseword/newlife/WebContent/WEB-INF/images/Girl/";
+		String pp1 = "D://Workspaces/eclipseword/newlife/WebContent/WEB-INF/images/Girl/suo/";
+		File file = new File(pp);
 		File[] files = file.listFiles();
-		System.out.println(files.length);
 		for (int i = 0; i < files.length; i++)
 		{
-			if(files[i].isDirectory())
+			if(!files[i].isDirectory())
 			{
-				File file1 = new File(files[i].getPath());
-				File[] files1 = file1.listFiles();
-				for (int j = 0; j < files1.length; j++)
-				{
-					if(!files1[j].isDirectory())
-					{
-					//	System.out.println(files1[j].getPath());
-						ImageWallEntity iw = new ImageWallEntity();
-						
-						String pathtc = files1[j].getParent();
-						
-						pathtc = pathtc.substring(pathtc.lastIndexOf("\\")+1);
-						
-						iw.setContent(pathtc);
-						iw.setCreateDate(DateUtil.timeToString(new Date()));
-						iw.setFilePath(files1[j].getPath());
-						iw.setTitle(pathtc);
-						
-			//			AddImgWallTest.imageWall(iw);
-					}
-				}
-				
+				ImageCut.scale(pp +files[i].getName() , pp1+files[i].getName(), 5, false);
 			}
 		}
 		

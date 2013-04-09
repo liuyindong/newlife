@@ -1,6 +1,9 @@
 package cn.javass.newfile.imagewall.service;
 
-public class ImageWallService
+import cn.javass.common.service.IBaseService;
+import cn.javass.newfile.imagewall.entity.ImageWallEntity;
+
+public interface ImageWallService  extends IBaseService<ImageWallEntity, Integer>
 {
 
 }

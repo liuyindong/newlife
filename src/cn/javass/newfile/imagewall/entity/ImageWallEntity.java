@@ -24,6 +24,9 @@ public class ImageWallEntity extends AbstractModel
 	@Column(name = "id", nullable = false)
 	private int id;
 	
+	@Column(name = "name")
+	private String name;
+	
 	@Column(name = "title")
 	private String title;
 	
@@ -97,6 +100,16 @@ public class ImageWallEntity extends AbstractModel
 	public void setUpdateDate(String updateDate)
 	{
 		this.updateDate = updateDate;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 
 }
