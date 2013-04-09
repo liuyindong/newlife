@@ -1,4 +1,4 @@
-package cn.javass.file.entity;
+package cn.javass.file.DTO;
 
 public class MenuTreeDto
 {

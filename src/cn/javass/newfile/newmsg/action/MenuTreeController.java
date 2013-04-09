@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import cn.javass.file.entity.MenuTreeDto;
+import cn.javass.file.DTO.MenuTreeDto;
 import cn.javass.util.FileSorter;
 
 @Controller
