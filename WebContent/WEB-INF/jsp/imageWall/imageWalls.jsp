@@ -11,143 +11,94 @@
 
 <link rel="stylesheet" href="${path}/js/masonry/css/style.css" />
 
-
-<script src="${path}/js/jquery-1.8.3.min.js"></script>
-<script src="${path}/js/masonry/js/modernizr-transitions.js"></script>
-<script src="${path}/js/masonry/js/jquery.masonry.js"></script>
 <script src="${path}/js/helper.js" type="text/javascript"></script>
-
-<style type="text/css">
-.example {
-	background: red;
-	border: 2px dotted #ddd;
-	margin-bottom: 10px;
-}
-</style>
-
+<script src="${path}/js/jquery-1.8.3.min.js"></script>
+<script src="${path}/js/masonry/js/jquery.masonry.js"></script>
+<script src="${path}/js/masonry/js/jquery.infinitescroll.min.js"
+	type="text/javascript"></script>
 <title></title>
 </head>
-<body class="homepage ">
+<body class="demos ">
 
-	<div id="container" class="transitions-enabled clearfix">
-		<div class="item big-text">
-			After: Masonry
-			<div id="mini-container" class="mini">
 
-				<div class="w1 h1">1</div>
 
-				<div class="w1 h1">2</div>
-
-				<div class="w1 h2">3</div>
-
-				<div class="w1 h1">4</div>
-
-				<div class="w2 h1">5</div>
-
-				<div class="w1 h2">6</div>
-
-				<div class="w1 h1">7</div>
-
-				<div class="w2 h2">8</div>
-
-				<div class="w2 h1">9</div>
-
-				<div class="w1 h1">10</div>
-
-				<div class="w2 h2">11</div>
-
-				<div class="w2 h1">12</div>
-
+	<section id="content"><!-- ${t.filePath} -->
+	<div id="container"
+		class="transitions-enabled infinite-scroll clearfix">
+		<c:forEach items="${page.items}" var="t" varStatus="status">
+			<div class="box example">
+				<img
+					src="http://www.baidu.com/img/shouye_b5486898c692066bd2cbaeda86d74448.gif"></br>${t.title}
 			</div>
-		</div>
-
-		<div class="item big-text loading">
-			<img src="http://i.imgur.com/6RMhx.gif" /> 正在加载请稍后
-		</div>
+		</c:forEach>
 	</div>
-	<script src="${path}/js/masonry/js/jquery.infinitescroll.min.js"></script>
+	</section>
+
+	<!-- #container -->
+	<nav id="page-nav"> <a href="#"></a> </nav>
 	<script>
 		$(function()
 		{
+			//可以载入任何页面的选择器中的内容，可以是id以及是class，并转化到html存储
+
+			//	$container.load('${path}/imageWall/imageWallDateJsp',function(){$(this).appendTo("#container")});
+
+			//${path}/imageWall/imageWallDate?pn=1&id=2;
 
 			var $container = $('#container');
 
-			$container.masonry(
+			$container.imagesLoaded(function()
 			{
-				itemSelector : '.item',
-				columnWidth : 20,
-				isAnimated : !Modernizr.csstransitions
-			});
-
-			// Sites using Masonry markup
-			$loadingItem = $container.find('.loading');
-			
-			
-			show();
-			var pn = 1;
-			var id = -1;
-
-			var isOn = true;
-
-			function show()
-			{
-				
-				$.ajax(
+				$container.masonry(
 				{
-					url : '${path}/imageWall/imageWallDate',
-					type : 'post',
-					dataType : "json",
-					data :
-					{
-						"pn" : pn,
-						"id" : id
-					},
-					success : function(data)
-					{
-						if (data.items <= 0)
-						{
-							isOn = false;
-							alert("已经到底部了");
-							return true;
-						}
-						var itemsJsWalls = [], item;
-						$.each(data.items, function(i, datum)
-						{
-							item = '<div class="item example"><img src="${path}/'+datum.filePath+'"></br>' + datum.title + '</div>';
-							itemsJsWalls.push(item);
-							id = datum.id;
-						});
-						var $itemsJsWall = $(itemsJsWalls.join(''));
-						$itemsJsWall.imagesLoaded(function()
-						{
-							$container.masonry('remove', $loadingItem).masonry();
-							$container.append($itemsJsWall);
-							$container.masonry('appended', $itemsJsWall, true);
-						});
-
-					}
+					itemSelector : '.box',
+					columnWidth : 20
 				});
-			}
-
-			$(window).scroll(function()
-			{		
-				if ($(document).scrollTop()+200 >= $(document).height() - $(window).height())
+			});
+			$container.infinitescroll(
+			{
+				navSelector : '#page-nav', // 导航的选择器
+				nextSelector : '#page-nav a', //下一页的选择器
+				itemSelector : '.box', // 你将要取回的选项(内容块)
+				debug : true, //启用调试信息
+				loading :
 				{
-					//	alert("到底部了");
-					pn = parseInt(pn) + 1;
-					if (!isOn)
+					msgText: "亲,正在努力加载中加载中...",
+					finishedMsg : '已经到底了...',
+					img : '${path}/images/load/6RMhx.gif',
+			//		selector: '#test001' // 显示loading信息的div
+				},
+				pathParse : [ "${path}/imageWall/imageWallDateJsp?pn=", "" ],
+				animate : true,//当有新数据加载进来的时候，页面是否有动画效果，默认没有
+				extraScrollPx : 50, //滚动条距离底部多少像素的时候开始加载，默认150
+				bufferPx : 40,//载入信息的显示时间，时间越大，载入信息显示时间越短
+				//	 	errorCallback: function(){alert("出现404");},//当出错的时候，比如404页面的时候执行的函数
+				localMode : false
+			//是否允许载入具有相同函数的页面，默认为false
+			},
+			// trigger Masonry as a callback
+			function(newElements)
+			{
+				// hide new items while they are loading
+				var $newElems = $(newElements).css(
+				{
+					opacity : 0
+				});
+				// ensure that images load before adding to masonry layout
+				$newElems.imagesLoaded(function()
+				{
+					// show elems now they're ready
+					$newElems.animate(
 					{
-						alert("已经没有资源了亲");
-						return true;
-					}
-					show();
-				}
-				return;
+						opacity : 1
+					});
+
+					//		$imgWallId = $($newElems[$newElems.length - 1]).find("span").html();
+					$container.masonry('appended', $newElems, true);
+				});
 			});
 
 		});
 	</script>
-	<!-- #content -->
-
 </body>
 </html>

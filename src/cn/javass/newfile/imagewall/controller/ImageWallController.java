@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,10 +18,8 @@ import cn.javass.common.Constants;
 import cn.javass.common.pagination.Page;
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 import cn.javass.newfile.imagewall.service.ImageWallService;
-import cn.javass.newfile.user.model.UserModel;
 import cn.javass.util.DateUtil;
 import cn.javass.util.WriteJson;
-import cn.javass.util.WritePath;
 
 @Controller
 @RequestMapping("/imageWall")
@@ -61,8 +58,32 @@ public class ImageWallController
 		return page;
 	}
 
+	@RequestMapping(value = "/imageWallDateJsp")
+	public String imageWallDateJsp(Model model, HttpServletRequest request)
+	{
+		// http://ld:8080/newlife/imageWall/index?pn=3&id=285
+		model.addAttribute(Constants.COMMAND, new ImageWallEntity());
+		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
+		Page<ImageWallEntity> page = null;
+		page = imageWallService.listAll(pn);
+
+		model.addAttribute("page", page);
+
+		if (pn == 1)
+		{
+			return "imageWall/imageWalls";
+		}
+		return "imageWall/masonryLoad";
+	}
+
 	@RequestMapping(value = "/index")
 	public String imageIndex()
+	{
+		return "imageWall/imageWall";
+	}
+
+	@RequestMapping(value = "/indexs")
+	public String imageIndexs()
 	{
 		return "imageWall/imageWalls";
 	}
@@ -106,7 +127,7 @@ public class ImageWallController
 				iw.setFilePath("/images/Girl/suo/" + files[i].getName());
 				iw.setTitle(pathtc);
 				iw.setName(files[i].getName());
-				
+
 				imageWallService.save(iw);
 
 			}

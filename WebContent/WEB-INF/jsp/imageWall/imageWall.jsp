@@ -65,6 +65,7 @@
 			<img src="http://i.imgur.com/6RMhx.gif" /> 正在加载请稍后
 		</div>
 	</div>
+	
 	<script src="${path}/js/masonry/js/jquery.infinitescroll.min.js"></script>
 	<script>
 		$(function()
@@ -75,8 +76,10 @@
 			$container.masonry(
 			{
 				itemSelector : '.item',
-				columnWidth : 20,
-				isAnimated : !Modernizr.csstransitions
+				columnWidth : 20,    //  一列的宽度
+				isAnimated : !Modernizr.csstransitions,
+				isFitWidth:true,
+				isResizableL:true
 			});
 
 			// Sites using Masonry markup
@@ -107,7 +110,7 @@
 						if (data.items <= 0)
 						{
 							isOn = false;
-							alert("已经到底部了");
+					//		alert("已经到底部了");
 							return true;
 						}
 						var itemsJsWalls = [], item;
@@ -124,7 +127,6 @@
 							$container.append($itemsJsWall);
 							$container.masonry('appended', $itemsJsWall, true);
 						});
-
 					}
 				});
 			}
@@ -137,17 +139,20 @@
 					pn = parseInt(pn) + 1;
 					if (!isOn)
 					{
-						alert("已经没有资源了亲");
+					//	alert("已经没有资源了亲");
 						return true;
 					}
 					show();
 				}
-				return;
 			});
 
 		});
 	</script>
 	<!-- #content -->
+	
+	<div align="center">
+		____________________________________底部啦________________________________________
+	</div>
 
 </body>
 </html>
