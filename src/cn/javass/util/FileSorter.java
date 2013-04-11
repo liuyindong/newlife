@@ -217,6 +217,7 @@ public class FileSorter implements Comparator<File>
 	}
 
 	// for test
+	@SuppressWarnings("unused")
 	private static void printFileArray(File[] list)
 	{
 

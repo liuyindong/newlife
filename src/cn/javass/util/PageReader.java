@@ -8,8 +8,6 @@ import java.io.InputStreamReader;
 /**
  * 网页阅读器.
  * 
- * @author <a href="mailto:xiexingxing1121@126.com">AmigoXie</a>
- *         Creation date: 2007-10-9 - 上午11:47:26
  */
 public class PageReader
 {

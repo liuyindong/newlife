@@ -1,7 +1,5 @@
 package cn.javass.newfile.lucene.crawl;
 
-import java.util.Date;
-import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,6 +15,7 @@ import cn.javass.util.DateUtil;
 import cn.javass.util.DownImg;
 import cn.javass.util.LdUtils;
 import cn.javass.util.WritePath;
+
 
 public class Tiantangbbs extends Thread
 {

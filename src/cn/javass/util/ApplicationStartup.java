@@ -26,6 +26,9 @@ public class ApplicationStartup implements InitializingBean, ServletContextAware
 		config.setWebUrl(servletContext.getContextPath()); // 网站根目录 URL
 		config.setWebPath(servletContext.getRealPath("/")); // 网站根目录物理路径
 		servletContext.setAttribute("config", config);
+		
+		
+		
 	}
 
 }

@@ -11,6 +11,74 @@ public class Config
 	//lucene索引路径
 	private String 	lucenePath;
 	
+	//管理员邮箱
+	private String adminEmail;
+	
+	/**邮件信息**/
+	
+	//SMTP服务器地址
+	private String smtpServer;
+	
+	// SMTP服务器端口 
+	private String smtpPort;
+
+	// SMTP用户名
+	private String smtpUser;
+	
+	// SMTP密码 
+	private String smtpPass;
+	
+	
+	public String getAdminEmail()
+	{
+		return adminEmail;
+	}
+
+	public void setAdminEmail(String adminEmail)
+	{
+		this.adminEmail = adminEmail;
+	}
+
+	public String getSmtpServer()
+	{
+		return smtpServer;
+	}
+
+	public void setSmtpServer(String smtpServer)
+	{
+		this.smtpServer = smtpServer;
+	}
+
+	public String getSmtpPort()
+	{
+		return smtpPort;
+	}
+
+	public void setSmtpPort(String smtpPort)
+	{
+		this.smtpPort = smtpPort;
+	}
+
+	public String getSmtpUser()
+	{
+		return smtpUser;
+	}
+
+	public void setSmtpUser(String smtpUser)
+	{
+		this.smtpUser = smtpUser;
+	}
+
+	public String getSmtpPass()
+	{
+		return smtpPass;
+	}
+
+	public void setSmtpPass(String smtpPass)
+	{
+		this.smtpPass = smtpPass;
+	}
+
 	public String getWebUrl()
 	{
 		return webUrl;

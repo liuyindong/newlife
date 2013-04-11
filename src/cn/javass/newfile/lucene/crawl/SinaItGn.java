@@ -35,7 +35,7 @@ public class SinaItGn extends Thread
 	{
 		try
 		{
-			for (int i = 1; i < 10; i++)
+			for (int i = 1; i <= 1; i++)
 			{
 				if (i == 1)
 				{
@@ -82,7 +82,7 @@ public class SinaItGn extends Thread
 		// boolean isTaday = false;
 
 		// 创建线程池
-		ExecutorService pool = Executors.newFixedThreadPool(4);
+		ExecutorService pool = Executors.newFixedThreadPool(1);
 
 		for (Element message : msgList)
 		{
@@ -117,7 +117,7 @@ public class SinaItGn extends Thread
 			
 			logger.info("新闻标题是:" + newsmsg.text());
 //			logger.info("链接地址:" + newsmsg.attr("href"));
-//			logger.info("新闻时间:" + newsData);
+			logger.info("新闻时间:" + newsData);
 			
 //			logger.info("新闻内容:" + showNewMsg(newsmsg.attr("href")));
 		}
