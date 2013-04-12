@@ -87,8 +87,6 @@ public class Tech163New extends Thread
 		
 		element.select("div.gg200x300").remove();
 		
-		System.out.println(element);
-		
 		return element.html();
 	}
 
