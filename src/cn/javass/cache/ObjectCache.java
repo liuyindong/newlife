@@ -1,9 +1,7 @@
 package cn.javass.cache;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import cn.javass.newfile.internethome.entity.InternetHomeEntity;
 import cn.javass.util.cache.OsCacheMethods;
 
 public class ObjectCache
@@ -58,26 +56,5 @@ public class ObjectCache
 	public void remove()
 	{
 		osCacheMethods.remove(this.osCacheName);
-	}
-	
-	public static void main(String[] args)
-	{
-		ObjectCache o = ObjectCache.getInstance("zhangsan111");
-		List<Object> l = o.listNews();
-		
-		List<InternetHomeEntity> list = new ArrayList<InternetHomeEntity>();
-		
-		if(l == null)
-		{
-			System.out.println("没有数据");
-			InternetHomeEntity a = new InternetHomeEntity();
-			a.setId(111);
-			list.add(a);
-			o.putMsgList(list);
-		//	main(null);
-		}
-		InternetHomeEntity a = (InternetHomeEntity) l.get(0);
-		System.out.println(a.getId());
-		return;
 	}
 }
