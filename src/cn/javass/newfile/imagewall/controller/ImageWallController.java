@@ -28,7 +28,7 @@ public class ImageWallController
 	@Autowired
 	@Qualifier("ImageWallService")
 	private ImageWallService imageWallService;
-
+	
 	@RequestMapping(value = "/imageWallDate")
 	@ResponseBody
 	public Object imageWallDate(Model model, HttpServletRequest request)

@@ -1,5 +1,8 @@
 package cn.javass.util;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class Config
 {
 	//网站根目录 URL
@@ -19,9 +22,6 @@ public class Config
 	//SMTP服务器地址
 	private String smtpServer;
 	
-	// SMTP服务器端口 
-	private String smtpPort;
-
 	// SMTP用户名
 	private String smtpUser;
 	
@@ -47,16 +47,6 @@ public class Config
 	public void setSmtpServer(String smtpServer)
 	{
 		this.smtpServer = smtpServer;
-	}
-
-	public String getSmtpPort()
-	{
-		return smtpPort;
-	}
-
-	public void setSmtpPort(String smtpPort)
-	{
-		this.smtpPort = smtpPort;
 	}
 
 	public String getSmtpUser()

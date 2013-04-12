@@ -27,11 +27,17 @@ public class NewsEntity extends AbstractModel
 	@Column(name = "title", length = 100)
 	private String title;
 
-	@Column(name = "url_ref",length = 1000)
+	@Column(name = "url_ref", length = 1000)
 	private String urlRef;
 
 	@Column(name = "new_type", length = 40)
 	private String newType;
+
+	@Column(name = "boolean_recommend", length = 2)
+	private int booelanRecommend = 0; // 0:不推荐 1:推荐
+
+	@Column(name = "products_home", length = 2)
+	private int productsHome = 0; // -1:删除;0:不展示 1：展示
 
 	@Column(name = "create_date", length = 40)
 	private String createDate;
@@ -44,7 +50,7 @@ public class NewsEntity extends AbstractModel
 
 	@Column(name = "new_msg_two", length = 999999)
 	private String newMsgTwo;
-	
+
 	@Column(name = "click_num", length = 100)
 	private Integer clickNum = 0;
 
@@ -141,5 +147,25 @@ public class NewsEntity extends AbstractModel
 	public void setClickNum(Integer clickNum)
 	{
 		this.clickNum = clickNum;
+	}
+
+	public int getProductsHome()
+	{
+		return productsHome;
+	}
+
+	public void setProductsHome(int productsHome)
+	{
+		this.productsHome = productsHome;
+	}
+
+	public int getBooelanRecommend()
+	{
+		return booelanRecommend;
+	}
+
+	public void setBooelanRecommend(int booelanRecommend)
+	{
+		this.booelanRecommend = booelanRecommend;
 	}
 }

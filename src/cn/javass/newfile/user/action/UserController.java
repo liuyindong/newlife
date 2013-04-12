@@ -26,6 +26,7 @@ import cn.javass.newfile.user.model.UserQueryModel;
 import cn.javass.newfile.user.service.UserService;
 
 @Controller
+@RequestMapping("user")
 public class UserController
 {
 
@@ -33,7 +34,7 @@ public class UserController
 	@Qualifier("UserService")
 	private UserService userService;
 	
-	@RequestMapping(value = "/user", method = { RequestMethod.GET })
+	@RequestMapping()
 	public String list(HttpServletRequest request, Model model)
 	{
 
@@ -63,7 +64,7 @@ public class UserController
 		return "user/list";
 	}
 
-	@RequestMapping(value = "/user/query", method = { RequestMethod.GET })
+	@RequestMapping(value = "/query", method = { RequestMethod.GET })
 	public String query(HttpServletRequest request, Model model, @ModelAttribute("command") UserQueryModel command)
 	{
 		setCommonData(model);
@@ -79,14 +80,14 @@ public class UserController
 		// 设置通用属性
 	}
 
-	@RequestMapping(value = "/user/{userId}/view", method = { RequestMethod.GET })
+	@RequestMapping(value = "/{userId}/view", method = { RequestMethod.GET })
 	public String view(@PathVariable Integer topicId, HttpServletRequest request)
 	{
 		request.setAttribute(Constants.COMMAND, userService.get(topicId));
 		return "user/view";
 	}
 
-	@RequestMapping(value = "/user/add", method = { RequestMethod.GET })
+	@RequestMapping(value = "/add", method = { RequestMethod.GET })
 	public String toAdd(Model model)
 	{
 
@@ -98,7 +99,7 @@ public class UserController
 		return "user/add";
 	}
 
-	@RequestMapping(value = "/user/{id}/update", method = { RequestMethod.GET })
+	@RequestMapping(value = "/{id}/update", method = { RequestMethod.GET })
 	public String toUpdate(Model model, @PathVariable Integer id)
 	{
 		if (!model.containsAttribute(Constants.COMMAND))
@@ -109,7 +110,7 @@ public class UserController
 		return "user/update";
 	}
 
-	@RequestMapping(value = "/user/{id}/delete", method = { RequestMethod.GET })
+	@RequestMapping(value = "/{id}/delete", method = { RequestMethod.GET })
 	public String toDelete(@PathVariable Integer id)
 	{
 		return "user/delete";

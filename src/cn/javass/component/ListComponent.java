@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import cn.javass.newfile.lucene.crawl.Tech163New;
+import cn.javass.lucene.crawl.Tech163New;
+import cn.javass.lucene.crawl.entity.CrawlResourceEntity;
+import cn.javass.lucene.crawl.service.CrawlResourceSrevice;
 import cn.javass.newfile.newmsg.entity.NewsEntity;
 import cn.javass.newfile.newmsg.service.NewService;
 import cn.javass.util.Ai2YCOM;
@@ -27,6 +29,8 @@ import cn.javass.util.email.SendEmail;
 @Component
 public class ListComponent
 {
+	private final String HQL_CRAWLRESOURCEBY_DOMAINNAME = "from CrawlResourceEntity where domainName = ?";
+
 	@Autowired
 	@Qualifier("NewService")
 	private NewService newService;
@@ -34,22 +38,30 @@ public class ListComponent
 	@Autowired
 	private Config config;
 
-	// 300分钟抓取一次新闻163新闻
-	@Scheduled(fixedDelay = 1800000)
+	@Autowired
+	@Qualifier("CrawlResourceSrevice")
+	private CrawlResourceSrevice crawlResourceSrevice;
+
+	// 30分钟抓取一次新闻163新闻//1800000
+//	@Scheduled(fixedDelay = 1800000)
 	void Tech163New() throws Exception
 	{
 		internetFor163();
 	}
+
 	public void internetFor163() throws Exception
 	{
+
+		List<CrawlResourceEntity> cralresou = crawlResourceSrevice.listAll(HQL_CRAWLRESOURCEBY_DOMAINNAME, "163com");
+
 		List<NewsEntity> listNewEntity = new ArrayList<NewsEntity>();
-		String[] interNames = { "internet" };
 		try
 		{
-			for (String internateName : interNames)
+			for (Iterator<CrawlResourceEntity> iterator = cralresou.iterator(); iterator.hasNext();)
 			{
-				Tech163New teach163 = new Tech163New(Ai2YCOM.TECH163Inter + "special/0009rt/" + internateName + "_roll.html");
-				listNewEntity = teach163.downNewMsg();
+				CrawlResourceEntity crawlResource = iterator.next();
+				Tech163New teach163 = new Tech163New();
+				listNewEntity = teach163.downNewMsg(crawlResource);
 			}
 		}
 		catch (Exception e)

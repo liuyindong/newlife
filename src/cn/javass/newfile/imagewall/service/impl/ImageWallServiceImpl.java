@@ -19,10 +19,10 @@ public class ImageWallServiceImpl extends BaseService<ImageWallEntity,Integer> i
 	@Qualifier("ImageWallDao")
 
 	@Override
-	public void setBaseDao(IBaseDao<ImageWallEntity, Integer> baseDao)
+	public void setBaseDao(IBaseDao<ImageWallEntity, Integer> imageWallDao)
 	{
-		this.baseDao = baseDao;
-		this.imageWallDao = (ImageWallDao) baseDao;
+		this.baseDao = imageWallDao;
+		this.imageWallDao = (ImageWallDao) imageWallDao;
 		
 	}
 

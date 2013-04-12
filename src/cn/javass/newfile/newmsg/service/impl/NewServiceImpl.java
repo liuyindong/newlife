@@ -18,6 +18,7 @@ public class NewServiceImpl extends BaseService<NewsEntity, Integer> implements 
 
 	@Autowired
 	@Qualifier("NewDao")
+	
 	@Override
 	public void setBaseDao(IBaseDao<NewsEntity, Integer> newDao)
 	{

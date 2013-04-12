@@ -8,7 +8,7 @@ import cn.javass.common.pagination.Page;
 import cn.javass.common.pagination.PageUtil;
 import cn.javass.common.service.IBaseService;
 
-public abstract  class BaseService<M extends java.io.Serializable, PK extends java.io.Serializable> implements IBaseService<M, PK>
+public abstract   class BaseService<M extends java.io.Serializable, PK extends java.io.Serializable> implements IBaseService<M, PK>
 {
 
 	protected IBaseDao<M, PK> baseDao;
