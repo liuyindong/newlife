@@ -32,6 +32,16 @@ public class NewsEntity extends AbstractModel
 
 	@Column(name = "new_type", length = 40)
 	private String newType;
+	
+
+	@Column(name = "click_num", length = 100)
+	private Integer clickNum = 0;
+	
+	@Column(name="news_image")
+	private String newsImage;    //展示图片
+	
+	@Column(name="tech_tag")   //标签
+	private String techTag;
 
 	@Column(name = "boolean_recommend", length = 2)
 	private int booelanRecommend = 0; // 0:不推荐 1:推荐
@@ -50,9 +60,6 @@ public class NewsEntity extends AbstractModel
 
 	@Column(name = "new_msg_two", length = 999999)
 	private String newMsgTwo;
-
-	@Column(name = "click_num", length = 100)
-	private Integer clickNum = 0;
 
 	public int getId()
 	{
@@ -167,5 +174,25 @@ public class NewsEntity extends AbstractModel
 	public void setBooelanRecommend(int booelanRecommend)
 	{
 		this.booelanRecommend = booelanRecommend;
+	}
+
+	public String getNewsImage()
+	{
+		return newsImage;
+	}
+
+	public void setNewsImage(String newsImage)
+	{
+		this.newsImage = newsImage;
+	}
+
+	public String getTechTag()
+	{
+		return techTag;
+	}
+
+	public void setTechTag(String techTag)
+	{
+		this.techTag = techTag;
 	}
 }

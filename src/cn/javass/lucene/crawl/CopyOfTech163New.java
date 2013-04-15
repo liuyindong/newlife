@@ -32,7 +32,7 @@ public class CopyOfTech163New extends Thread
 
 	public static void main(String[] args)
 	{
-		String[] interNames = { "internet"};
+		String[] interNames = { "internet" };
 
 		for (String internateName : interNames)
 		{
@@ -57,53 +57,51 @@ public class CopyOfTech163New extends Thread
 	public void downNewMsg(String url) throws Exception
 	{
 		Document doc = JsoupConnect.jsoutConnectLog(url);
-		
-		Elements emelents= doc.select("div.colLM div ul li");
-		
+
+		Elements emelents = doc.select("div.colLM div ul li");
+
 		for (Element element : emelents)
 		{
-			try
-			{
-				String date = element.select("span").first().text();
-				date = date.substring(1,date.length()-1);
-				
-				//2013-04-11 17:17
-				String dateType = "yyyy-MM-dd HH:mm";
-				String nowDate = DateUtil.timeToString(new Date(),dateType);
-				
-				if(DateUtil.jisuan(date,nowDate, dateType)*60 > 30)
-				{
-					return;
-				}
-				
-				
-				
-				Element newMsg = element.select("a").first();
-		//		logger.info("时间是：" + date);
-		//		logger.info("标题：" + newMsg.text());
-		//		logger.info("链接：" + newMsg.attr("abs:href"));
-				
-			//	showNewMsg(newMsg.attr("abs:href"));
-				
-				return;
-			}
-			catch (Exception e)
+			System.out.println(element.select("a").first().attr("title"));
+			System.out.println(element.select("a").first().attr("href"));
+			System.out.println(element.select("span").first().text().substring(1, element.select("span").first().text().length() - 1));
+
+			System.out.println("morenimg");
+
+			System.out.println(showNewMsg(element.select("a").first().attr("abs:href")));
+
+			String date = element.select("span").first().text();
+			date = date.substring(1, date.length() - 1);
+
+			String dateType = "yyyy-MM-dd HH:mm";
+			String nowDate = DateUtil.timeToString(new Date(), dateType);
+
+			if (DateUtil.jisuan(date, nowDate, dateType) * 60 > 30)
 			{
 				return;
 			}
+
+			Element newMsg = element.select("a").first();
+			// logger.info("时间是：" + date);
+			// logger.info("标题：" + newMsg.text());
+			// logger.info("链接：" + newMsg.attr("abs:href"));
+
+			// showNewMsg(newMsg.attr("abs:href"));
+
+			return;
 		}
 	}
-	
+
 	public String showNewMsg(String showMsgUrl) throws Exception
 	{
 		Document doc = JsoupConnect.jsoutConnectLog(showMsgUrl);
-		
+
 		Element element = doc.select("div #endText").first();
-		
+
 		element.select("div.gg200x300").remove();
-		
+
 		System.out.println(element);
-		
+
 		return "";
 	}
 

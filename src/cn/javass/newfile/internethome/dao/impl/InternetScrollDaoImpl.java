@@ -4,10 +4,10 @@ import org.springframework.stereotype.Repository;
 
 import cn.javass.common.dao.hibernate4.BaseHibernateDao;
 import cn.javass.newfile.internethome.dao.InternetScrollDao;
-import cn.javass.newfile.internethome.entity.InternetScroll;
+import cn.javass.newfile.internethome.entity.InternetScrollEntity;
 
-@Repository("InternetScroll")
-public class InternetScrollDaoImpl extends BaseHibernateDao<InternetScroll, Integer> implements InternetScrollDao
+@Repository("InternetScrollDao")
+public class InternetScrollDaoImpl extends BaseHibernateDao<InternetScrollEntity, Integer> implements InternetScrollDao
 {
 
 }

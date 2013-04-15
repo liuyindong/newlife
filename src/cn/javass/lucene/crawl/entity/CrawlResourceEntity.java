@@ -38,6 +38,15 @@ public class CrawlResourceEntity extends AbstractModel
 
 	@Column(name = "end_time", length = 10)
 	private int endIsTime; // 最大获取多少时间数据
+	
+	@Column(name = "new_status", length = 2)
+	private int status = 0;   //新闻状态  0:正常抓取,-1:停止抓取
+	
+	@Column(name = "show_new_select",length = 50)
+	private String showNewSelect;
+	
+	@Column(name = "new_type",length = 50)
+	private String newType;
 
 	public String getDomainName()
 	{
@@ -97,6 +106,36 @@ public class CrawlResourceEntity extends AbstractModel
 	public void setCrawlUrl(String crawlUrl)
 	{
 		this.crawlUrl = crawlUrl;
+	}
+
+	public int getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(int status)
+	{
+		this.status = status;
+	}
+
+	public String getShowNewSelect()
+	{
+		return showNewSelect;
+	}
+
+	public void setShowNewSelect(String showNewSelect)
+	{
+		this.showNewSelect = showNewSelect;
+	}
+
+	public String getNewType()
+	{
+		return newType;
+	}
+
+	public void setNewType(String newType)
+	{
+		this.newType = newType;
 	}
 
 }

@@ -388,4 +388,4 @@
 		</div>
 	</div>
 	<!-- POPUP END -->
-<!--[if lte IE]><script src="${path}/js/ie6/warning.js"></script><script>window.onload=function(){e("${path}/js/ie6/")}</script><![endif]-->
+<!--[if lte IE 6]><script src="${path}/js/ie6/warning.js"></script><script>window.onload=function(){e("${path}/js/ie6/")}</script><![endif]-->

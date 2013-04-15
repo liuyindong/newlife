@@ -64,11 +64,13 @@ public class NewAction
 		return "newMsg/srarchList";
 	}
 
-	@RequestMapping(value = "/{id}/search", method = { RequestMethod.GET })
+	@RequestMapping(value = "/search{id}.html", method = { RequestMethod.GET })
 	public String searchNewsById(Model model, @PathVariable Integer id) throws Exception
 	{
-		List<?> listSearch = SearchNewMsg.searchNews(id + "", "msgId", 100, 1);
-		model.addAttribute("showSearch", listSearch.get(0));
+	//	List<?> listSearch = SearchNewMsg.searchNews(id + "", "msgId", 100, 1);
+		NewsEntity newEntity  = newService.get(id);
+		model.addAttribute("showSearch", newEntity);
+		
 		newService.updateNewsOn(SQL_CLICK_NUM_ADDONE,id);
 		return "newMsg/news_post";
 	}

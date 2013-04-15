@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import cn.javass.lucene.crawl.CrawlInternetController;
 import cn.javass.lucene.crawl.Tech163New;
+import cn.javass.lucene.crawl.controller.CrawlResourceController;
 import cn.javass.lucene.crawl.entity.CrawlResourceEntity;
 import cn.javass.lucene.crawl.service.CrawlResourceSrevice;
 import cn.javass.newfile.newmsg.entity.NewsEntity;
@@ -29,7 +31,7 @@ import cn.javass.util.email.SendEmail;
 @Component
 public class ListComponent
 {
-	private final String HQL_CRAWLRESOURCEBY_DOMAINNAME = "from CrawlResourceEntity where domainName = ?";
+	private final String HQL_CRAWLRESOURCEBY_DOMAINNAME = "from CrawlResourceEntity where domainName = ? and status = 0";
 
 	@Autowired
 	@Qualifier("NewService")
@@ -43,16 +45,16 @@ public class ListComponent
 	private CrawlResourceSrevice crawlResourceSrevice;
 
 	// 30分钟抓取一次新闻163新闻//1800000
-//	@Scheduled(fixedDelay = 1800000)
-	void Tech163New() throws Exception
+	@Scheduled(fixedDelay = 1800000)
+	void crawIntent() throws Exception
 	{
-		internetFor163();
+		crawIntentStart("qqcom");
 	}
 
-	public void internetFor163() throws Exception
+	public void crawIntentStart(String crawName) throws Exception
 	{
 
-		List<CrawlResourceEntity> cralresou = crawlResourceSrevice.listAll(HQL_CRAWLRESOURCEBY_DOMAINNAME, "163com");
+		List<CrawlResourceEntity> cralresou = crawlResourceSrevice.listAll(HQL_CRAWLRESOURCEBY_DOMAINNAME, crawName);
 
 		List<NewsEntity> listNewEntity = new ArrayList<NewsEntity>();
 		try
@@ -60,13 +62,13 @@ public class ListComponent
 			for (Iterator<CrawlResourceEntity> iterator = cralresou.iterator(); iterator.hasNext();)
 			{
 				CrawlResourceEntity crawlResource = iterator.next();
-				Tech163New teach163 = new Tech163New();
-				listNewEntity = teach163.downNewMsg(crawlResource);
+				CrawlInternetController cralStart = new CrawlInternetController();
+				listNewEntity = cralStart.downNewMsg(crawlResource);
 			}
 		}
 		catch (Exception e)
 		{
-			SendEmail.sendMail(config.getAdminEmail(), "抓取163" + DateUtil.timeToString(new Date()) + " BUG信息", e.toString());
+			SendEmail.sendMail(config.getAdminEmail(), "抓取" + crawName + DateUtil.timeToString(new Date()) + " 错误信息信息", e.toString());
 			return;
 		}
 		for (Iterator<NewsEntity> iterator = listNewEntity.iterator(); iterator.hasNext();)

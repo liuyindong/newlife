@@ -20,7 +20,7 @@ import cn.javass.common.model.AbstractModel;
 @Entity
 @Table(name = "tbl_internet_scroll")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class InternetScroll extends AbstractModel
+public class InternetScrollEntity extends AbstractModel
 {
 	private static final long serialVersionUID = 4017722618928742292L;
 

@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cn.javass.DTO.HomeInformationDTO;
 import cn.javass.cache.ObjectCache;
 import cn.javass.common.Constants;
+import cn.javass.common.pagination.Page;
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
-import cn.javass.newfile.internethome.entity.InternetScroll;
+import cn.javass.newfile.internethome.entity.InternetScrollEntity;
 import cn.javass.newfile.internethome.service.InternetScrollService;
+import cn.javass.newfile.newmsg.entity.NewsEntity;
 import cn.javass.newfile.newmsg.service.NewService;
 import cn.javass.sql.InternetHomeSql;
 import cn.javass.util.WriteJson;
@@ -33,8 +35,8 @@ import cn.javass.util.ajax.AjaxEntity;
 public class HomeController
 {
 	private Map<String, AjaxEntity> mapAjaxEnt = new HashMap<String, AjaxEntity>();
-	
-	private final List<Object> list = new ArrayList<Object>();
+
+	private List<Object> list;
 
 	// 查询今天首页推荐的信息的信息
 
@@ -52,27 +54,63 @@ public class HomeController
 	public String index(ModelMap model, HttpServletRequest request) throws Exception
 	{
 		HomeInformationDTO homeInformation = new HomeInformationDTO();
-		
-		//查询首页缓存内容（缓存为12个小时）
-		ObjectCache newMsg = ObjectCache.getInstance("internetHome",43200);
-		List<?> listSearch = newMsg.listNews();
-		
-		if (listSearch == null)
+		// 查询首页缓存内容（缓存为12个小时）
+		ObjectCache homeScroll = ObjectCache.getInstance("internetHome", 43200);
+		List<?> listScroll = homeScroll.listNews();
+
+		if (listScroll == null)
 		{
-			List<InternetScroll> listScrollTop = internetScrollService.listAll(InternetHomeSql.HQL_INTERNET_SCROLL_BY_TYPE, 1);
-			List<InternetScroll> listScrollButton = internetScrollService.listAll(InternetHomeSql.HQL_INTERNET_SCROLL_BY_TYPE, 2);
+			List<InternetScrollEntity> listScrollTop = internetScrollService.listAll(InternetHomeSql.HQL_INTERNET_SCROLL_BY_TYPE, 1);
+			List<InternetScrollEntity> listScrollButton = internetScrollService.listAll(InternetHomeSql.HQL_INTERNET_SCROLL_BY_TYPE, 2);
 			homeInformation.setScrollTop(listScrollTop);
 			homeInformation.setScrollButton(listScrollButton);
+			list = new ArrayList<Object>();
 			list.add(homeInformation);
-			newMsg.putMsgList(list);
+			homeScroll.putMsgList(list);
 		}
+		
+		// 查询首页缓存新闻（缓存为30分钟）
+	//	ObjectCache indexPageObj = ObjectCache.getInstance("homepages", 1800);
+		
+	//	List<?> listpages = indexPageObj.listNews();
+		
+		Page<NewsEntity> page = null;
+		
+	//	if(listpages.size() > 0)
+	//	{
+	//		page = (Page<NewsEntity>) listpages.get(0);
+	//	}
+		
 		model.addAttribute(Constants.COMMAND, new ImageWallEntity());
 		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
 		Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
 		boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre", false);
-	
 		
-		model.addAttribute("listMove", listSearch);
+	//	if (page == null && pn == 1)
+	//	{
+			
+			if (id > 0)
+			{
+				if (pre)
+				{
+					page = newService.pre(id, pn);
+				}
+				else
+				{
+					page = newService.next(id, pn);
+				}
+			}
+			else
+			{
+				page = newService.listAll(pn);
+			}
+		//	list = new ArrayList<Object>();
+		//	list.add(page);
+		//	indexPageObj.putMsgList(list);
+		//}
+
+		model.addAttribute("page", page);
+		model.addAttribute("homeInformation", homeInformation);
 		return "newMsg/index";
 	}
 
