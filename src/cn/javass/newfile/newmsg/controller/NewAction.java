@@ -64,7 +64,7 @@ public class NewAction
 		return "newMsg/srarchList";
 	}
 
-	@RequestMapping(value = "/search{id}.html", method = { RequestMethod.GET })
+	@RequestMapping(value = "/search_{id}.html", method = { RequestMethod.GET })
 	public String searchNewsById(Model model, @PathVariable Integer id) throws Exception
 	{
 	//	List<?> listSearch = SearchNewMsg.searchNews(id + "", "msgId", 100, 1);

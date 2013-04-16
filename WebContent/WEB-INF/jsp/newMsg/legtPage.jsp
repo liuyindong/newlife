@@ -24,7 +24,7 @@
 						<div class="separator" style="height: 31px;"></div> -->
 
 						<div class="block_popular_posts">
-							<h4>产品新闻</h4>
+							<h4>网站新闻</h4>
 
 							<div class="article">
 								<div class="pic">
@@ -35,7 +35,7 @@
 
 								<div class="text">
 									<p class="title">
-										<a href="#">MX2给力</a>
+										<a href="#">LD制作了首页信息</a>
 									</p>
 									<div class="date">
 										<p>2012/12/18</p>
@@ -53,55 +53,32 @@
 							<div class="article">
 								<div class="pic">
 									<a href="#" class="w_hover"> <img
-										src="${path}/images/pic_popular_post_2.jpg" alt="" /> <span></span>
+										src="${path}/images/pic_popular_post_1.jpg" alt="" /> <span></span>
 									</a>
 								</div>
 
 								<div class="text">
 									<p class="title">
-										<a href="#">小米垃圾啊</a>
+										<a href="#">LD上传的资源</a>
 									</p>
 									<div class="date">
-										<p>2012/12/11</p>
+										<p>2012/12/18</p>
 									</div>
 									<div class="icons">
 										<ul>
-											<li><a href="#" class="views">24</a></li>
-											<li><a href="#" class="comments">16</a></li>
+											<li><a href="#" class="views">41</a></li>
+											<li><a href="#" class="comments">22</a></li>
 										</ul>
 									</div>
 								</div>
 							</div>
-							<div class="line_3"></div>
-
-							<div class="article">
-								<div class="pic">
-									<a href="#" class="w_hover"> <img
-										src="${path}/images/pic_popular_post_3.jpg" alt="" /> <span></span>
-									</a>
-								</div>
-
-								<div class="text">
-									<p class="title">
-										<a href="#">雷军好恶心</a>
-									</p>
-									<div class="date">
-										<p>2012/10/11</p>
-									</div>
-									<div class="icons">
-										<ul>
-											<li><a href="#" class="views">33</a></li>
-											<li><a href="#" class="comments">25</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
+							
 							<div class="line_2"></div>
 						</div>
 
 						<div class="separator" style="height: 31px;"></div>
 
-						<div class="block_popular_stuff">
+						<%-- <div class="block_popular_stuff">
 							<h4>视频</h4>
 
 							<div class="content">
@@ -129,7 +106,7 @@
 							<div class="clearboth"></div>
 
 							<div class="line_2"></div>
-						</div>
+						</div> --%>
 
 						<div class="separator" style="height: 31px;"></div>
 
@@ -151,7 +128,7 @@
 										alt="" /></a>
 								</div>
 								<p>
-									<a href="">mx2发布了嘿嘿</a> <img
+									<a href="">LD上传的图片</a> <img
 										src="${path}/images/icon_photo.gif" alt="" />
 								</p>
 								<p class="date">2012/12/18</p>

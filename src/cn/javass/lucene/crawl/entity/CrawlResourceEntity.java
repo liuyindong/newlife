@@ -38,15 +38,93 @@ public class CrawlResourceEntity extends AbstractModel
 
 	@Column(name = "end_time", length = 10)
 	private int endIsTime; // 最大获取多少时间数据
-	
+
 	@Column(name = "new_status", length = 2)
-	private int status = 0;   //新闻状态  0:正常抓取,-1:停止抓取
-	
-	@Column(name = "show_new_select",length = 50)
+	private int status = 0; // 新闻状态 0:正常抓取,-1:停止抓取
+
+	@Column(name = "show_new_select", length = 50)
 	private String showNewSelect;
-	
-	@Column(name = "new_type",length = 50)
+
+	@Column(name = "new_type", length = 50)
 	private String newType;
+
+	@Column(name = "date_crawl")
+	private String dateCrawl; // 抓取时间的格式
+
+	@Column(name = "title_crawl")
+	private String titleCrawl;
+
+	@Column(name = "url_ref_crawl")
+	private String urlRefCrawl;
+
+	@Column(name = "news_img_crawl")
+	private String newsImgCrawl;
+
+	@Column(name = "new_tag_crawl")
+	private String newTagsCrawl;
+
+	@Column(name = "news_msg_crawl")
+	private String newsMsgCrawl;
+
+	public String getDateCrawl()
+	{
+		return dateCrawl;
+	}
+
+	public void setDateCrawl(String dateCrawl)
+	{
+		this.dateCrawl = dateCrawl;
+	}
+
+	public String getTitleCrawl()
+	{
+		return titleCrawl;
+	}
+
+	public void setTitleCrawl(String titleCrawl)
+	{
+		this.titleCrawl = titleCrawl;
+	}
+
+	public String getUrlRefCrawl()
+	{
+		return urlRefCrawl;
+	}
+
+	public void setUrlRefCrawl(String urlRefCrawl)
+	{
+		this.urlRefCrawl = urlRefCrawl;
+	}
+
+	public String getNewsImgCrawl()
+	{
+		return newsImgCrawl;
+	}
+
+	public void setNewsImgCrawl(String newsImgCrawl)
+	{
+		this.newsImgCrawl = newsImgCrawl;
+	}
+
+	public String getNewTagsCrawl()
+	{
+		return newTagsCrawl;
+	}
+
+	public void setNewTagsCrawl(String newTagsCrawl)
+	{
+		this.newTagsCrawl = newTagsCrawl;
+	}
+
+	public String getNewsMsgCrawl()
+	{
+		return newsMsgCrawl;
+	}
+
+	public void setNewsMsgCrawl(String newsMsgCrawl)
+	{
+		this.newsMsgCrawl = newsMsgCrawl;
+	}
 
 	public String getDomainName()
 	{

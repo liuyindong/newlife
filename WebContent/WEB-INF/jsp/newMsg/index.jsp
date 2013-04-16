@@ -88,8 +88,9 @@
 						<div class="line_2" style="margin: 34px 0px 28px;"></div>
 						
 						 <div class="block_home_col_1">
-						 	
-						 	<c:forEach items="${page.items}" var="homenews" varStatus="status">
+						 	<h3 style="font-size: 12px;">移动互联</h3>
+						 	<div class="line_3"></div>
+						 	<c:forEach items="${homeInformation.listNewsYdhl}" var="homenews" varStatus="status">
 						 	 <div class="block_home_post">
 								 <div class="pic">
 									<a href="${path}/news/search${homenews.id}.html" class="w_hover">
@@ -99,11 +100,11 @@
 								</div> 
                                         
 								<div class="text">
-									<p class="title"><a href="${path}/news/search${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
 									<div class="date"><p>${homenews.downDate}</p></div>
                                     <div class="icons">
                                     	<ul>
-                                        	<li><a href="#" class="views">74</a></li>
+                                        	<li><a href="#" class="views">${homenews.clickNum}</a></li>
                                         </ul>
                                     </div>
 								</div>
@@ -113,15 +114,76 @@
 						 </div>
 						 
 						 <div class="block_home_col_2">
-						 	<div class="line_3 first" style="margin:14px 0px 17px;"></div>
-						 	<c:forEach items="${page.items}" var="homenews" varStatus="status">
+							 <h3 style="font-size: 12px;">电子商务</h3>
+						 	<div class="line_3"></div>
+						 	<c:forEach items="${homeInformation.listNewsDzsw}" var="homenews" varStatus="status">
 						 	<div class="block_home_post">
+								 <div class="pic">
+									<a href="${path}/news/search${homenews.id}.html" class="w_hover">
+										<img src="${homenews.newsImage}" alt="homenews.title" width="67" height="45"/>
+										<span></span>
+									</a>
+								</div> 
+                                        
 								<div class="text">
-									<p class="title"><a href="news_post.html">Many variations of of available, but the majority.</a></p>
-									<div class="date"><p>11 July, 2012</p></div>
+									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<div class="date"><p>${homenews.downDate}</p></div>
                                     <div class="icons">
                                     	<ul>
-                                        	<li><a href="#" class="views">56</a></li>
+                                        	<li><a href="#" class="views">${homenews.clickNum}</a></li>
+                                        </ul>
+                                    </div>
+								</div>
+							</div>
+							 <div class="line_3" style="margin:14px 0px 17px;"></div>
+						 	</c:forEach>
+						 </div>
+						 
+						 
+						  <div class="block_home_col_1">
+						 	<h3 style="font-size: 12px;">社交网络</h3>
+						 	<div class="line_3"></div>
+						 	<c:forEach items="${homeInformation.listNewsSjwl}" var="homenews" varStatus="status">
+						 	 <div class="block_home_post">
+								 <div class="pic">
+									<a href="${path}/news/search${homenews.id}.html" class="w_hover">
+										<img src="${homenews.newsImage}" alt="homenews.title" width="67" height="45"/>
+										<span></span>
+									</a>
+								</div> 
+                                        
+								<div class="text">
+									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<div class="date"><p>${homenews.downDate}</p></div>
+                                    <div class="icons">
+                                    	<ul>
+                                        	<li><a href="#" class="views">${homenews.clickNum}</a></li>
+                                        </ul>
+                                    </div>
+								</div>
+							</div>
+                            <div class="line_3" style="margin:14px 0px 17px;"></div>
+						 	</c:forEach>
+						 </div>
+						 
+						 <div class="block_home_col_2">
+							 <h3 style="font-size: 12px; color: #f24024">网络游戏</h3>
+						 	<div class="line_3"></div>
+						 	<c:forEach items="${homeInformation.listNewsWlyx}" var="homenews" varStatus="status">
+						 	<div class="block_home_post">
+								 <div class="pic">
+									<a href="${path}/news/search${homenews.id}.html" class="w_hover">
+										<img src="${homenews.newsImage}" alt="${homenews.title}" width="67" height="45"/>
+										<span></span>
+									</a>
+								</div> 
+                                        
+								<div class="text">
+									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<div class="date"><p>${homenews.downDate}</p></div>
+                                    <div class="icons">
+                                    	<ul>
+                                        	<li><a href="#" class="views">${homenews.clickNum}</a></li>
                                         </ul>
                                     </div>
 								</div>
@@ -133,7 +195,6 @@
 						 
 						<div class="clearboth"></div>
 
-						<div class="line_3" style="margin: 14px 0px 13px;"></div>
 						<a href="" class="lnk_all_news fl">更多新闻</a>
 						<div class="clearboth"></div>
 						<div class="line_3" style="margin: 13px 0px 35px;"></div>
@@ -142,202 +203,68 @@
 						<div class="line_4" style="margin: -4px 0px 18px;"></div>
 
 						<div class="block_topic_news">
+							<c:forEach items="${homeInformation.listNewsYaoW}" var="homenews" varStatus="status">
 							<article class="block_topic_post">
 							<p class="title">
-								<a href="">QQ爆炸新闻</a>
+								<a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a>
 							</p>
 							<div class="f_pic">
 								<a href="" class="general_pic_hover scale"><img
-									src="images/pic_home_main_news_1.jpg" alt="" /></a>
+									src="${homenews.newsImage}" alt="${homenews.title}" /></a>
 							</div>
-							<p class="text">QQ求盗</p>
+							<p class="text">${homenews.techTag}</p>
 							<div class="info">
 								<div class="date">
-									<p>2012/12/18</p>
+									<p>${homenews.downDate}</p>
 								</div>
 
 								<div class="r_part">
 									<div class="category">
 										<p>
-											<a href="#">Shet</a>
+											<a href="#">重要新闻</a>
 										</p>
 									</div>
-									<a href="#" class="views">183</a>
+									<a href="#" class="views">${homenews.clickNum}</a>
 								</div>
 							</div>
 							</article>
-
-							<article class="block_topic_post">
-							<p class="title">
-								<a href="">MX2发布</a>
-							</p>
-							<div class="f_pic">
-								<a href="" class="general_pic_hover scale"><img
-									src="images/pic_home_main_news_2.jpg" alt="" /></a>
-							</div>
-							<p class="text">明天发货</p>
-							<div class="info">
-								<div class="date">
-									<p>2012/12/18</p>
-								</div>
-
-								<div class="r_part">
-									<div class="category">
-										<p>
-											<a href="#">Business</a>
-										</p>
-									</div>
-									<a href="#" class="views">183</a>
-								</div>
-							</div>
-							</article>
+							</c:forEach>
 						</div>
 
 						<div class="line_3" style="margin: 20px 0px 24px;"></div>
 
-						<common:pageV2 url="/index" optimize="true" />
-
 						<div class="line_2" style="margin: 24px 0px 35px;"></div>
 
-						<h3 style="font-size: 16px;">It新闻</h3>
+						<h3 style="font-size: 16px;">数码产品</h3>
 						<div class="line_4" style="margin: -4px 0px 18px;"></div>
 
 						<div class="block_best_materials">
 							<div class="slider">
 								<div id="best_materials_slider" class="flexslider">
 									<ul class="slides">
+										<c:forEach items="${homeInformation.listNewsSm}" var="homenews" varStatus="status">
 										<li>
 											<div class="block_best_material_post">
 												<div class="f_pic">
-													<a href="" class="w_hover"><img
-														src="images/pic_home_best_materials_1.jpg" alt="" /><span></span></a>
+													<a href="${path}/news/search_${homenews.id}.html" target="view_window" class="w_hover">
+													<img src="${homenews.newsImage}" alt="${homenews.title}"/><span></span></a>
 												</div>
 												<p class="title">
-													<a href="">我是一只笨小鸟啊</a>
+													<a href="${path}/news/search_${homenews.id}.html" target="view_window"></a>
 												</p>
 												<div class="info">
 													<div class="date">
-														<p>2012/12/18</p>
+														<p>${homenews.downDate}</p>
 													</div>
 													<div class="category">
 														<p>
-															<a href="#">shet</a>
+															<a href="#">数码信息</a>
 														</p>
 													</div>
 												</div>
 											</div>
 										</li>
-
-										<li>
-											<div class="block_best_material_post">
-												<div class="f_pic">
-													<a href="" class="w_hover"><img
-														src="images/pic_home_best_materials_2.jpg" alt="" /><span></span></a>
-												</div>
-												<p class="title">
-													<a href="">我是一只笨程序员啊</a>
-												</p>
-												<div class="info">
-													<div class="date">
-														<p>2012/12/18</p>
-													</div>
-													<div class="category">
-														<p>
-															<a href="#">People</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</li>
-
-										<li>
-											<div class="block_best_material_post">
-												<div class="f_pic">
-													<a href="" class="w_hover"><img
-														src="images/pic_home_best_materials_3.jpg" alt="" /><span></span></a>
-												</div>
-												<p class="title">
-													<a href="">找工作急啊Fuck</a>
-												</p>
-												<div class="info">
-													<div class="date">
-														<p>2012/12/18</p>
-													</div>
-													<div class="category">
-														<p>
-															<a href="#">Technology</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</li>
-
-										<li>
-											<div class="block_best_material_post">
-												<div class="f_pic">
-													<a href="" class="w_hover"><img
-														src="images/pic_home_best_materials_4.jpg" alt="" /><span></span></a>
-												</div>
-												<p class="title">
-													<a href="">我是一只笨小鸟啊</a>
-												</p>
-												<div class="info">
-													<div class="date">
-														<p>08 July, 2012</p>
-													</div>
-													<div class="category">
-														<p>
-															<a href="#">Business</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</li>
-
-										<li>
-											<div class="block_best_material_post">
-												<div class="f_pic">
-													<a href="" class="w_hover"><img
-														src="images/pic_home_best_materials_5.jpg" alt="" /><span></span></a>
-												</div>
-												<p class="title">
-													<a href="">我是一只笨小鸟啊
-														</a>
-												</p>
-												<div class="info">
-													<div class="date">
-														<p>08 July, 2012</p>
-													</div>
-													<div class="category">
-														<p>
-															<a href="#">People</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</li>
-
-										<li>
-											<div class="block_best_material_post">
-												<div class="f_pic">
-													<a href="" class="w_hover"><img
-														src="images/pic_home_best_materials_6.jpg" alt="" /><span></span></a>
-												</div>
-												<p class="title">
-													<a href="">我是一只笨小鸟啊</a>
-												</p>
-												<div class="info">
-													<div class="date">
-														<p>08 July, 2012</p>
-													</div>
-													<div class="category">
-														<p>
-															<a href="#">Technology</a>
-														</p>
-													</div>
-												</div>
-											</div>
-										</li>
+										</c:forEach>
 									</ul>
 								</div>
 							</div>

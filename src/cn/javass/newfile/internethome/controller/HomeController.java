@@ -65,51 +65,55 @@ public class HomeController
 			homeInformation.setScrollTop(listScrollTop);
 			homeInformation.setScrollButton(listScrollButton);
 			list = new ArrayList<Object>();
+
+			List<NewsEntity> listNewsYaoW = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 6, 1); // 要闻
+			List<NewsEntity> listNewsYdhl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 2); // 移动互联
+			List<NewsEntity> listNewsDzsw = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 3); // 电子商务
+			List<NewsEntity> listNewsSjwl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 4); // 社交网络
+			List<NewsEntity> listNewsWlyx = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 5); // 网络游戏
+			List<NewsEntity> listNewsIt = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 6); // it
+			List<NewsEntity> listNewsSm = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 7); // 数码
+
+			homeInformation.setListNewsYaoW(listNewsYaoW);
+			homeInformation.setListNewsYdhl(listNewsYdhl);
+			homeInformation.setListNewsDzsw(listNewsDzsw);
+			homeInformation.setListNewsSjwl(listNewsSjwl);
+			homeInformation.setListNewsWlyx(listNewsWlyx);
+			homeInformation.setListNewsIt(listNewsIt);
+			homeInformation.setListNewsSm(listNewsSm);
+
 			list.add(homeInformation);
 			homeScroll.putMsgList(list);
+		}else
+		{
+			homeInformation = (HomeInformationDTO) listScroll.get(0);
 		}
-		
-		// 查询首页缓存新闻（缓存为30分钟）
-	//	ObjectCache indexPageObj = ObjectCache.getInstance("homepages", 1800);
-		
-	//	List<?> listpages = indexPageObj.listNews();
-		
-		Page<NewsEntity> page = null;
-		
-	//	if(listpages.size() > 0)
-	//	{
-	//		page = (Page<NewsEntity>) listpages.get(0);
-	//	}
-		
-		model.addAttribute(Constants.COMMAND, new ImageWallEntity());
-		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
-		Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
-		boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre", false);
-		
-	//	if (page == null && pn == 1)
-	//	{
-			
-			if (id > 0)
-			{
-				if (pre)
-				{
-					page = newService.pre(id, pn);
-				}
-				else
-				{
-					page = newService.next(id, pn);
-				}
-			}
-			else
-			{
-				page = newService.listAll(pn);
-			}
-		//	list = new ArrayList<Object>();
-		//	list.add(page);
-		//	indexPageObj.putMsgList(list);
-		//}
 
-		model.addAttribute("page", page);
+		/*
+		 * Page<NewsEntity> page = null;
+		 * 
+		 * model.addAttribute(Constants.COMMAND, new ImageWallEntity());
+		 * int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
+		 * Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
+		 * boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre",
+		 * false);
+		 * 
+		 * if (id > 0)
+		 * {
+		 * if (pre)
+		 * {
+		 * page = newService.pre(id, pn,5);
+		 * }
+		 * else
+		 * {
+		 * page = newService.next(id, pn,5);
+		 * }
+		 * }
+		 * else
+		 * {
+		 * page = newService.listAll(pn);
+		 * }
+		 */
 		model.addAttribute("homeInformation", homeInformation);
 		return "newMsg/index";
 	}

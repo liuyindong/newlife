@@ -13,7 +13,6 @@
 							<li><a href="#">网站地图</a></li>
 							<li><a href="">模版</a></li>
 							<li><a href="">联系我们</a></li>
-							<li><a href="${path}/user/listUser">用户</a></li>
 						</ul>
 					</div>
 				</div>
@@ -67,10 +66,10 @@
 
 				<div class="fr">
 					<div class="block_languages">
-						<div class="text">
+						<!-- <div class="text">
 							<p>Language:</p>
 						</div>
-						<!-- <ul>
+						<ul>
 							<li class="current"><a href="#" class="eng">English(英国)</a></li>
 							<li><a href="#" class="french">French(法国)</a></li>
 							<li><a href="#" class="ger">German(德国)</a></li>
@@ -99,51 +98,23 @@
 			<div class="inner">
 				<nav class="main_menu">
 				<ul>
-					<li class="current_page_item"><a href="${path }/index">首页</a>
-
+					<li class="current_page_item"><a href="${path}/index">首页</a></li>
+					<li class="big_dropdown" data-content="business"><a href="">美图</a></li>
+					<li><a href="">许愿墙</a></li>
+					<li><a href="">博客</a></li>
+					<li>
+						<a href="#">娱乐</a>
 						<ul>
-							<li><a href="">样式1</a></li>
-							<li><a href="">样式2</a></li>
-						</ul></li>
-					<li class="big_dropdown" data-content="business"><a href="">数码产品</a></li>
-					<li class="big_dropdown" data-content="technology"><a href="">IT资讯</a></li>
-					<li class="big_dropdown" data-content="education"><a href="">Win8</a></li>
-					<li><a href="">游戏</a>
+							<li><a href="">视频</a></li>
+						</ul>
+					</li>
+					
+					<li>
+						<a href="#">关于</a>
 						<ul>
-							<li><a href="">媒体</a></li>
-							<li><a href="">媒体项目页</a></li>
-						</ul></li>
-					<li><a href="#">关于我们</a>
-
-						<ul>
-							<li><a href="">关于我们</a></li>
-							<li><a href="">关于这页</a></li>
-							<li><a href="">联系我们</a></li>
-							<li><a href="">注册页</a></li>
-							<li><a href="">主页新闻</a></li>
-							<li><a href="">带有滚动条的新闻</a></li>
-							<li><a href="">新视频发表</a></li>
-						</ul></li>
-					<li><a href="">博客</a>
-
-						<ul>
-							<li><a href="">样式1</a></li>
-							<li><a href="">样式 2</a></li>
-							<li><a href="">博客文章页</a></li>
-							<li><a href="">发表</a></li>
-							<li><a href="">发布视频</a></li>
-						</ul></li>
-					<li><a href="">论坛</a>
-
-						<ul>
-							<li><a href="">手拉琴</a></li>
-							<li><a href="">引用</a></li>
-							<li><a href="">表</a></li>
-							<li><a href="">列</a></li>
-							<li><a href="">价格表</a></li>
-							<li><a href="">奖状</a></li>
-							<li><a href="">信息框 </a></li>
-						</ul></li>
+							<li><a href="">关于我</a></li>
+						</ul>
+					</li>
 				</ul>
 				</nav>
 			</div>
@@ -199,111 +170,12 @@
 						<div class="clearboth"></div>
 					</div>
 				</div>
-
-				<div class="block_big_dropdown" data-menu="technology">
-					<div class="content">
-						<div class="image">
-							<a href="l" class="pic">
-							<img src="${path}/images/pic_big_drop_5.jpg" alt="" /></a>
-							<p>
-								<a href="">It新闻1</a>
-							</p>
-						</div>
-						<div class="line"></div>
-
-						<div class="image">
-							<a href="" class="pic"><img
-								src="${path}/images/pic_big_drop_6.jpg" alt="" /></a>
-							<p>
-								<a href="">22</a>
-							</p>
-						</div>
-						<div class="line"></div>
-
-						<div class="popular_posts">
-							<div class="title">
-								<p>IT新闻</p>
-							</div>
-							<ul>
-								<li><a href=""><span>2012/12/18</span>台湾启动4G网络</a></li>
-								<li><a href=""><span>2012/12/18</span>台湾启动4G网络</a></li>
-								<li><a href=""><span>2012/12/18</span>台湾启动4G网络</a></li>
-								<li><a href=""><span>2012/12/18</span>台湾启动4G网络</a></li>
-							</ul>
-						</div>
-						<div class="line"></div>
-
-						<div class="more">
-							<div class="title">
-								<p>新闻其他</p>
-							</div>
-							<ul>
-								<li><a href="#">mx2明天开售</a></li>
-								<li><a href="#">oppo finder 5 下个月开卖</a></li>
-								<li><a href="#">MacBook 价格昂贵</a></li>
-								<li><a href="#">铞丝买不起</a></li>
-								<li><a href="#">新闻头条</a></li>
-							</ul>
-						</div>
-
-						<div class="clearboth"></div>
-					</div>
-				</div>
-
-				<div class="block_big_dropdown" data-menu="education">
-					<div class="content">
-						<div class="image">
-							<a href="" class="pic">
-							<img src="${path}/images/pic_big_drop_1.jpg" alt="" /></a>
-							<p>
-								<a href="">新产品MX2</a>
-							</p>
-						</div>
-						<div class="line"></div>
-
-						<div class="image">
-							<a href="" class="pic"><img
-								src="${path}/images/pic_big_drop_2.jpg" alt="" /></a>
-							<p>
-								<a href="">新产品Oppo Finder 5</a>
-							</p>
-						</div>
-						<div class="line"></div>
-
-						<div class="popular_posts">
-							<div class="title">
-								<p>产品列表</p>
-							</div>
-							<ul>
-								<li><a href=""><span>2012/12/18</span>MX2明天开售</a></li>
-								<li><a href=""><span>2012/12/18</span>MX2明天开售</a></li>
-								<li><a href=""><span>2012/12/18</span>MX2明天开售</a></li>
-								<li><a href=""><span>2012/12/18</span>MX2明天开售</a></li>
-							</ul>
-						</div>
-						<div class="line"></div>
-
-						<div class="more">
-							<div class="title">
-								<p>其他</p>
-							</div>
-							<ul>
-								<li><a href="#">我预定</a></li>
-								<li><a href="#">mx2参数信息</a></li>
-								<li><a href="#">我预定</a></li>
-								<li><a href="#">我预定</a></li>
-							</ul>
-						</div>
-
-						<div class="clearboth"></div>
-					</div>
-				</div>
 			</div>
 			</section>
 
 			<section class="section_secondary_menu">
 			<div class="inner">
-				<nav class="secondary_menu">
+				<!-- <nav class="secondary_menu">
 				<ul>
 					<li><a href="">中国</a></li>
 					<li><a href="">产品</a></li>
@@ -312,11 +184,11 @@
 					<li><a href="">test</a></li>
 					<li><a href="">最新新闻</a></li>
 				</ul>
-				</nav>
+				</nav> -->
 
 				<div class="block_clock">
 					<p>
-						Time: <span id="time"></span>
+						时间: <span id="time"></span>
 					</p>
 				</div>
 			</div>

@@ -131,7 +131,7 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		Long total = aggregate(HQL_COUNT_ALL);
 		return total.intValue();
 	}
-	
+
 	@Override
 	public M JudgeIsExist(String hql, Object... params)
 	{
@@ -148,6 +148,15 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	public List<M> listAll(int pn, int pageSize)
 	{
 		return list(HQL_LIST_ALL, pn, pageSize);
+	}
+	
+
+	@Override
+	public List<M> listAll(String hql,int pn,int pageSize,Object... paramlist)
+	{
+		// 倒序，重排
+		List<M> result = listSelf(hql, pn, pageSize, paramlist);
+		return result;
 	}
 
 	@Override

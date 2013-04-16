@@ -1,5 +1,7 @@
 package cn.javass.lucene.crawl;
 
+import java.util.Date;
+
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -7,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.javass.lucene.crawl.util.JsoupConnect;
+import cn.javass.util.DateUtil;
 
 /**
  * 京东的搜索商品
@@ -21,7 +24,7 @@ public class TcehQQ extends Thread
 	private static final String DOWN_DATE_TIME = "yyyy-MM-dd HH";
 
 	// 要闻
-	private final static String downInternet = "http://tech.qq.com/c/techIndexList_1.htm";
+	private final static String downInternet = "http://tech.qq.com/c/ydhl_1.htm";
 
 	public static void main(String[] args)
 	{
@@ -44,11 +47,11 @@ public class TcehQQ extends Thread
 		for (Element element : msgList)
 		{
 			
+			System.out.println(element);
+			
 			Element newsImportant = element.select("a").first();
 			
-			String date = element.select("span.aTime").first().text();
-			
-			
+			String date = element.select("div.fl span").first().text();
 			
 			System.out.println(newsImportant.select("img").attr("alt"));
 			System.out.println(newsImportant.attr("abs:href"));
@@ -70,7 +73,7 @@ public class TcehQQ extends Thread
 	public static String showNewMsg(String showMsgUrl) throws Exception
 	{
 		Document doc = JsoupConnect.jsoutConnectLog(showMsgUrl);
-
+		
 		Element element = doc.select("div#Cnt-Main-Article-QQ").first();
 
 		return element.html();

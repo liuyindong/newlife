@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -30,9 +32,9 @@ public class NewsEntity extends AbstractModel
 	@Column(name = "url_ref", length = 1000)
 	private String urlRef;
 
-	@Column(name = "new_type", length = 40)
-	private String newType;
-	
+	@ManyToOne(targetEntity = NewsTypesEntity.class)
+	@JoinColumn(name = "news_type_id")
+	private NewsTypesEntity newType;
 
 	@Column(name = "click_num", length = 100)
 	private Integer clickNum = 0;
@@ -89,16 +91,6 @@ public class NewsEntity extends AbstractModel
 	public void setUrlRef(String urlRef)
 	{
 		this.urlRef = urlRef;
-	}
-
-	public String getNewType()
-	{
-		return newType;
-	}
-
-	public void setNewType(String newType)
-	{
-		this.newType = newType;
 	}
 
 	public String getNewMsgOne()
@@ -194,5 +186,15 @@ public class NewsEntity extends AbstractModel
 	public void setTechTag(String techTag)
 	{
 		this.techTag = techTag;
+	}
+
+	public NewsTypesEntity getNewType()
+	{
+		return newType;
+	}
+
+	public void setNewType(NewsTypesEntity newType)
+	{
+		this.newType = newType;
 	}
 }

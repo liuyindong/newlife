@@ -32,6 +32,8 @@ public interface IBaseService<M extends java.io.Serializable, PK extends java.io
     
     public List<M> listAll(String sql,Object... params);
     
+    public List<M> listAll(String hql,int pn,int pageSize,Object... paramlist);
+    
     public Page<M> pre(PK pk, int pn, int pageSize);
     
     public Page<M> next(PK pk, int pn, int pageSize);

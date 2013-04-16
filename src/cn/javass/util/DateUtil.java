@@ -70,6 +70,14 @@ public class DateUtil
 		double result = cha * 1.0 / (1000 * 60 * 60);
 		return result;
 	}
+	public static void main(String[] args) throws Exception
+	{
+		String type = "yyyy-MM-dd HH:mm";
+		
+		String start = "2013-4-16 11:40";
+		String now   = "2013-4-17 12:40";
+		System.out.println(jisuan(start, now, type));
+	}
 
 	/**
 	 * 生成随即的名字
@@ -122,15 +130,6 @@ public class DateUtil
 			return null;
 		}
 
-	}
-	public static void main(String[] args) throws Exception
-	{
-		String t = "2012-12-23 18:02:58";
-		String DOWN_DATE_TIME = "yyyy-MM-dd HH";
-		
-		boolean d = DateUtil.jisuan(DateUtil.stringToTime(t, DOWN_DATE_TIME), DateUtil.timeToString(new Date(), DOWN_DATE_TIME), DOWN_DATE_TIME) == 0;
-		
-		System.out.println(d);
 	}
 
 }

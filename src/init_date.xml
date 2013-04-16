@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<InitDatas>
+    <newstypes>
+		  <newstype id="1" name="要闻"></newstype>     
+		  <newstype id="2" name="移动互联"></newstype>     
+		  <newstype id="3" name="电子商务"></newstype>     
+		  <newstype id="4" name="社交网络"></newstype>      
+		  <newstype id="5" name="网络游戏"></newstype>      
+		  <newstype id="6" name="IT"></newstype>      
+		  <newstype id="7" name="数码"></newstype>      
+    </newstypes>
+    
+    <crawlresources>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/techIndexList_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="1"></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/ydhl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="2" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/dzsw_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="3" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/sjwl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="4" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/wlyx_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="5" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/it_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="6" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://digi.tech.qq.com/c/digi20130322_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="7"></crawlresource>
+    </crawlresources>
+</InitDatas>

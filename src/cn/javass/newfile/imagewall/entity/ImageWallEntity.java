@@ -17,8 +17,8 @@ import cn.javass.common.model.AbstractModel;
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class ImageWallEntity extends AbstractModel
 {
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -7201123149861071013L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
