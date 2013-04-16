@@ -2,6 +2,7 @@ package cn.javass.newfile.internethome.controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -67,6 +68,16 @@ public class HomeController
 			list = new ArrayList<Object>();
 
 			List<NewsEntity> listNewsYaoW = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 6, 1); // 要闻
+		//	List<NewsEntity> listNewsYaoW = new ArrayList<NewsEntity>();
+			for (Iterator<NewsEntity> iterator = listNewsYaoW.iterator(); iterator.hasNext();)
+			{
+				NewsEntity newsEntity = iterator.next();
+				if(newsEntity.getTitle().length() > 18)
+				{
+					newsEntity.setTitle(newsEntity.getTitle().substring(0,17) + "...");
+				}
+		//		listYaoWenTit.ad
+			}
 			List<NewsEntity> listNewsYdhl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 2); // 移动互联
 			List<NewsEntity> listNewsDzsw = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 3); // 电子商务
 			List<NewsEntity> listNewsSjwl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 4); // 社交网络

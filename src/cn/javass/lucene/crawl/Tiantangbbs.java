@@ -1,5 +1,6 @@
 package cn.javass.lucene.crawl;
 
+import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -38,7 +39,7 @@ public class Tiantangbbs extends Thread
 		{
 			ExecutorService pool = Executors.newFixedThreadPool(10);
 
-			for (int i = 85; i <= 109; i++)
+			for (int i = 1; i <= 1; i++)
 			{
 				String internet = "http://www.tiantangbbs.com/forum.php?mod=forumdisplay&fid=2&ortid=1&page=" + i;
 				Thread thread = new Tiantangbbs(internet);
@@ -83,14 +84,14 @@ public class Tiantangbbs extends Thread
 
 			Element today = elem.select("em.xs0").last();
 
-		//	if (DateUtil.timeToString(new Date(), "yyyy-M-d").equals(today.text()))
-		//	{
+			if ("2013-4-10".equals(today.text()))
+			{
+				return;
+			}
+			else
+			{
 				downmoviemsg(moviemsg.attr("abs:href"));
-		//	}
-		//	else
-		//	{
-		//		return;
-		//	}
+			}
 			
 
 			// return;

@@ -88,7 +88,7 @@
 						<div class="line_2" style="margin: 34px 0px 28px;"></div>
 						
 						 <div class="block_home_col_1">
-						 	<h3 style="font-size: 12px;">移动互联</h3>
+						 	<h3 style="font-size: 12px;color: #f24024">移动互联</h3>
 						 	<div class="line_3"></div>
 						 	<c:forEach items="${homeInformation.listNewsYdhl}" var="homenews" varStatus="status">
 						 	 <div class="block_home_post">
@@ -114,7 +114,7 @@
 						 </div>
 						 
 						 <div class="block_home_col_2">
-							 <h3 style="font-size: 12px;">电子商务</h3>
+							 <h3 style="font-size: 12px;color: #f24024">电子商务</h3>
 						 	<div class="line_3"></div>
 						 	<c:forEach items="${homeInformation.listNewsDzsw}" var="homenews" varStatus="status">
 						 	<div class="block_home_post">
@@ -141,7 +141,7 @@
 						 
 						 
 						  <div class="block_home_col_1">
-						 	<h3 style="font-size: 12px;">社交网络</h3>
+						 	<h3 style="font-size: 12px; color: #f24024" >社交网络</h3>
 						 	<div class="line_3"></div>
 						 	<c:forEach items="${homeInformation.listNewsSjwl}" var="homenews" varStatus="status">
 						 	 <div class="block_home_post">
@@ -242,7 +242,7 @@
 							<div class="slider">
 								<div id="best_materials_slider" class="flexslider">
 									<ul class="slides">
-										<c:forEach items="${homeInformation.listNewsSm}" var="homenews" varStatus="status">
+										<c:forEach items="${homeInformation.listNewsSm}" var="homenews" varStatus="status" begin="0" end="10">
 										<li>
 											<div class="block_best_material_post">
 												<div class="f_pic">

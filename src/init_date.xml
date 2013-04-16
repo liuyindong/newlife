@@ -11,12 +11,12 @@
     </newstypes>
     
     <crawlresources>
-        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/techIndexList_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="1"></crawlresource>
-        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/ydhl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="2" ></crawlresource>
-        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/dzsw_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="3" ></crawlresource>
-        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/sjwl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="4" ></crawlresource>
-        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/wlyx_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="5" ></crawlresource>
-        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/it_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="6" ></crawlresource>
-        <crawlresource domainname="qqcom" crawlurl="http://digi.tech.qq.com/c/digi20130322_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="13" status="0" newtype="7"></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/techIndexList_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="1"></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/ydhl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="2" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/dzsw_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="3" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/sjwl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="4" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/wlyx_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="5" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/it_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="6" ></crawlresource>
+        <crawlresource domainname="qqcom" crawlurl="http://digi.tech.qq.com/c/digi20130322_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="24" status="0" newtype="7"></crawlresource>
     </crawlresources>
 </InitDatas>
