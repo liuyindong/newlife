@@ -171,20 +171,38 @@
 				</div>
 			</div>
 			</section>
-
+			<script type="text/javascript">
+			
+				function AutoScroll(obj)
+				{
+					$(obj).find("ul:first").animate(
+					{
+						marginTop : "-39px"
+					}, 500, function()
+					{
+						$(this).css(
+						{
+							marginTop : "0px"
+						}).find("li:first").appendTo(this);
+					});
+				}
+				$(document).ready(function()
+				{
+					setInterval('AutoScroll(".secondary_menu")', 3000);
+				});
+			</script>
 			<section class="section_secondary_menu">
 			<div class="inner">
-				<!-- <nav class="secondary_menu">
+				<nav class="secondary_menu" style="width:700px;height:39px;line-height:39px;overflow:hidden">
 				<ul>
-					<li><a href="">中国</a></li>
-					<li><a href="">产品</a></li>
-					<li><a href="">价格</a></li>
-					<li><a href="">IT</a></li>
-					<li><a href="">test</a></li>
-					<li><a href="">最新新闻</a></li>
+					<li><a href="">Zynga CEO首次访问中国 旗下新卡牌游戏上市</a></li>
+					<li><a href="">艺电做艰难决定：裁员300人提高效率</a></li>
+					<li><a href="">黑客软件能让手机控制飞机</a></li>
+					<li><a href="">塑料再见！三星下一代旗舰机或配置铝制外壳</a></li>
+					<li><a href="">盛大《零世界》内测启动 开启GAME3.0新时代</a></li>
+					<li><a href="">Facebook Home上架Google Play 暂支持部分机型</a></li>
 				</ul>
-				</nav> -->
-
+				</nav>
 				<div class="block_clock">
 					<p>
 						时间: <span id="time"></span>

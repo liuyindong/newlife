@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="lezaigoTop.jsp"%>
+<%@ include file="../inc/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>搜索页面</title>
-
-<meta name="keywords" content="" />
-<meta name="description" content="" />
+<%@include file="../inc/import.jsp"%> 
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width" />
-
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 
 <body>
 	<!-- CONTENT BEGIN -->
+	<%@ include file="lezaigoTop.jsp"%>
 	<div id="content">
 		<div class="inner">
 			<div class="general_content">

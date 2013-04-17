@@ -1003,16 +1003,16 @@ nav.secondary_menu {
 
 nav.secondary_menu>ul>li {
 	height: 39px;
-	padding-left: 2px;
 	display: block;
-	float: left;
-	background: url(images/line_secondary_menu.jpg) no-repeat 0px 13px;
+/* 	float: left;
+	padding-left: 2px;
+	background: url(images/line_secondary_menu.jpg) no-repeat 0px 13px; */
 }
 
 nav.secondary_menu>ul>li>a {
 	height: 39px;
 	line-height: 39px;
-	padding: 0px 14px;
+	/* padding: 0px 14px; */
 	display: block;
 	font-size: 11px;
 	color: #383838;

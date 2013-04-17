@@ -117,30 +117,19 @@ public class ImageWallController
 	@RequestMapping(value = "/addImgWall")
 	public void addImgWall(HttpServletRequest request) throws Exception
 	{
-		String filePath = ServletRequestUtils.getStringParameter(request, "filePath", "D://Workspaces/eclipseword/newlife/WebContent/WEB-INF/images/Girl/suo/");
-
-		File file = new File(filePath);
+		String path = "D:\\2013\\04\\美女";
+		File file = new File(path);
 		File[] files = file.listFiles();
-		System.out.println(files.length);
 		for (int i = 0; i < files.length; i++)
 		{
-			if (files[i].isDirectory())
+			if(files[i].isDirectory())
 			{
-
 				ImageWallEntity iw = new ImageWallEntity();
-
-				String pathtc = files[i].getPath();
-
-				pathtc = pathtc.substring(pathtc.lastIndexOf("\\") + 1);
-
-				iw.setContent(pathtc);
+				iw.setContent(files[i].getPath());
 				iw.setCreateDate(DateUtil.timeToString(new Date()));
-				iw.setFilePath("/images/Girl/suo/" + files[i].getName());
-				iw.setTitle(pathtc);
-				iw.setName(files[i].getName());
-
+				iw.setFilePath(files[i].getPath());
+				iw.setTitle(files[i].getPath());
 				imageWallService.save(iw);
-
 			}
 		}
 	}

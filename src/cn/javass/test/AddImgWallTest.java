@@ -4,8 +4,10 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Date;
 
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
+import cn.javass.util.DateUtil;
 import cn.javass.util.ImageCut;
 import cn.javass.util.JdbcUtil;
 
@@ -40,14 +42,21 @@ public class AddImgWallTest
 	
 	public static void main(String[] args)
 	{
-		for (int i = 1; i < 232; i++)
+		
+		String path = "D:\\2013\\04\\美女";
+		File file = new File(path);
+		File[] files = file.listFiles();
+		for (int i = 0; i < files.length; i++)
 		{
-			ImageWallEntity iw = new ImageWallEntity();
-			
-			iw.setTitle("这是"+i);
-			iw.setId(i);
-			
-			imageWall(iw);
+			if(files[i].isDirectory())
+			{
+				ImageWallEntity iw = new ImageWallEntity();
+				iw.setContent(files[i].getPath());
+				iw.setCreateDate(DateUtil.timeToString(new Date()));
+				iw.setFilePath(files[i].getPath());
+				iw.setTitle(files[i].getPath());
+				imageWall(iw);
+			}
 		}
 		
 	}
