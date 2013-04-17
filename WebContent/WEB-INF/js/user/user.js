@@ -16,7 +16,7 @@ function userLogin(userEmail, userPwd)
 		type : 'post',
 		data :
 		{
-			"loginMod" : userEmail + "/" + userPwd,
+			"loginMod" : userEmail + "/" + userPwd
 		},
 		dataType : 'json',
 		success : function(data)

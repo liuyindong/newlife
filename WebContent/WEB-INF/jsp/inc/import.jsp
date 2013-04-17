@@ -11,7 +11,7 @@
 	rel="stylesheet" type="text/css" />
 <link
 	href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic"
-	rel="stylesheet" type="text/css" />
+	rel="stylesheet" type="text/css" /> 
 <script type="text/javascript" src="${path}/layout/js/jquery.js"></script>
 <script type="text/javascript" src="${path}/js/helper.js"></script>
 <!-- PrettyPhoto start -->

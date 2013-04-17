@@ -68,7 +68,6 @@ public class HomeController
 			list = new ArrayList<Object>();
 
 			List<NewsEntity> listNewsYaoW = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 6, 1); // 要闻
-		//	List<NewsEntity> listNewsYaoW = new ArrayList<NewsEntity>();
 			for (Iterator<NewsEntity> iterator = listNewsYaoW.iterator(); iterator.hasNext();)
 			{
 				NewsEntity newsEntity = iterator.next();
@@ -76,7 +75,6 @@ public class HomeController
 				{
 					newsEntity.setTitle(newsEntity.getTitle().substring(0,17) + "...");
 				}
-		//		listYaoWenTit.ad
 			}
 			List<NewsEntity> listNewsYdhl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 2); // 移动互联
 			List<NewsEntity> listNewsDzsw = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 3); // 电子商务

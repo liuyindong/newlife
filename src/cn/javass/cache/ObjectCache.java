@@ -52,9 +52,4 @@ public class ObjectCache
 			return null;
 		}
 	}
-	
-	public void remove()
-	{
-		osCacheMethods.remove(this.osCacheName);
-	}
 }

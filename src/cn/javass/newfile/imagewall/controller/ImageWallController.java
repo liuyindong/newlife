@@ -2,6 +2,7 @@ package cn.javass.newfile.imagewall.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Iterator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +19,7 @@ import cn.javass.common.Constants;
 import cn.javass.common.pagination.Page;
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 import cn.javass.newfile.imagewall.service.ImageWallService;
+import cn.javass.newfile.newmsg.entity.NewsEntity;
 import cn.javass.util.DateUtil;
 import cn.javass.util.WriteJson;
 
@@ -66,6 +68,15 @@ public class ImageWallController
 		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
 		Page<ImageWallEntity> page = null;
 		page = imageWallService.listAll(pn);
+		
+		for (Iterator<ImageWallEntity> iterator = page.getItems().iterator(); iterator.hasNext();)
+		{
+			ImageWallEntity imgWall = iterator.next();
+			if(imgWall.getTitle().length() > 24)
+			{
+				imgWall.setTitle(imgWall.getTitle().substring(0,24) + "...");
+			}
+		}
 
 		model.addAttribute("page", page);
 
@@ -113,12 +124,12 @@ public class ImageWallController
 		System.out.println(files.length);
 		for (int i = 0; i < files.length; i++)
 		{
-			if (!files[i].isDirectory())
+			if (files[i].isDirectory())
 			{
 
 				ImageWallEntity iw = new ImageWallEntity();
 
-				String pathtc = files[i].getParent();
+				String pathtc = files[i].getPath();
 
 				pathtc = pathtc.substring(pathtc.lastIndexOf("\\") + 1);
 
