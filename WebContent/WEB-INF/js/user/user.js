@@ -12,7 +12,7 @@ function userLogin(userEmail, userPwd)
 	}
 	$.ajax(
 	{
-		url : 'user/login',
+		url : getRootPath() + '/user/login',
 		type : 'post',
 		data :
 		{

@@ -1,7 +1,5 @@
 package cn.javass.newfile.imagewall.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,35 +13,30 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import cn.javass.common.model.AbstractModel;
 
 @Entity
-@Table(name = "tbl_image_wall")
+@Table(name = "tbl_wall_love")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class ImageWallEntity extends AbstractModel
+public class ImgWallLoveEntity extends AbstractModel
 {
-	private static final long serialVersionUID = -7201123149861071013L;
+	private static final long serialVersionUID = 7928288984102996942L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private int id;
-	
-	@Column(name = "name")
-	private String name;
-	
-	@Column(name = "title")
-	private String title;
-	
-	@Column(name = "content")
-	private String content;
-	
-	@Column(name = "file_path")
-	private String filePath;
-	
-	@Column(name = "create_date")
-	private String createDate;
-	
-	@Column(name = "update_date")
-	private String updateDate;
 
+	@Column(name = "image_wall_id", length = 10)
+	private int imageWallId;
+
+	@Column(name = "user_id", length = 10)
+	private int userId;
+
+	@Column(name = "create_date", length = 20)
+	private String createDate;
+
+	@Column(name = "update_date", length = 20)
+	private String updateDate;
+	@Column(name = "status", length = 1)
+	private int status = 0;
 
 	public int getId()
 	{
@@ -55,34 +48,14 @@ public class ImageWallEntity extends AbstractModel
 		this.id = id;
 	}
 
-	public String getTitle()
+	public int getImageWallId()
 	{
-		return title;
+		return imageWallId;
 	}
 
-	public void setTitle(String title)
+	public void setImageWallId(int imageWallId)
 	{
-		this.title = title;
-	}
-
-	public String getContent()
-	{
-		return content;
-	}
-
-	public void setContent(String content)
-	{
-		this.content = content;
-	}
-
-	public String getFilePath()
-	{
-		return filePath;
-	}
-
-	public void setFilePath(String filePath)
-	{
-		this.filePath = filePath;
+		this.imageWallId = imageWallId;
 	}
 
 	public String getCreateDate()
@@ -105,14 +78,23 @@ public class ImageWallEntity extends AbstractModel
 		this.updateDate = updateDate;
 	}
 
-	public String getName()
+	public int getStatus()
 	{
-		return name;
+		return status;
 	}
 
-	public void setName(String name)
+	public void setStatus(int status)
 	{
-		this.name = name;
+		this.status = status;
 	}
 
+	public int getUserId()
+	{
+		return userId;
+	}
+
+	public void setUserId(int userId)
+	{
+		this.userId = userId;
+	}
 }

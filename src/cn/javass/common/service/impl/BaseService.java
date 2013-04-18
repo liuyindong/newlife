@@ -8,7 +8,7 @@ import cn.javass.common.pagination.Page;
 import cn.javass.common.pagination.PageUtil;
 import cn.javass.common.service.IBaseService;
 
-public abstract class BaseService<M extends java.io.Serializable, PK extends java.io.Serializable> implements IBaseService<M, PK>
+public abstract  class BaseService<M extends java.io.Serializable, PK extends java.io.Serializable> implements IBaseService<M, PK>
 {
 
 	protected IBaseDao<M, PK> baseDao;
@@ -68,6 +68,11 @@ public abstract class BaseService<M extends java.io.Serializable, PK extends jav
 	public int countAll()
 	{
 		return baseDao.countAll();
+	}
+	@Override
+	public int countAll(String hql, Object... params)
+	{
+		return baseDao.countAll(hql, params);
 	}
 
 	@Override
@@ -143,4 +148,5 @@ public abstract class BaseService<M extends java.io.Serializable, PK extends jav
 	{
 		return next(pk, pn, Constants.DEFAULT_PAGE_SIZE);
 	}
+
 }

@@ -7168,6 +7168,9 @@ input.general_button {
 .general_button.like span {
 	background: url(images/icon_button_like.png) no-repeat 8px 7px;
 }
+.general_button.like_i span {
+	background: url(images/icon_button_like_i.png) no-repeat 8px 7px;
+}
 
 .general_button.edit span {
 	background: url(images/icon_button_edit.png) no-repeat 8px 6px;

@@ -19,6 +19,7 @@
 				<div class="fr">
 					<div class="block_top_menu">
 						<ul>
+							<input type="hidden" value="${sessionScope.user.id }" id="inter_user_is_login">
 							<c:if test="${sessionScope.user.username == null}">
 								<li class="current"><a href="#login" class="open_popup">登录</a></li>
 								<li><a href="${path}/user/toregistration">注册</a></li>

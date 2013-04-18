@@ -101,7 +101,14 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	@Override
 	public void delete(PK id)
 	{
-		getSession().delete(this.get(id));
+		try
+		{
+			getSession().delete(this.get(id));
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 
 	}
 
@@ -131,6 +138,13 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		Long total = aggregate(HQL_COUNT_ALL);
 		return total.intValue();
 	}
+	
+	@Override
+	public int countAll(String hql, Object... params)
+	{
+		Long total = aggregate(hql,params);
+		return total.intValue();
+	}
 
 	@Override
 	public M JudgeIsExist(String hql, Object... params)
@@ -154,7 +168,6 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	@Override
 	public List<M> listAll(String hql,int pn,int pageSize,Object... paramlist)
 	{
-		// 倒序，重排
 		List<M> result = listSelf(hql, pn, pageSize, paramlist);
 		return result;
 	}

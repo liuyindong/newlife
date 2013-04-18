@@ -24,6 +24,8 @@ public interface IBaseService<M extends java.io.Serializable, PK extends java.io
     
     public int countAll();
     
+    public int countAll(String hql,Object... params);
+    
     public List<M> listAll();
     
     public Page<M> listAll(int pn);

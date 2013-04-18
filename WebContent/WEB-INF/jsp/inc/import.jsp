@@ -66,4 +66,6 @@
 
 <script type="text/javascript" src="${path}/js/user/user.js"></script>
 
+<script type="text/javascript" src="${path}/js/JsGetCtx.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

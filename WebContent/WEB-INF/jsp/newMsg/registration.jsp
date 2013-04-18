@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="lezaigoTop.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ include file="../inc/header.jsp"%>
 <html>
 <head>
-<title>BusinessNews - Registration</title>
+<title>注册</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<%@ include file="../inc/import.jsp"%>
 <link rel="stylesheet"
 	href="${path}/js/formValidator/css/validationEngine.jquery.css"
 	type="text/css" />
@@ -39,6 +37,7 @@
 </head>
 
 <body>
+	<%@ include file="lezaigoTop.jsp"%>
 	<!-- CONTENT BEGIN -->
 	<div id="content" class="">
 		<div class="inner">
