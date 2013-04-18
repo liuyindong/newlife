@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../inc/header.jsp"%>
-<%@include file="../inc/taglib.jsp" %>
 <html>
 <head>
 <%@include file="../inc/import.jsp"%>
@@ -135,7 +134,7 @@
 					img : '${path}/images/load/6RMhx.gif'
 				//		selector: '#test001' // 显示loading信息的div
 				},
-				pathParse : [ "${path}/imageWall/imageWallDateJsp?pn=", "" ],
+				pathParse : [ "${path}/imageWall/imageWallDateJsp.html?pn=", "" ],
 				animate : true,//当有新数据加载进来的时候，页面是否有动画效果，默认没有
 				extraScrollPx : 50,//入信息的显示时间，时间越大，载入信息显示时间越短
 				//	 	errorCallback: function(){alert("出现404");},//当出错的时候，比如404页面的时候执行的函数

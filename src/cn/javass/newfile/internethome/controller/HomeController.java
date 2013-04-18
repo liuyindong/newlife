@@ -8,11 +8,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -42,6 +44,9 @@ public class HomeController
 	// 查询今天首页推荐的信息的信息
 
 	// 2012-12-22 17:25:29
+	
+	private HttpServletRequest request;
+	private HttpSession session;
 
 	@Autowired
 	@Qualifier("NewService")
@@ -50,9 +55,17 @@ public class HomeController
 	@Autowired
 	@Qualifier("InternetScrollService")
 	private InternetScrollService internetScrollService;
+	
+	@ModelAttribute
+	public void initModel(Model model, HttpServletRequest request,HttpSession session)
+	{
+		model.addAttribute("tab", "home"); // 当前 Tab: 用户中心
+		this.request = request;
+		this.session = session;
+	}
 
 	@RequestMapping(value = "/index")
-	public String index(ModelMap model, HttpServletRequest request) throws Exception
+	public String index(ModelMap model) throws Exception
 	{
 		HomeInformationDTO homeInformation = new HomeInformationDTO();
 		// 查询首页缓存内容（缓存为12个小时）
@@ -97,32 +110,6 @@ public class HomeController
 		{
 			homeInformation = (HomeInformationDTO) listScroll.get(0);
 		}
-
-		/*
-		 * Page<NewsEntity> page = null;
-		 * 
-		 * model.addAttribute(Constants.COMMAND, new ImageWallEntity());
-		 * int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
-		 * Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
-		 * boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre",
-		 * false);
-		 * 
-		 * if (id > 0)
-		 * {
-		 * if (pre)
-		 * {
-		 * page = newService.pre(id, pn,5);
-		 * }
-		 * else
-		 * {
-		 * page = newService.next(id, pn,5);
-		 * }
-		 * }
-		 * else
-		 * {
-		 * page = newService.listAll(pn);
-		 * }
-		 */
 		model.addAttribute("homeInformation", homeInformation);
 		return "newMsg/index";
 	}
@@ -135,7 +122,7 @@ public class HomeController
 	}
 
 	@RequestMapping(value = "/lezaigocode", method = { RequestMethod.POST })
-	public void lezaigoCode(@ModelAttribute("command") @Valid AjaxEntity ajaxVal, HttpServletResponse response, HttpServletRequest request)
+	public void lezaigoCode(@ModelAttribute("command") @Valid AjaxEntity ajaxVal, HttpServletResponse response)
 	{
 		String kaptchaExpected = (String) request.getSession().getAttribute(com.google.code.kaptcha.Constants.KAPTCHA_SESSION_KEY);
 		if (kaptchaExpected.equalsIgnoreCase(ajaxVal.getValidateValue()))

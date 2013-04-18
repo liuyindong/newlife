@@ -98,18 +98,18 @@
 			<div class="inner">
 				<nav class="main_menu">
 				<ul>
-					<li class="current_page_item"><a href="${path}/index">首页</a></li>
-					<li class="big_dropdown" data-content="business"><a href="">美图</a></li>
-					<li><a href="">许愿墙</a></li>
-					<li><a href="">博客</a></li>
-					<li>
+					<li class="${tab=='home'?'current_page_item':''}"><a href="${path}/index">首页</a></li>
+					<li class="${tab=='imagewall'?'current_page_item big_dropdown':''}" data-content="business"><a href="${path}/imageWall/imageWallDateJsp.html">美图</a></li>
+					<li class="${tab=='wishingwall'?'current_page_item':''}"><a href="">许愿墙</a></li>
+					<li class="${tab=='blog'?'current_page_item':''}"><a href="">博客</a></li>
+					<li class="${tab=='entertainment'?'current_page_item':''}">
 						<a href="#">娱乐</a>
 						<ul>
 							<li><a href="">视频</a></li>
 						</ul>
 					</li>
 					
-					<li>
+					<li class="${tab=='about'?'current_page_item':''}">
 						<a href="#">关于</a>
 						<ul>
 							<li><a href="">关于我</a></li>

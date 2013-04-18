@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestUtils;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,6 +61,18 @@ public class ImageWallController
 	@Autowired
 	@Qualifier("ImgWallLoveService")
 	private ImgWallLoveService imgWallLoveService;
+	
+	private HttpServletRequest request;
+	
+	private HttpSession session;
+
+	@ModelAttribute
+	public void initModel(Model model, HttpServletRequest request,HttpSession session)
+	{
+		model.addAttribute("tab", "imagewall"); // 当前 Tab: 图片墙
+		this.request = request;
+		this.session = session;
+	}
 
 	/**
 	 * ajax图片内容
@@ -70,13 +83,13 @@ public class ImageWallController
 	 */
 	@RequestMapping(value = "/imageWallDate")
 	@ResponseBody
-	public Object imageWallDate(Model model, HttpServletRequest request)
+	public Object imageWallDate(Model model)
 	{
 		// http://ld:8080/newlife/imageWall/index?pn=3&id=285
 		model.addAttribute(Constants.COMMAND, new ImageWallEntity());
-		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
-		Integer id = ServletRequestUtils.getIntParameter(request, "id", -1);
-		boolean pre = ServletRequestUtils.getBooleanParameter(request, "pre", false);
+		int pn = ServletRequestUtils.getIntParameter(this.request, "pn", 1);
+		Integer id = ServletRequestUtils.getIntParameter(this.request, "id", -1);
+		boolean pre = ServletRequestUtils.getBooleanParameter(this.request, "pre", false);
 		Page<ImageWallEntity> page = null;
 		if (id > 0)
 		{
@@ -104,18 +117,18 @@ public class ImageWallController
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "/imageWallDateJsp")
-	public String imageWallDateJsp(Model model, HttpServletRequest request, HttpSession session)
+	@RequestMapping(value = "/imageWallDateJsp.html")
+	public String imageWallDateJsp(Model model)
 	{
 		// http://ld:8080/newlife/imageWall/index?pn=3&id=285
 		model.addAttribute(Constants.COMMAND, new ImageWallEntity());
-		int pn = ServletRequestUtils.getIntParameter(request, "pn", 1);
+		int pn = ServletRequestUtils.getIntParameter(this.request, "pn", 1);
 		Page<ImageWallEntity> page = null;
 		page = imageWallService.listAll(pn, 10);
 
 		List<ImageWallDTO> listImgWallDto = new ArrayList<ImageWallDTO>();
 
-		UserModel user = (UserModel) session.getAttribute(Constants.USER_SESSION);
+		UserModel user = (UserModel) this.session.getAttribute(Constants.USER_SESSION);
 
 		for (Iterator<ImageWallEntity> iterator = page.getItems().iterator(); iterator.hasNext();)
 		{
@@ -149,9 +162,9 @@ public class ImageWallController
 
 	@RequestMapping(value = "/imgWallLove", method = { RequestMethod.POST })
 	@ResponseBody
-	public Object imgWallLove(HttpSession session, @RequestJsonParam(value = "model", required = true) ImgWallLoveEntity imageWallLove)
+	public Object imgWallLove(@RequestJsonParam(value = "model", required = true) ImgWallLoveEntity imageWallLove)
 	{
-		UserModel user = (UserModel) session.getAttribute(Constants.USER_SESSION);
+		UserModel user = (UserModel) this.session.getAttribute(Constants.USER_SESSION);
 
 		AjaxUtil ajax = new AjaxUtil();
 
@@ -215,13 +228,13 @@ public class ImageWallController
 	}
 
 	@RequestMapping(value = "/showImg")
-	public void showImg(HttpServletRequest request, HttpServletResponse response)
+	public void showImg(HttpServletResponse response)
 	{
-		int wallId = ServletRequestUtils.getIntParameter(request, "imgioc", 1);
+		int wallId = ServletRequestUtils.getIntParameter(this.request, "imgioc", 1);
 		ImageWallEntity imgwall = imageWallService.get(wallId);
 		try
 		{
-			WriteJson.returnImg(request, response, imgwall.getFilePath());
+			WriteJson.returnImg(this.request, response, imgwall.getFilePath());
 		}
 		catch (Exception e)
 		{
@@ -230,7 +243,7 @@ public class ImageWallController
 	}
 
 	@RequestMapping(value = "/addImgWall")
-	public void addImgWall(HttpServletRequest request) throws Exception
+	public void addImgWall() throws Exception
 	{
 		String path = "D:\\2013\\04\\美女";
 		File file = new File(path);
