@@ -1,4 +1,4 @@
-package cn.javass.newfile.user.action;
+package cn.javass.newfile.user.controller;
 
 import java.util.Date;
 
