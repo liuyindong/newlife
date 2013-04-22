@@ -19,8 +19,8 @@
 						<div class="product_box fl">
 							<!--249*535 -->
 							<div class="img_box big">
-								<a href="#"> <img
-									src="http://d04.res.meilishuo.net/pic/r/e6/37/3f7afc718b5ffac08be17eb76bd5_800_1080.c1.jpg" />
+								<a href="${path}/imageWall/showImgWall_${listwall.id}.html"> 
+									<img src="http://d04.res.meilishuo.net/pic/r/e6/37/3f7afc718b5ffac08be17eb76bd5_800_1080.c1.jpg" />
 									<!--20*284 -->
 								</a>
 								<div class="recive_btn">
@@ -51,7 +51,7 @@
 							<div class="clearboth"></div>
 							<div class="line_3 imgbuttion"></div>
 								<div class="block_comments imgbuttion">
-									<c:forEach items="${listwall.listWallComment}" var="wallcomment" varStatus="status">
+									<c:forEach items="${listwall.commentList}" var="wallcomment" varStatus="status">
 									<div class="comment imgwall_comment">
 										<div class="walluserpic userpic">
 											<a href="#"><img src="${path}/css/images/head_ico.png" alt="${wallcomment.user.username}" /></a>
@@ -239,19 +239,20 @@
 				e.stopPropagation();
 				var commentHtml = $(e.target).parents(".comment_show");
 				var contentVal = commentHtml.find('.commit_textarea').val();
-				var imageWallId = commentHtml.find('.imgwall_id').val();
+				var commentTcId = commentHtml.find('.imgwall_id').val();
 				if(contentVal.length < 1)
 				{
 					alert("请正确输入评论的内容！");
 					return;
 				}	
 				$.ajax({
-					url:"${path}/imageWall/imgWallComment",
+					url:"${path}/comment/add",
 					type:"post",
 					dataType:"json",
 					data:{
 						"content":contentVal,
-						"imageWallId":imageWallId
+						"commentTcId":commentTcId,
+						"commentType.id":1
 					},
 					success : function(data)
 					{

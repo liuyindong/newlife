@@ -16,6 +16,8 @@ public class AjaxUtil
 	
 	private String jsonValidateReturn;
 	
+	private Object object;
+	
 	public String getFailMsg()
 	{
 		return failMsg;
@@ -64,6 +66,16 @@ public class AjaxUtil
 	public void setJsonValidateReturn(String jsonValidateReturn)
 	{
 		this.jsonValidateReturn = jsonValidateReturn;
+	}
+
+	public Object getObject()
+	{
+		return object;
+	}
+
+	public void setObject(Object object)
+	{
+		this.object = object;
 	}
 	
 }

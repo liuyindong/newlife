@@ -8,7 +8,7 @@ import cn.javass.common.pagination.Page;
 import cn.javass.common.pagination.PageUtil;
 import cn.javass.common.service.IBaseService;
 
-public abstract  class BaseService<M extends java.io.Serializable, PK extends java.io.Serializable> implements IBaseService<M, PK>
+public abstract class BaseService<M extends java.io.Serializable, PK extends java.io.Serializable> implements IBaseService<M, PK>
 {
 
 	protected IBaseDao<M, PK> baseDao;
@@ -57,18 +57,19 @@ public abstract  class BaseService<M extends java.io.Serializable, PK extends ja
 	{
 		return baseDao.get(id);
 	}
-	
+
 	@Override
 	public M JudgeIsExist(String hql, Object... params)
 	{
 		return baseDao.JudgeIsExist(hql, params);
 	}
-	
+
 	@Override
 	public int countAll()
 	{
 		return baseDao.countAll();
 	}
+
 	@Override
 	public int countAll(String hql, Object... params)
 	{
@@ -86,13 +87,6 @@ public abstract  class BaseService<M extends java.io.Serializable, PK extends ja
 	{
 		return this.listAll(pn, Constants.DEFAULT_PAGE_SIZE);
 	}
-	
-
-	@Override
-	public List<M> listAll(String hql, int pn, int pageSize, Object... paramlist)
-	{
-		return baseDao.listAll(hql, pn, pageSize, paramlist);
-	}
 
 	public Page<M> listAllWithOptimize(int pn)
 	{
@@ -106,19 +100,23 @@ public abstract  class BaseService<M extends java.io.Serializable, PK extends ja
 		List<M> items = baseDao.listAll(pn, pageSize);
 		return PageUtil.getPage(count, pn, items, pageSize);
 	}
-	
+
 	@Override
 	public List<M> listAll(String sql, Object... params)
 	{
 		return baseDao.listAll(sql, params);
 	}
-	
-	
+
 	public Page<M> listAllWithOptimize(int pn, int pageSize)
 	{
 		Integer count = countAll();
 		List<M> items = baseDao.listAll(pn, pageSize);
 		return PageUtil.getPage(count, pn, items, pageSize);
+	}
+
+	public List<M> listAll(String hql, PK pk, int pn, int pageSize, Object... params)
+	{
+		return baseDao.page(hql, pk, pn, pageSize, params);
 	}
 
 	@Override
@@ -135,6 +133,20 @@ public abstract  class BaseService<M extends java.io.Serializable, PK extends ja
 		Integer count = countAll();
 		List<M> items = baseDao.next(pk, pn, pageSize);
 		return PageUtil.getPage(count, pn, items, pageSize);
+	}
+
+	@Override
+	public Page<M> page(String hql, PK pk, int pn, int pageSize, Object... params)
+	{
+		Integer count = pageCount(hql, params);
+		List<M> items = baseDao.page(hql, pk, pn, pageSize, params);
+		return PageUtil.getPage(count, pn, items, pageSize);
+	}
+
+	@Override
+	public int pageCount(String hql, Object... params)
+	{
+		return baseDao.pageCount(hql, params);
 	}
 
 	@Override

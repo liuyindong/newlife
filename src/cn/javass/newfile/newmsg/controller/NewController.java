@@ -23,7 +23,7 @@ import cn.javass.newfile.newmsg.service.NewService;
 
 @Controller
 @RequestMapping("/news")
-public class NewAction
+public class NewController
 {
 	
 	private static final String SQL_CLICK_NUM_ADDONE =  "update tbl_news_msg set click_num=click_num+1 where id = ?";
@@ -64,13 +64,26 @@ public class NewAction
 		return "newMsg/srarchList";
 	}
 
-	@RequestMapping(value = "/search_{id}.html", method = { RequestMethod.GET })
+	@RequestMapping(value = "/showNew_{id}.html", method = { RequestMethod.GET })
 	public String searchNewsById(Model model, @PathVariable Integer id) throws Exception
 	{
 	//	List<?> listSearch = SearchNewMsg.searchNews(id + "", "msgId", 100, 1);
 		NewsEntity newEntity  = newService.get(id);
-		model.addAttribute("showSearch", newEntity);
 		
+		String tag = newEntity.getTechTag();
+		
+		String[] tags = null;
+		try
+		{
+			tags = tag.split("/");
+		}
+		catch (Exception e)
+		{
+			
+		}
+		
+		model.addAttribute("showNew", newEntity);
+		model.addAttribute("tags",tags);
 		newService.updateNewsOn(SQL_CLICK_NUM_ADDONE,id);
 		return "newMsg/news_post";
 	}

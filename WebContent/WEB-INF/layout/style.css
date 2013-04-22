@@ -2,8 +2,7 @@
 
 /* =Reset default browser CSS. Based on work by Eric Meyer: http://meyerweb.com/eric/tools/css/reset/index.html
 -------------------------------------------------------------- */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td
-	{
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td {
 	background: transparent;
 	border: 0;
 	margin: 0;
@@ -918,8 +917,7 @@ nav.main_menu>ul>li.current_page_item>a {
 	height: 28px;
 	line-height: 28px;
 	padding: 0px 30px 0px 12px;
-	background: url(images/bg_responsive_menu.gif) no-repeat right top
-		#f8f8f8;
+	background: url(images/bg_responsive_menu.gif) no-repeat right top #f8f8f8;
 	border: 1px solid #8f8f8f;
 	color: #a3a3a3;
 	cursor: pointer;
@@ -1004,7 +1002,7 @@ nav.secondary_menu {
 nav.secondary_menu>ul>li {
 	height: 39px;
 	display: block;
-/* 	float: left;
+	/* 	float: left;
 	padding-left: 2px;
 	background: url(images/line_secondary_menu.jpg) no-repeat 0px 13px; */
 }
@@ -1800,8 +1798,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	-moz-border-radius: 3px 3px 0px 0px;
 	-webkit-border-radius: 3px 3px 0px 0px;
 	border-radius: 3px 3px 0px 0px;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff)
-		to(#f7f7f7) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff) to(#f7f7f7) );
 	background: -webkit-linear-gradient(#ffffff, #f7f7f7);
 	background: -moz-linear-gradient(#ffffff, #f7f7f7);
 	background: -ms-linear-gradient(#ffffff, #f7f7f7);
@@ -1820,8 +1817,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	height: 32px;
 	background-color: #ffffff;
 	border-bottom: 1px solid #ffffff;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff)
-		to(#ffffff) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff) to(#ffffff) );
 	background: -webkit-linear-gradient(#ffffff, #ffffff);
 	background: -moz-linear-gradient(#ffffff, #ffffff);
 	background: -ms-linear-gradient(#ffffff, #ffffff);
@@ -1900,8 +1896,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	padding: 12px 11px 0px;
 	display: none;
 	position: relative;
-	background: url(images/bg_block_media_tabs.gif) repeat-x left bottom
-		#ffffff;
+	background: url(images/bg_block_media_tabs.gif) repeat-x left bottom #ffffff;
 	border: 1px solid #ededed;
 	-moz-border-radius: 0px 3px 3px 3px;
 	-webkit-border-radius: 0px 3px 3px 3px;
@@ -2511,8 +2506,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	background-position: left top;
 }
 
-.block_single_post .post_slider .flex-direction-nav li a.flex-prev:hover
-	{
+.block_single_post .post_slider .flex-direction-nav li a.flex-prev:hover {
 	background-position: left bottom;
 }
 
@@ -2520,8 +2514,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	background-position: right top;
 }
 
-.block_single_post .post_slider .flex-direction-nav li a.flex-next:hover
-	{
+.block_single_post .post_slider .flex-direction-nav li a.flex-next:hover {
 	background-position: right bottom;
 }
 
@@ -3189,8 +3182,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	background-position: left top;
 }
 
-.block_single_news .post_slider .flex-direction-nav li a.flex-prev:hover
-	{
+.block_single_news .post_slider .flex-direction-nav li a.flex-prev:hover {
 	background-position: left bottom;
 }
 
@@ -3198,8 +3190,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	background-position: right top;
 }
 
-.block_single_news .post_slider .flex-direction-nav li a.flex-next:hover
-	{
+.block_single_news .post_slider .flex-direction-nav li a.flex-next:hover {
 	background-position: right bottom;
 }
 
@@ -4149,7 +4140,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.25;
-	filter: alpha(opacity = 25);
+	filter: alpha(opacity =     25);
 }
 
 .block_home_post .w_hover:hover span {
@@ -4354,7 +4345,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.25;
-	filter: alpha(opacity = 25);
+	filter: alpha(opacity =     25);
 }
 
 .block_best_material_post .w_hover:hover span {
@@ -5008,7 +4999,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.25;
-	filter: alpha(opacity = 25);
+	filter: alpha(opacity =     25);
 }
 
 .block_media_post .f_pic a:hover .hover {
@@ -5090,7 +5081,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.25;
-	filter: alpha(opacity = 25);
+	filter: alpha(opacity =     25);
 }
 
 .block_media_post_all .f_pic a:hover .hover {
@@ -5189,25 +5180,21 @@ nav.secondary_menu>ul>li:first-child>a {
 	text-indent: -9000px;
 }
 
-.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-prev
-	{
+.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-prev {
 	left: 0px;
 	background-position: left top;
 }
 
-.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-prev:hover
-	{
+.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-prev:hover {
 	background-position: left bottom;
 }
 
-.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-next
-	{
+.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-next {
 	right: 0px;
 	background-position: right top;
 }
 
-.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-next:hover
-	{
+.block_media_item .f_item .media_item_slider .flex-direction-nav a.flex-next:hover {
 	background-position: right bottom;
 }
 
@@ -5230,11 +5217,10 @@ nav.secondary_menu>ul>li:first-child>a {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.59;
-	filter: alpha(opacity = 59);
+	filter: alpha(opacity =     59);
 }
 
-.block_media_item .f_item .media_item_navigation .slides li.flex-active-slide .current
-	{
+.block_media_item .f_item .media_item_navigation .slides li.flex-active-slide .current {
 	display: block;
 }
 
@@ -5385,8 +5371,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	margin-right: 51px;
 	float: right;
 	position: relative;
-	background: url(images/bg_custom_select_1.gif) no-repeat right 5px
-		#ffffff;
+	background: url(images/bg_custom_select_1.gif) no-repeat right 5px #ffffff;
 	border: 1px solid #e6e6e6;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
@@ -5658,7 +5643,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.25;
-	filter: alpha(opacity = 25);
+	filter: alpha(opacity =     25);
 }
 
 .block_popular_posts .w_hover:hover span {
@@ -5709,13 +5694,11 @@ nav.secondary_menu>ul>li:first-child>a {
 	margin-top: 20px;
 }
 
-.block_calendar .datepickerNotInMonth a,.block_calendar .datepickerNotInMonth span
-	{
+.block_calendar .datepickerNotInMonth a,.block_calendar .datepickerNotInMonth span {
 	color: #cccccc;
 }
 
-.block_calendar .datepickerBorderT,.block_calendar .datepickerBorderB,.block_calendar .datepickerBorderL,.block_calendar .datepickerBorderR,.block_calendar .datepickerBorderTL,.block_calendar .datepickerBorderTR,.block_calendar .datepickerBorderBL,.block_calendar .datepickerBorderBR
-	{
+.block_calendar .datepickerBorderT,.block_calendar .datepickerBorderB,.block_calendar .datepickerBorderL,.block_calendar .datepickerBorderR,.block_calendar .datepickerBorderTL,.block_calendar .datepickerBorderTR,.block_calendar .datepickerBorderBL,.block_calendar .datepickerBorderBR {
 	display: none;
 }
 
@@ -5767,8 +5750,7 @@ nav.secondary_menu>ul>li:first-child>a {
 	border-top: 1px solid #262626;
 }
 
-.block_calendar div.datepicker table table td.datepickerSelected span,.block_calendar div.datepicker table table td.datepickerSelected a:hover span
-	{
+.block_calendar div.datepicker table table td.datepickerSelected span,.block_calendar div.datepicker table table td.datepickerSelected a:hover span {
 	height: 17px;
 	line-height: 17px;
 	display: block;
@@ -6355,7 +6337,7 @@ footer {
 	top: 0px;
 	background-color: #ffffff;
 	opacity: 0.15;
-	filter: alpha(opacity = 15);
+	filter: alpha(opacity =     15);
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
@@ -6685,8 +6667,7 @@ footer {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	background-color: #fb593f;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fb593f)
-		to(#f24125) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fb593f) to(#f24125) );
 	background: -webkit-linear-gradient(#fb593f, #f24125);
 	background: -moz-linear-gradient(#fb593f, #f24125);
 	background: -ms-linear-gradient(#fb593f, #f24125);
@@ -6704,8 +6685,7 @@ footer {
 
 .block_popup .form .enter:hover {
 	background-color: #ff654d;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff654d)
-		to(#ff4427) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff654d) to(#ff4427) );
 	background: -webkit-linear-gradient(#ff654d, #ff4427);
 	background: -moz-linear-gradient(#ff654d, #ff4427);
 	background: -ms-linear-gradient(#ff654d, #ff4427);
@@ -6790,8 +6770,7 @@ footer {
 }
 
 /* columns */
-.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.full_width,.one_sixth
-	{
+.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.full_width,.one_sixth {
 	height: auto !important;
 	min-height: 1px;
 	margin-right: 4%;
@@ -6864,8 +6843,7 @@ footer {
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 	background-color: #fb593f;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fb593f)
-		to(#f24125) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fb593f) to(#f24125) );
 	background: -webkit-linear-gradient(#fb593f, #f24125);
 	background: -moz-linear-gradient(#fb593f, #f24125);
 	background: -ms-linear-gradient(#fb593f, #f24125);
@@ -6883,8 +6861,7 @@ footer {
 
 .general_button:hover {
 	background-color: #ff654d;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff654d)
-		to(#ff4427) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff654d) to(#ff4427) );
 	background: -webkit-linear-gradient(#ff654d, #ff4427);
 	background: -moz-linear-gradient(#ff654d, #ff4427);
 	background: -ms-linear-gradient(#ff654d, #ff4427);
@@ -6908,8 +6885,7 @@ input.general_button {
 
 .general_button.type_1 {
 	background-color: #fb593f;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fb593f)
-		to(#f24125) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fb593f) to(#f24125) );
 	background: -webkit-linear-gradient(#fb593f, #f24125);
 	background: -moz-linear-gradient(#fb593f, #f24125);
 	background: -ms-linear-gradient(#fb593f, #f24125);
@@ -6920,8 +6896,7 @@ input.general_button {
 
 .general_button.type_1:hover {
 	background-color: #ff664e;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff664e)
-		to(#ff4427) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff664e) to(#ff4427) );
 	background: -webkit-linear-gradient(#ff664e, #ff4427);
 	background: -moz-linear-gradient(#ff664e, #ff4427);
 	background: -ms-linear-gradient(#ff664e, #ff4427);
@@ -6932,8 +6907,7 @@ input.general_button {
 
 .general_button.type_2 {
 	background-color: #258fcd;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#258fcd)
-		to(#2787b7) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#258fcd) to(#2787b7) );
 	background: -webkit-linear-gradient(#258fcd, #2787b7);
 	background: -moz-linear-gradient(#258fcd, #2787b7);
 	background: -ms-linear-gradient(#258fcd, #2787b7);
@@ -6944,8 +6918,7 @@ input.general_button {
 
 .general_button.type_2:hover {
 	background-color: #289de0;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#289de0)
-		to(#2a93c7) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#289de0) to(#2a93c7) );
 	background: -webkit-linear-gradient(#289de0, #2a93c7);
 	background: -moz-linear-gradient(#289de0, #2a93c7);
 	background: -ms-linear-gradient(#289de0, #2a93c7);
@@ -6956,8 +6929,7 @@ input.general_button {
 
 .general_button.type_3 {
 	background-color: #8eba6e;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#8eba6e)
-		to(#78a458) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#8eba6e) to(#78a458) );
 	background: -webkit-linear-gradient(#8eba6e, #78a458);
 	background: -moz-linear-gradient(#8eba6e, #78a458);
 	background: -ms-linear-gradient(#8eba6e, #78a458);
@@ -6968,8 +6940,7 @@ input.general_button {
 
 .general_button.type_3:hover {
 	background-color: #99c977;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#99c977)
-		to(#87b864) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#99c977) to(#87b864) );
 	background: -webkit-linear-gradient(#99c977, #87b864);
 	background: -moz-linear-gradient(#99c977, #87b864);
 	background: -ms-linear-gradient(#99c977, #87b864);
@@ -6980,8 +6951,7 @@ input.general_button {
 
 .general_button.type_4 {
 	background-color: #fa7150;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fa7150)
-		to(#ec5f3d) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fa7150) to(#ec5f3d) );
 	background: -webkit-linear-gradient(#fa7150, #ec5f3d);
 	background: -moz-linear-gradient(#fa7150, #ec5f3d);
 	background: -ms-linear-gradient(#fa7150, #ec5f3d);
@@ -6992,8 +6962,7 @@ input.general_button {
 
 .general_button.type_4:hover {
 	background-color: #ff7452;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff7452)
-		to(#ff6640) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff7452) to(#ff6640) );
 	background: -webkit-linear-gradient(#ff7452, #ff6640);
 	background: -moz-linear-gradient(#ff7452, #ff6640);
 	background: -ms-linear-gradient(#ff7452, #ff6640);
@@ -7004,8 +6973,7 @@ input.general_button {
 
 .general_button.type_5 {
 	background-color: #444444;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444444)
-		to(#2f2f2f) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#444444) to(#2f2f2f) );
 	background: -webkit-linear-gradient(#444444, #2f2f2f);
 	background: -moz-linear-gradient(#444444, #2f2f2f);
 	background: -ms-linear-gradient(#444444, #2f2f2f);
@@ -7016,8 +6984,7 @@ input.general_button {
 
 .general_button.type_5:hover {
 	background-color: #575757;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#575757)
-		to(#404040) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#575757) to(#404040) );
 	background: -webkit-linear-gradient(#575757, #404040);
 	background: -moz-linear-gradient(#575757, #404040);
 	background: -ms-linear-gradient(#575757, #404040);
@@ -7028,8 +6995,7 @@ input.general_button {
 
 .general_button.type_6 {
 	background-color: #fc5372;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fc5372)
-		to(#e63d5c) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fc5372) to(#e63d5c) );
 	background: -webkit-linear-gradient(#fc5372, #e63d5c);
 	background: -moz-linear-gradient(#fc5372, #e63d5c);
 	background: -ms-linear-gradient(#fc5372, #e63d5c);
@@ -7040,8 +7006,7 @@ input.general_button {
 
 .general_button.type_6:hover {
 	background-color: #ff5c7a;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff5c7a)
-		to(#f54363) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff5c7a) to(#f54363) );
 	background: -webkit-linear-gradient(#ff5c7a, #f54363);
 	background: -moz-linear-gradient(#ff5c7a, #f54363);
 	background: -ms-linear-gradient(#ff5c7a, #f54363);
@@ -7052,8 +7017,7 @@ input.general_button {
 
 .general_button.type_7 {
 	background-color: #fcc15b;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fcc15b)
-		to(#febd4c) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fcc15b) to(#febd4c) );
 	background: -webkit-linear-gradient(#fcc15b, #febd4c);
 	background: -moz-linear-gradient(#fcc15b, #febd4c);
 	background: -ms-linear-gradient(#fcc15b, #febd4c);
@@ -7064,8 +7028,7 @@ input.general_button {
 
 .general_button.type_7:hover {
 	background-color: #ffcb72;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffcb72)
-		to(#fdc159) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffcb72) to(#fdc159) );
 	background: -webkit-linear-gradient(#ffcb72, #fdc159);
 	background: -moz-linear-gradient(#ffcb72, #fdc159);
 	background: -ms-linear-gradient(#ffcb72, #fdc159);
@@ -7076,8 +7039,7 @@ input.general_button {
 
 .general_button.type_8 {
 	background-color: #d5464a;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#d5464a)
-		to(#c23337) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#d5464a) to(#c23337) );
 	background: -webkit-linear-gradient(#d5464a, #c23337);
 	background: -moz-linear-gradient(#d5464a, #c23337);
 	background: -ms-linear-gradient(#d5464a, #c23337);
@@ -7088,8 +7050,7 @@ input.general_button {
 
 .general_button.type_8:hover {
 	background-color: #e34a50;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#e34a50)
-		to(#d1373c) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#e34a50) to(#d1373c) );
 	background: -webkit-linear-gradient(#e34a50, #d1373c);
 	background: -moz-linear-gradient(#e34a50, #d1373c);
 	background: -ms-linear-gradient(#e34a50, #d1373c);
@@ -7109,8 +7070,7 @@ input.general_button {
 	text-transform: none;
 	text-shadow: none;
 	background-color: #f8f8f8;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f8f8f8)
-		to(#f8f8f8) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f8f8f8) to(#f8f8f8) );
 	background: -webkit-linear-gradient(#f8f8f8, #f8f8f8);
 	background: -moz-linear-gradient(#f8f8f8, #f8f8f8);
 	background: -ms-linear-gradient(#f8f8f8, #f8f8f8);
@@ -7122,8 +7082,7 @@ input.general_button {
 
 .general_button.w_icon:hover {
 	background-color: #fcfcfc;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fcfcfc)
-		to(#fcfcfc) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#fcfcfc) to(#fcfcfc) );
 	background: -webkit-linear-gradient(#fcfcfc, #fcfcfc);
 	background: -moz-linear-gradient(#fcfcfc, #fcfcfc);
 	background: -ms-linear-gradient(#fcfcfc, #fcfcfc);
@@ -7168,6 +7127,7 @@ input.general_button {
 .general_button.like span {
 	background: url(images/icon_button_like.png) no-repeat 8px 7px;
 }
+
 .general_button.like_i span {
 	background: url(images/icon_button_like_i.png) no-repeat 8px 7px;
 }
@@ -7321,7 +7281,7 @@ input.general_button {
 
 .r_corner img {
 	opacity: 0;
-	filter: alpha(opacity = 0);
+	filter: alpha(opacity =     0);
 }
 
 /* info box styles */
@@ -7439,8 +7399,7 @@ input.general_button {
 	border-top: 1px solid #e8e8e8;
 	border-right: 1px solid #e8e8e8;
 	border-bottom: 1px solid #e8e8e8;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff)
-		to(#f7f7f7) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff) to(#f7f7f7) );
 	background: -webkit-linear-gradient(#ffffff, #f7f7f7);
 	background: -moz-linear-gradient(#ffffff, #f7f7f7);
 	background: -ms-linear-gradient(#ffffff, #f7f7f7);
@@ -7576,8 +7535,7 @@ input.general_button {
 	position: relative;
 	background-color: #acacac;
 	border-bottom: 1px solid #a6a4a4;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#acacac)
-		to(#9f9f9f) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#acacac) to(#9f9f9f) );
 	background: -webkit-linear-gradient(#acacac, #9f9f9f);
 	background: -moz-linear-gradient(#acacac, #9f9f9f);
 	background: -ms-linear-gradient(#acacac, #9f9f9f);
@@ -7599,8 +7557,7 @@ input.general_button {
 .block_pricing_table_1 .medium .title {
 	background-color: #6d6d6d;
 	border-bottom: 1px solid #636362;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d6d6d)
-		to(#5d5d5d) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d6d6d) to(#5d5d5d) );
 	background: -webkit-linear-gradient(#6d6d6d, #5d5d5d);
 	background: -moz-linear-gradient(#6d6d6d, #5d5d5d);
 	background: -ms-linear-gradient(#6d6d6d, #5d5d5d);
@@ -7613,8 +7570,7 @@ input.general_button {
 	height: 41px;
 	background-color: #f4563d;
 	border-bottom: 1px solid #f34c32;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f4563d)
-		to(#f24024) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f4563d) to(#f24024) );
 	background: -webkit-linear-gradient(#f4563d, #f24024);
 	background: -moz-linear-gradient(#f4563d, #f24024);
 	background: -ms-linear-gradient(#f4563d, #f24024);
@@ -7634,8 +7590,7 @@ input.general_button {
 	background-color: #aeaeae;
 	border-top: 1px solid #969696;
 	border-bottom: 1px solid #a6a6a6;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aeaeae)
-		to(#ababab) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aeaeae) to(#ababab) );
 	background: -webkit-linear-gradient(#aeaeae, #ababab);
 	background: -moz-linear-gradient(#aeaeae, #ababab);
 	background: -ms-linear-gradient(#aeaeae, #ababab);
@@ -7666,8 +7621,7 @@ input.general_button {
 	background-color: #696969;
 	border-top: 1px solid #575757;
 	border-bottom: 1px solid #828282;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#696969)
-		to(#696969) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#696969) to(#696969) );
 	background: -webkit-linear-gradient(#696969, #696969);
 	background: -moz-linear-gradient(#696969, #696969);
 	background: -ms-linear-gradient(#696969, #696969);
@@ -7686,8 +7640,7 @@ input.general_button {
 	background-color: #ff644c;
 	border-top: 1px solid #e83d23;
 	border-bottom: 1px solid #ed3e24;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff644c)
-		to(#ff644c) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff644c) to(#ff644c) );
 	background: -webkit-linear-gradient(#ff644c, #ff644c);
 	background: -moz-linear-gradient(#ff644c, #ff644c);
 	background: -ms-linear-gradient(#ff644c, #ff644c);
@@ -7798,8 +7751,7 @@ input.general_button {
 	position: relative;
 	background-color: #acacac;
 	border-bottom: 1px solid #a6a4a4;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#acacac)
-		to(#9f9f9f) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#acacac) to(#9f9f9f) );
 	background: -webkit-linear-gradient(#acacac, #9f9f9f);
 	background: -moz-linear-gradient(#acacac, #9f9f9f);
 	background: -ms-linear-gradient(#acacac, #9f9f9f);
@@ -7821,8 +7773,7 @@ input.general_button {
 .block_pricing_table_2 .medium .title {
 	background-color: #6d6d6d;
 	border-bottom: 1px solid #636362;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d6d6d)
-		to(#5d5d5d) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#6d6d6d) to(#5d5d5d) );
 	background: -webkit-linear-gradient(#6d6d6d, #5d5d5d);
 	background: -moz-linear-gradient(#6d6d6d, #5d5d5d);
 	background: -ms-linear-gradient(#6d6d6d, #5d5d5d);
@@ -7835,8 +7786,7 @@ input.general_button {
 	height: 41px;
 	background-color: #f4563d;
 	border-bottom: 1px solid #f34c32;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f4563d)
-		to(#f24024) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#f4563d) to(#f24024) );
 	background: -webkit-linear-gradient(#f4563d, #f24024);
 	background: -moz-linear-gradient(#f4563d, #f24024);
 	background: -ms-linear-gradient(#f4563d, #f24024);
@@ -7856,8 +7806,7 @@ input.general_button {
 	background-color: #aeaeae;
 	border-top: 1px solid #969696;
 	border-bottom: 1px solid #a6a6a6;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aeaeae)
-		to(#ababab) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#aeaeae) to(#ababab) );
 	background: -webkit-linear-gradient(#aeaeae, #ababab);
 	background: -moz-linear-gradient(#aeaeae, #ababab);
 	background: -ms-linear-gradient(#aeaeae, #ababab);
@@ -7888,8 +7837,7 @@ input.general_button {
 	background-color: #696969;
 	border-top: 1px solid #575757;
 	border-bottom: 1px solid #828282;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#696969)
-		to(#696969) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#696969) to(#696969) );
 	background: -webkit-linear-gradient(#696969, #696969);
 	background: -moz-linear-gradient(#696969, #696969);
 	background: -ms-linear-gradient(#696969, #696969);
@@ -7908,8 +7856,7 @@ input.general_button {
 	background-color: #ff644c;
 	border-top: 1px solid #e83d23;
 	border-bottom: 1px solid #ed3e24;
-	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff644c)
-		to(#ff644c) );
+	background: -webkit-gradient(linear, 0 0, 0 100%, from(#ff644c) to(#ff644c) );
 	background: -webkit-linear-gradient(#ff644c, #ff644c);
 	background: -moz-linear-gradient(#ff644c, #ff644c);
 	background: -ms-linear-gradient(#ff644c, #ff644c);
@@ -9149,15 +9096,13 @@ input.general_button {
 	.block_social_footer {
 		padding-top: 14px;
 	}
-	.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.full_width,.one_sixth
-		{
+	.one_half,.one_third,.two_third,.three_fourth,.one_fourth,.one_fifth,.full_width,.one_sixth {
 		width: auto;
 		margin-right: 0px;
 		padding-bottom: 10px;
 		float: none;
 	}
-	.one_half.last,.one_third.last,.two_third.last,.three_fourth.last,.one_fourth.last,.one_fifth.last,.full_width.last,.one_sixth.last
-		{
+	.one_half.last,.one_third.last,.two_third.last,.three_fourth.last,.one_fourth.last,.one_fifth.last,.full_width.last,.one_sixth.last {
 		padding-bottom: 0px;
 	}
 	.one_third.last {

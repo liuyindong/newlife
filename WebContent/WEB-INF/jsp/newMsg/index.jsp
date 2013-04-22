@@ -94,14 +94,14 @@
 						 	<c:forEach items="${homeInformation.listNewsYdhl}" var="homenews" varStatus="status">
 						 	 <div class="block_home_post">
 								 <div class="pic">
-									<a href="${path}/news/search_${homenews.id}.html" class="w_hover" target="view_window">
+									<a href="${path}/news/showNew_${homenews.id}.html" class="w_hover" target="view_window">
 										<img src="${homenews.newsImage}" alt="homenews.title" width="67" height="45"/>
 										<span></span>
 									</a>
 								</div> 
                                         
 								<div class="text">
-									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<p class="title"><a href="${path}/news/showNew_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
 									<div class="date"><p>${homenews.downDate}</p></div>
                                     <div class="icons">
                                     	<ul>
@@ -120,14 +120,14 @@
 						 	<c:forEach items="${homeInformation.listNewsDzsw}" var="homenews" varStatus="status">
 						 	<div class="block_home_post">
 								 <div class="pic">
-									<a href="${path}/news/search_${homenews.id}.html" class="w_hover" target="view_window">
+									<a href="${path}/news/showNew_${homenews.id}.html" class="w_hover" target="view_window">
 										<img src="${homenews.newsImage}" alt="homenews.title" width="67" height="45"/>
 										<span></span>
 									</a>
 								</div> 
                                         
 								<div class="text">
-									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<p class="title"><a href="${path}/news/showNew_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
 									<div class="date"><p>${homenews.downDate}</p></div>
                                     <div class="icons">
                                     	<ul>
@@ -147,14 +147,14 @@
 						 	<c:forEach items="${homeInformation.listNewsSjwl}" var="homenews" varStatus="status">
 						 	 <div class="block_home_post">
 								 <div class="pic">
-									<a href="${path}/news/search_${homenews.id}.html" class="w_hover" target="view_window">
+									<a href="${path}/news/showNew_${homenews.id}.html" class="w_hover" target="view_window">
 										<img src="${homenews.newsImage}" alt="homenews.title" width="67" height="45"/>
 										<span></span>
 									</a>
 								</div> 
                                         
 								<div class="text">
-									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<p class="title"><a href="${path}/news/showNew_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
 									<div class="date"><p>${homenews.downDate}</p></div>
                                     <div class="icons">
                                     	<ul>
@@ -173,14 +173,14 @@
 						 	<c:forEach items="${homeInformation.listNewsWlyx}" var="homenews" varStatus="status">
 						 	<div class="block_home_post">
 								 <div class="pic">
-									<a href="${path}/news/search_${homenews.id}.html" class="w_hover" target="view_window">
+									<a href="${path}/news/showNew_${homenews.id}.html" class="w_hover" target="view_window">
 										<img src="${homenews.newsImage}" alt="${homenews.title}" width="67" height="45"/>
 										<span></span>
 									</a>
 								</div> 
                                         
 								<div class="text">
-									<p class="title"><a href="${path}/news/search_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
+									<p class="title"><a href="${path}/news/showNew_${homenews.id}.html" target="view_window">${homenews.title}</a></p>
 									<div class="date"><p>${homenews.downDate}</p></div>
                                     <div class="icons">
                                     	<ul>
@@ -207,7 +207,7 @@
 							<c:forEach items="${homeInformation.listNewsYaoW}" var="homenews" varStatus="status">
 							<article class="block_topic_post">
 							<p class="title">
-								<a href="${path}/news/search_${homenews.id}.html" target="view_window" target="view_window">${homenews.title}</a>
+								<a href="${path}/news/showNew_${homenews.id}.html" target="view_window" target="view_window">${homenews.title}</a>
 							</p>
 							<div class="f_pic">
 								<a href="" class="general_pic_hover scale" target="view_window"><img
@@ -247,11 +247,11 @@
 										<li>
 											<div class="block_best_material_post">
 												<div class="f_pic">
-													<a href="${path}/news/search_${homenews.id}.html" target="view_window" class="w_hover">
+													<a href="${path}/news/showNew_${homenews.id}.html" target="view_window" class="w_hover">
 													<img src="${homenews.newsImage}" alt="${homenews.title}"/><span></span></a>
 												</div>
 												<p class="title">
-													<a href="${path}/news/search_${homenews.id}.html" target="view_window"></a>
+													<a href="${path}/news/showNew_${homenews.id}.html" target="view_window"></a>
 												</p>
 												<div class="info">
 													<div class="date">

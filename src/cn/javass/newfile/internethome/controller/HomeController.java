@@ -16,16 +16,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import cn.javass.DTO.HomeInformationDTO;
 import cn.javass.cache.ObjectCache;
-import cn.javass.common.Constants;
-import cn.javass.common.pagination.Page;
-import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 import cn.javass.newfile.internethome.entity.InternetScrollEntity;
 import cn.javass.newfile.internethome.service.InternetScrollService;
 import cn.javass.newfile.newmsg.entity.NewsEntity;
@@ -80,7 +76,7 @@ public class HomeController
 			homeInformation.setScrollButton(listScrollButton);
 			list = new ArrayList<Object>();
 
-			List<NewsEntity> listNewsYaoW = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 6, 1); // 要闻
+			List<NewsEntity> listNewsYaoW = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, null, 6, 1,1); // 要闻
 			for (Iterator<NewsEntity> iterator = listNewsYaoW.iterator(); iterator.hasNext();)
 			{
 				NewsEntity newsEntity = iterator.next();
@@ -89,12 +85,12 @@ public class HomeController
 					newsEntity.setTitle(newsEntity.getTitle().substring(0,17) + "...");
 				}
 			}
-			List<NewsEntity> listNewsYdhl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 2); // 移动互联
-			List<NewsEntity> listNewsDzsw = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 3); // 电子商务
-			List<NewsEntity> listNewsSjwl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 4); // 社交网络
-			List<NewsEntity> listNewsWlyx = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 5); // 网络游戏
-			List<NewsEntity> listNewsIt = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 6); // it
-			List<NewsEntity> listNewsSm = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE, 1, 5, 7); // 数码
+			List<NewsEntity> listNewsYdhl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE,null, 1, 5, 2); // 移动互联
+			List<NewsEntity> listNewsDzsw = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE,null, 1, 5, 3); // 电子商务
+			List<NewsEntity> listNewsSjwl = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE,null, 1, 5, 4); // 社交网络
+			List<NewsEntity> listNewsWlyx = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE,null, 1, 5, 5); // 网络游戏
+			List<NewsEntity> listNewsIt = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE,null, 1, 5, 6); // it
+			List<NewsEntity> listNewsSm = newService.listAll(InternetHomeSql.HQL_NEWS_BY_TYPE,null, 1, 5, 7); // 数码
 
 			homeInformation.setListNewsYaoW(listNewsYaoW);
 			homeInformation.setListNewsYdhl(listNewsYdhl);

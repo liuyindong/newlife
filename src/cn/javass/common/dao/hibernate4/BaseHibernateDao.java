@@ -37,6 +37,7 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	private final Class<M> entityClass;
 	private final String HQL_LIST_ALL;
 	private final String HQL_COUNT_ALL;
+	private final String HQL_FROM_ENTITY;
 	private final String HQL_OPTIMIZE_PRE_LIST_ALL;
 	private final String HQL_OPTIMIZE_NEXT_LIST_ALL;
 	private String pkName = null;
@@ -57,6 +58,7 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		Assert.notNull(pkName);
 		// TODO @Entity name not null
 		HQL_LIST_ALL = "from " + this.entityClass.getSimpleName() + " order by " + pkName + " desc";
+		HQL_FROM_ENTITY = "from " + this.entityClass.getSimpleName();
 		HQL_OPTIMIZE_PRE_LIST_ALL = "from " + this.entityClass.getSimpleName() + " where " + pkName + " > ? order by " + pkName + " asc";
 		HQL_OPTIMIZE_NEXT_LIST_ALL = "from " + this.entityClass.getSimpleName() + " where " + pkName + " < ? order by " + pkName + " desc";
 		HQL_COUNT_ALL = " select count(*) from " + this.entityClass.getSimpleName();
@@ -138,18 +140,18 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		Long total = aggregate(HQL_COUNT_ALL);
 		return total.intValue();
 	}
-	
+
 	@Override
 	public int countAll(String hql, Object... params)
 	{
-		Long total = aggregate(hql,params);
+		Long total = aggregate(HQL_COUNT_ALL + hql, params);
 		return total.intValue();
 	}
 
 	@Override
 	public M JudgeIsExist(String hql, Object... params)
 	{
-		return unique(hql, params);
+		return unique(HQL_FROM_ENTITY + hql, params);
 	}
 
 	@Override
@@ -162,14 +164,6 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	public List<M> listAll(int pn, int pageSize)
 	{
 		return list(HQL_LIST_ALL, pn, pageSize);
-	}
-	
-
-	@Override
-	public List<M> listAll(String hql,int pn,int pageSize,Object... paramlist)
-	{
-		List<M> result = listSelf(hql, pn, pageSize, paramlist);
-		return result;
 	}
 
 	@Override
@@ -186,9 +180,9 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	}
 
 	@Override
-	public List<M> listAll(String sql, Object... params)
+	public List<M> listAll(String hql, Object... params)
 	{
-		return list(sql, params);
+		return list(HQL_FROM_ENTITY + hql, params);
 	}
 
 	@Override
@@ -200,6 +194,21 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		}
 		return list(HQL_OPTIMIZE_NEXT_LIST_ALL, 1, pageSize, pk);
 	}
+
+	@Override
+	public List<M> page(String hql, PK pk, int pn, int pageSize, Object... params)
+	{
+		
+		if (pk == null)
+		{
+			return list(HQL_FROM_ENTITY + hql, pn, pageSize,params);
+		}
+		return list(HQL_FROM_ENTITY + hql, 1, pageSize, pk,params);
+	}
+	 public int pageCount(String hql,Object... params)
+	 {
+		 return countAll(hql, params);
+	 }
 
 	@Override
 	public void flush()

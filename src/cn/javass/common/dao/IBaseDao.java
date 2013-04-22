@@ -30,12 +30,13 @@ public interface IBaseDao<M extends java.io.Serializable, PK extends java.io.Ser
     
     public List<M> listAll(int pn, int pageSize);
     
-    public List<M> listAll(String hql,int pn,int pageSize,Object... paramlist);
-    
     public List<M> pre(PK pk, int pn, int pageSize);
     
     public List<M> next(PK pk, int pn, int pageSize);
     
+    public List<M> page(String hql,PK pk,int pn, int pageSize,Object... params);
+    
+    public int pageCount(String hql,Object... params);
     
     boolean exists(PK id);
     

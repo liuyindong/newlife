@@ -14,6 +14,7 @@ public class Page<E>
 	private List<E> items;// 当前页包含的记录列表
 	private int index;// 当前页页码(起始为1)
 	private IPageContext<E> context;
+	private String condition;
 
 	public IPageContext<E> getContext()
 	{
@@ -63,5 +64,15 @@ public class Page<E>
 	public void setItems(List<E> items)
 	{
 		this.items = items;
+	}
+
+	public String getCondition()
+	{
+		return condition;
+	}
+
+	public void setCondition(String condition)
+	{
+		this.condition = condition;
 	}
 }

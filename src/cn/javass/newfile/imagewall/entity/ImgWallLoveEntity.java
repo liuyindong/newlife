@@ -12,6 +12,12 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import cn.javass.common.model.AbstractModel;
 
+/**
+ * 喜欢图片墙
+ * @author LD
+ *
+ */
+
 @Entity
 @Table(name = "tbl_wall_love")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)

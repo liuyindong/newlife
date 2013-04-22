@@ -10,6 +10,11 @@
 		  <newstype id="7" name="数码"></newstype>      
     </newstypes>
     
+    <comments>
+    	<commentType id="1" name ="图片墙评论"></commentType>
+    	<commentType id="2" name ="新闻评论"></commentType>
+    </comments>
+    
     <crawlresources>
         <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/techIndexList_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="48" status="0" newtype="1"></crawlresource>
         <crawlresource domainname="qqcom" crawlurl="http://tech.qq.com/c/ydhl_1.htm"  select="#listZone .Q-tpList" shownewselect = "div#Cnt-Main-Article-QQ" timeformat="yyyy-MM-dd HH:mm" endIstime="48" status="0" newtype="2" ></crawlresource>

@@ -18,6 +18,8 @@ import org.springframework.web.context.ServletContextAware;
 
 import cn.javass.lucene.crawl.entity.CrawlResourceEntity;
 import cn.javass.lucene.crawl.service.CrawlResourceSrevice;
+import cn.javass.newfile.comment.entity.CommentTypeEntity;
+import cn.javass.newfile.comment.service.CommentTypeService;
 import cn.javass.newfile.newmsg.entity.NewsTypesEntity;
 import cn.javass.newfile.newmsg.service.NewsTypeService;
 
@@ -42,6 +44,10 @@ public class ApplicationStartup implements InitializingBean, ServletContextAware
 	@Autowired
 	@Qualifier("CrawlResourceSrevice")
 	private CrawlResourceSrevice crawlResourceSrevice;
+	
+	@Autowired
+	@Qualifier("CommentTypeService")
+	private CommentTypeService commentTypeService;
 	
 	
 	/** 获取 Servlet 上下文（ServletContextAware 接口方法） **/
@@ -76,11 +82,33 @@ public class ApplicationStartup implements InitializingBean, ServletContextAware
 		logger.info("\t开始初始化新闻类型...");
 		addNewsType(document.selectNodes("//InitDatas/newstypes/newstype"));
 		logger.info("\t初始化新闻类型结束");
+		
+		logger.info("\t开始初始化评论类型...");
+		addCommentType(document.selectNodes("//InitDatas/comments/commentType"));
+		logger.info("\t初始化评论类型结束...");
 
 		logger.info("\t开始初始化抓取资源信息...");
 		addCrawlResource(document.selectNodes("//InitDatas/crawlresources/crawlresource"));
 		logger.info("\t初始化抓取资源信息结束");
 
+	}
+
+	private void addCommentType(List<CommentTypeEntity> listCommType)
+	{
+		if (commentTypeService.countAll() == 0)
+		{
+			for (Iterator<CommentTypeEntity> iterator = listCommType.iterator(); iterator.hasNext();)
+			{
+				Element element = (Element) iterator.next();
+
+				CommentTypeEntity commentTypeEntity = new CommentTypeEntity();
+				commentTypeEntity.setName(element.attributeValue("name"));
+				commentTypeEntity.setCreateDate(DateUtil.timeToString(new Date()));
+				commentTypeEntity.setId(new Integer(element.attributeValue("id")));
+				commentTypeService.save(commentTypeEntity);
+			}
+		}
+		
 	}
 
 	public int getCount()

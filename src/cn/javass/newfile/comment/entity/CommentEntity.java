@@ -1,4 +1,4 @@
-package cn.javass.newfile.imagewall.entity;
+package cn.javass.newfile.comment.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,13 +13,20 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import cn.javass.common.model.AbstractModel;
-import cn.javass.newfile.newmsg.entity.NewsTypesEntity;
 import cn.javass.newfile.user.model.UserModel;
+import cn.javass.util.DateUtil;
+
+/**
+ * 评论
+ * 
+ * @author LD
+ * 
+ */
 
 @Entity
-@Table(name = "tbl_imgwall_comment")
+@Table(name = "tbl_comment")
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
-public class ImageWallCommentEntity extends AbstractModel
+public class CommentEntity extends AbstractModel
 {
 	private static final long serialVersionUID = -7739985824051402819L;
 
@@ -30,9 +37,13 @@ public class ImageWallCommentEntity extends AbstractModel
 
 	@Column(name = "parent_id", length = 20)
 	private int parentId;
-	
-	@Column(name = "image_wall_id", length = 20)
-	private int imageWallId;
+
+	@Column(name = "comment_tc_id", length = 20)
+	private int commentTcId;
+
+	@ManyToOne(targetEntity = CommentTypeEntity.class)
+	@JoinColumn(name = "comment_type")
+	private CommentTypeEntity commentType;
 
 	@ManyToOne(targetEntity = UserModel.class)
 	@JoinColumn(name = "user")
@@ -42,7 +53,7 @@ public class ImageWallCommentEntity extends AbstractModel
 	private String content;
 
 	@Column(name = "create_date", length = 30)
-	private String createDate;
+	private String createDate = DateUtil.timeNow();
 
 	public int getId()
 	{
@@ -84,16 +95,6 @@ public class ImageWallCommentEntity extends AbstractModel
 		this.createDate = createDate;
 	}
 
-	public int getImageWallId()
-	{
-		return imageWallId;
-	}
-
-	public void setImageWallId(int imageWallId)
-	{
-		this.imageWallId = imageWallId;
-	}
-
 	public UserModel getUser()
 	{
 		return user;
@@ -102,6 +103,26 @@ public class ImageWallCommentEntity extends AbstractModel
 	public void setUser(UserModel user)
 	{
 		this.user = user;
+	}
+
+	public int getCommentTcId()
+	{
+		return commentTcId;
+	}
+
+	public void setCommentTcId(int commentTcId)
+	{
+		this.commentTcId = commentTcId;
+	}
+
+	public CommentTypeEntity getCommentType()
+	{
+		return commentType;
+	}
+
+	public void setCommentType(CommentTypeEntity commentType)
+	{
+		this.commentType = commentType;
 	}
 
 }

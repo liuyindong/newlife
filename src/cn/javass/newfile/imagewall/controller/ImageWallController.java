@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,14 +25,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import cn.javass.DTO.ImageWallDTO;
 import cn.javass.common.Constants;
 import cn.javass.common.pagination.Page;
-import cn.javass.newfile.imagewall.entity.ImageWallCommentEntity;
+import cn.javass.newfile.comment.service.CommentService;
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 import cn.javass.newfile.imagewall.entity.ImgWallLoveEntity;
-import cn.javass.newfile.imagewall.service.ImageWallCommentService;
 import cn.javass.newfile.imagewall.service.ImageWallService;
 import cn.javass.newfile.imagewall.service.ImgWallLoveService;
+import cn.javass.newfile.imagewall.service.ImgWallShowService;
 import cn.javass.newfile.user.model.UserModel;
 import cn.javass.spring.mvc.bind.annotation.RequestJsonParam;
+import cn.javass.sql.CommentHql;
 import cn.javass.util.DateUtil;
 import cn.javass.util.WriteJson;
 import cn.javass.util.ajax.AjaxUtil;
@@ -41,33 +43,35 @@ import cn.javass.util.ajax.AjaxUtil;
 @SessionAttributes(Constants.USER_SESSION)
 public class ImageWallController
 {
-	// 查询前3条评论
-	private final String HQL_SEL_IMG_WALL_COMMENT = "from ImageWallCommentEntity where imageWallId = ?";
-	// 评论数
-	private final String HQL_COMMENT_NUM = "select count(id) from ImageWallCommentEntity where imageWallId = ?";
 	// 喜欢数
-	private final String HQL_IMGWL_LOVE = "select count(id) from ImgWallLoveEntity where imageWallId = ? and status = 0";
+	private final String HQL_IMGWL_LOVE = " where imageWallId = ? and status = 0";
 
-	private final String HQL_IMGWAL_LOVE_IW_UI = "from ImgWallLoveEntity where imageWallId = ? and userId = ? and status = 0";
+	private final String HQL_IMGWAL_LOVE_IW_UI = " where imageWallId = ? and userId = ? and status = 0";
+
+	private final String HQL_IMGWALL_SHOW_BY_WALL_ID = " where pertainWallId = ?";
 
 	@Autowired
 	@Qualifier("ImageWallService")
 	private ImageWallService imageWallService;
 
 	@Autowired
-	@Qualifier("ImageWallCommentService")
-	private ImageWallCommentService imageWallCommentService;
-
-	@Autowired
 	@Qualifier("ImgWallLoveService")
 	private ImgWallLoveService imgWallLoveService;
+
+	@Autowired
+	@Qualifier("ImgWallShowService")
+	private ImgWallShowService imgWallShowService;
 	
+	@Autowired
+	@Qualifier("CommentService")
+	private CommentService commentService;
+
 	private HttpServletRequest request;
-	
+
 	private HttpSession session;
 
 	@ModelAttribute
-	public void initModel(Model model, HttpServletRequest request,HttpSession session)
+	public void initModel(Model model, HttpServletRequest request, HttpSession session)
 	{
 		model.addAttribute("tab", "imagewall"); // 当前 Tab: 图片墙
 		this.request = request;
@@ -136,9 +140,9 @@ public class ImageWallController
 			ImageWallDTO imageWallDTO = new ImageWallDTO();
 			imageWallDTO.setFilePath(imageWall.getFilePath());
 			imageWallDTO.setId(imageWall.getId());
-			imageWallDTO.setListWallComment(imageWallCommentService.listAll(HQL_SEL_IMG_WALL_COMMENT, 1, 3, imageWall.getId()));
-			imageWallDTO.setCommentNum(imageWallCommentService.countAll(HQL_COMMENT_NUM, imageWall.getId()));
-			imageWallDTO.setLoveNum(imgWallLoveService.countAll(HQL_IMGWL_LOVE, imageWall.getId()));
+			imageWallDTO.setCommentList(commentService.listAll(CommentHql.HQL_COMMENT_TOP_TRHEE, null, 1, 3, 1,imageWall.getId()));
+			imageWallDTO.setCommentNum(commentService.countAll(CommentHql.HQL_COMMENT_COUNT, 1,imageWall.getId()));
+			imageWallDTO.setLoveNum(imgWallLoveService.countAll(HQL_IMGWL_LOVE,imageWall.getId()));
 			if (user != null)
 			{
 				ImgWallLoveEntity isImgWall = imgWallLoveService.JudgeIsExist(HQL_IMGWAL_LOVE_IW_UI, imageWall.getId(), user.getId());
@@ -195,24 +199,12 @@ public class ImageWallController
 		return ajax;
 	}
 
-	@RequestMapping("/imgWallComment")
-	@ResponseBody
-	public Object imageWallComment(HttpSession session, @RequestJsonParam(value = "model", required = true) ImageWallCommentEntity imgWallComment)
+	@RequestMapping(value = "/showImgWall_{id}.html")
+	public String showImgWall(@PathVariable Integer id, Model model)
 	{
-		UserModel user = (UserModel) session.getAttribute(Constants.USER_SESSION);
-		AjaxUtil ajaxUtil = new AjaxUtil();
-		if (user == null)
-		{
-			ajaxUtil.setFailMsg("请登陆...");
-			ajaxUtil.setResult(false);
-		}
-		else
-		{
-			ajaxUtil.setResult(true);
-			imgWallComment.setUser(user);
-			imageWallCommentService.save(imgWallComment);
-		}
-		return ajaxUtil;
+		model.addAttribute("showImgList", imgWallShowService.listAll(HQL_IMGWALL_SHOW_BY_WALL_ID, id));
+		model.addAttribute("imagewall",imageWallService.get(id));
+		return "imageWall/showimgwall";
 	}
 
 	@RequestMapping(value = "/index")

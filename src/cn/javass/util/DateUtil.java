@@ -45,6 +45,12 @@ public class DateUtil
 		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
 		return sdf.format(date);
 	}
+	public static String timeNow()
+	{
+		String pattern = "yyyy-MM-dd HH:mm:ss";
+		SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+		return sdf.format(new Date());
+	}
 
 	public static String timeToString(Date date, String pattern)
 	{

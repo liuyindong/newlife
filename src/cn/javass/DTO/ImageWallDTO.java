@@ -2,7 +2,7 @@ package cn.javass.DTO;
 
 import java.util.List;
 
-import cn.javass.newfile.imagewall.entity.ImageWallCommentEntity;
+import cn.javass.newfile.comment.entity.CommentEntity;
 
 public class ImageWallDTO
 {
@@ -26,7 +26,7 @@ public class ImageWallDTO
 	
 	private boolean userIsLoveWall = false;
 
-	private List<ImageWallCommentEntity> listWallComment; // 显示3条评论
+	private List<CommentEntity> commentList;
 
 	public int getId()
 	{
@@ -118,16 +118,6 @@ public class ImageWallDTO
 		this.commentNum = commentNum;
 	}
 
-	public List<ImageWallCommentEntity> getListWallComment()
-	{
-		return listWallComment;
-	}
-
-	public void setListWallComment(List<ImageWallCommentEntity> listWallComment)
-	{
-		this.listWallComment = listWallComment;
-	}
-
 	public boolean isUserIsLoveWall()
 	{
 		return userIsLoveWall;
@@ -136,5 +126,15 @@ public class ImageWallDTO
 	public void setUserIsLoveWall(boolean userIsLoveWall)
 	{
 		this.userIsLoveWall = userIsLoveWall;
+	}
+
+	public List<CommentEntity> getCommentList()
+	{
+		return commentList;
+	}
+
+	public void setCommentList(List<CommentEntity> commentList)
+	{
+		this.commentList = commentList;
 	}
 }
