@@ -9,6 +9,10 @@ public class LdUtils
 	public static final String LOGIN_MSG="用户名密码错误请重新输入...";
 	
 	public static final String FIAL_MSG = "服务器异常请稍后再试...";
+	
+	public static final String SESSION_USER = "user";
+	
+	public static final String COOKIE_USER = "ai2yuser";
 	/**
 	 * 清除掉所有特殊字符
 	 * @param str

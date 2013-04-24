@@ -9,8 +9,10 @@ public interface UserService extends IBaseService<UserModel, Integer>
 {
 	Page<UserModel> query(int pn, int pageSize, UserQueryModel command);
 	
-	UserModel userLogin(String loginModel);
+	UserModel userLogin(String username,String pwd);
 	
 	UserModel userIsExtis(String email);
+	
+	boolean quitUser();
 	
 }

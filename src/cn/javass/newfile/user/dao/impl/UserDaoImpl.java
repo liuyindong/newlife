@@ -8,6 +8,7 @@ import cn.javass.common.dao.hibernate4.BaseHibernateDao;
 import cn.javass.newfile.user.dao.UserDao;
 import cn.javass.newfile.user.model.UserModel;
 import cn.javass.newfile.user.model.UserQueryModel;
+import cn.javass.util.MD5Util;
 
 @Repository("UserDao")
 public class UserDaoImpl extends BaseHibernateDao<UserModel, Integer> implements UserDao {
@@ -43,10 +44,9 @@ public class UserDaoImpl extends BaseHibernateDao<UserModel, Integer> implements
     }
 
 	@Override
-	public UserModel userLogin(String loginModel)
+	public UserModel userLogin(String username,String pwd)
 	{
-		String[] loginModels = loginModel.split("/");
-		return this.unique(SQL_USER_LOGIN, loginModels[0],loginModels[1]);
+		return this.unique(SQL_USER_LOGIN, username,pwd);
 	}
 
 	@Override
@@ -54,5 +54,4 @@ public class UserDaoImpl extends BaseHibernateDao<UserModel, Integer> implements
 	{
 		return this.unique(HQL_USER_EXTIS, email);
 	}
-
 }

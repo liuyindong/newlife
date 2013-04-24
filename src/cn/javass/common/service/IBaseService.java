@@ -22,6 +22,8 @@ public interface IBaseService<M extends java.io.Serializable, PK extends java.io
     
     public M JudgeIsExist(String hql,Object... params);
     
+    public int updateSqlOne(String sql, final Object... paramlist);
+    
     public int countAll();
     
     public int countAll(String hql,Object... params);
@@ -41,8 +43,6 @@ public interface IBaseService<M extends java.io.Serializable, PK extends java.io
     public Page<M> next(PK pk, int pn, int pageSize);
     
     public Page<M> page(String hql, PK pk, int pn, int pageSize, Object... params);
-    
-    public int pageCount(String hql,Object... params);
     
     public Page<M> pre(PK pk, int pn);
     

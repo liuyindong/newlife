@@ -118,7 +118,6 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	public void deleteObject(M model)
 	{
 		getSession().delete(model);
-
 	}
 
 	@Override
@@ -147,7 +146,9 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		Long total = aggregate(HQL_COUNT_ALL + hql, params);
 		return total.intValue();
 	}
-
+	/**
+	 * 只返回一个对象
+	 */
 	@Override
 	public M JudgeIsExist(String hql, Object... params)
 	{
@@ -221,7 +222,7 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	{
 		getSession().clear();
 	}
-
+	
 	protected long getIdResult(String hql, Object... paramlist)
 	{
 		long result = -1;
@@ -231,6 +232,11 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 			return ((Number) list.get(0)).longValue();
 		}
 		return result;
+	}
+	
+	public int updateSqlOne(String sql, final Object... paramlist)
+	{
+		return this.execteNativeBulk(sql, paramlist);
 	}
 
 	/**
@@ -242,7 +248,7 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 	 * @param paramlist
 	 * @return
 	 */
-	protected List<M> listSelf(final String hql, final int pn, final int pageSize, final Object... paramlist)
+	public List<M> listSelf(final String hql, final int pn, final int pageSize, final Object... paramlist)
 	{
 		return this.<M> list(hql, pn, pageSize, paramlist);
 	}
@@ -344,7 +350,6 @@ public abstract class BaseHibernateDao<M extends java.io.Serializable, PK extend
 		Object result = query.executeUpdate();
 		return result == null ? 0 : ((Integer) result).intValue();
 	}
-
 	protected int execteNativeBulk(final String natvieSQL, final Object... paramlist)
 	{
 		Query query = getSession().createSQLQuery(natvieSQL);

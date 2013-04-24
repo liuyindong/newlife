@@ -13,7 +13,7 @@ public interface UserDao extends IBaseDao<UserModel, Integer>
 
 	int countQuery(UserQueryModel command);
 
-	UserModel userLogin(String loginModel);
+	UserModel userLogin(String username,String pwd);
 	
 	UserModel userIsExtis(String email);
 

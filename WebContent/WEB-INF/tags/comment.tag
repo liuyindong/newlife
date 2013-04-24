@@ -160,8 +160,8 @@
 				type:'post',
 				dataType:'json',
 				data:{
-					"user.username":$("#username").val(),
-					"user.email":$("#email").val(),
+			//		"user.username":$("#username").val(),
+			//		"user.email":$("#email").val(),
 					"content":$("#comment_textarea").val(),
 					"commentTcId":"${commentTcid}",
 					"commentType.id":"${commentTypeId}"

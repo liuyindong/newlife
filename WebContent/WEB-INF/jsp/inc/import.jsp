@@ -3,14 +3,9 @@
 <script type="text/javascript" src="${path}/layout/plugins/html5.js"></script>
 <![endif]-->
 <link href="${path}/layout/style.css" type="text/css" rel="stylesheet" />
-<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic"
-	rel="stylesheet" type="text/css" /> 
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Droid+Serif:400,400italic" rel="stylesheet" type="text/css" /> 
 <script type="text/javascript" src="${path}/layout/js/jquery.js"></script>
 <script type="text/javascript" src="${path}/js/helper.js"></script>
 <!-- PrettyPhoto start -->

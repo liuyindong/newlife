@@ -12,9 +12,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import cn.javass.common.model.AbstractModel;
 
-@Entity
-@Table(name = "tbl_comment_news")
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@Entity
+//@Table(name = "tbl_comment_news")
+//@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class CommentNewsEntity extends AbstractModel
 {
 	private static final long serialVersionUID = -8811560654949342625L;

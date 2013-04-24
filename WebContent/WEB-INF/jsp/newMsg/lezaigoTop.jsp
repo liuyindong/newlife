@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 	<div class="wrapper sticky_footer">
 		<!-- HEADER BEGIN -->
 		<header>
@@ -19,15 +20,17 @@
 				<div class="fr">
 					<div class="block_top_menu">
 						<ul>
-							<input type="hidden" value="${sessionScope.user.id }" id="inter_user_is_login">
-							<c:if test="${sessionScope.user.username == null}">
-								<li class="current"><a href="#login" class="open_popup">登录</a></li>
-								<li><a href="${path}/user/toregistration">注册</a></li>
-							</c:if>
-							<c:if test="${sessionScope.user.username != null}">
-								<li><a href="javascript:void(0)">你好：${sessionScope.user.username}</a></li>
-								<li><a href="javascript:void(0)">你有<label class="current"><em><font>10</font></em></label> 条新消息</a></li>
-							</c:if>
+							<c:choose>
+								<c:when test="${sessionScope.user != null}">
+									<li><a href="javascript:void(0)">你好：${sessionScope.user.username}</a></li>
+									<li><a href="javascript:void(0)">你有<label class="current"><em><font>10</font></em></label> 条新消息</a></li>
+									<li><a href="${path}/logout">退出</a></li>	
+								</c:when>
+								<c:otherwise>
+									<li class="current"><a href="#login" class="open_popup">登录</a></li>
+									<li><a href="${path}/user/toregistration">注册</a></li>
+								</c:otherwise>
+							</c:choose>
 							<li><a href="#">订阅</a></li>
 						</ul>
 					</div>
@@ -243,7 +246,7 @@
 					<div class="column_2">
 						<div class="remember">
 							<div class="checkbox">
-								<input type="checkbox" />
+								<input type="checkbox" id="rememberuser"/>
 							</div>
 							<div class="remember_label">
 								<p>记住我</p>

@@ -39,8 +39,6 @@
 	</bean>
 
 
-
-
 	<task:annotation-driven />
 
 
@@ -70,19 +68,22 @@
 		<property name="maximumActiveTime" value="${proxool.maximum-active-time}" />
 		<property name="simultaneousBuildThrottle" value="${proxool.simultaneous.build.throttle}" />
 	</bean>
-	
-	 <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"> 
-   		<!--      线程安全的访问session -->
-         <property name="synchronizeOnSession" value="true"/> 
-         <property name="customArgumentResolvers">
-            <list>
-               <bean class="cn.javass.spring.mvc.method.annotation.RequestJsonParamMethodArgumentResolver"/>
-               <bean class="cn.javass.spring.mvc.method.annotation.FormModelMethodArgumentResolver"/>
-            </list>
-         </property>
-     </bean>  
-	
-	
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<!-- 线程安全的访问session -->
+		<property name="synchronizeOnSession" value="true" />
+		<property name="customArgumentResolvers">
+			<list>
+				<bean
+					class="cn.javass.spring.mvc.method.annotation.RequestJsonParamMethodArgumentResolver" />
+				<bean
+					class="cn.javass.spring.mvc.method.annotation.FormModelMethodArgumentResolver" />
+			</list>
+		</property>
+	</bean>
+
+
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -111,8 +112,8 @@
 				<prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
 				<prop key="net.sf.ehcache.configurationResourceName">${net.sf.ehcache.configurationResourceName}</prop>
 				<prop key="hibernate.cache.use_structured_entries">${hibernate.cache.use_structured_entries}</prop>
-		<!-- 	<prop key="hibernate.connection.autocommit">false</prop>-->
- 			</props>
+				<!-- <prop key="hibernate.connection.autocommit">false</prop> -->
+			</props>
 		</property>
 	</bean>
 
@@ -153,4 +154,7 @@
 			expression="execution(* cn.javass..service..*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
+
+
+
 </beans>

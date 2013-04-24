@@ -10,13 +10,19 @@ function userLogin(userEmail, userPwd)
 		alert("请输入密码");
 		return false;
 	}
+	var isRemember = 0;
+	if($("#rememberuser").is(':checked'))
+	{
+		isRemember = 1;
+	}	
 	$.ajax(
 	{
 		url : getRootPath() + '/user/login',
 		type : 'post',
 		data :
 		{
-			"loginMod" : userEmail + "/" + userPwd
+			"loginMod" : userEmail + "/" + userPwd,
+			"isRemember" : isRemember
 		},
 		dataType : 'json',
 		success : function(data)

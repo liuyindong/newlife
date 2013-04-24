@@ -26,6 +26,7 @@ import cn.javass.newfile.internethome.entity.InternetScrollEntity;
 import cn.javass.newfile.internethome.service.InternetScrollService;
 import cn.javass.newfile.newmsg.entity.NewsEntity;
 import cn.javass.newfile.newmsg.service.NewService;
+import cn.javass.newfile.user.service.UserService;
 import cn.javass.sql.InternetHomeSql;
 import cn.javass.util.WriteJson;
 import cn.javass.util.ajax.AjaxEntity;
@@ -51,6 +52,10 @@ public class HomeController
 	@Autowired
 	@Qualifier("InternetScrollService")
 	private InternetScrollService internetScrollService;
+	
+	@Autowired
+	@Qualifier("UserService")
+	private UserService userService;
 	
 	@ModelAttribute
 	public void initModel(Model model, HttpServletRequest request,HttpSession session)

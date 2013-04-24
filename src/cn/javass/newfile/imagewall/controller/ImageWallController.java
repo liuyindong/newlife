@@ -22,19 +22,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.alibaba.fastjson.JSON;
+
 import cn.javass.DTO.ImageWallDTO;
 import cn.javass.common.Constants;
 import cn.javass.common.pagination.Page;
 import cn.javass.newfile.comment.service.CommentService;
+import cn.javass.newfile.imagewall.DTO.ImageWallShowDTO;
 import cn.javass.newfile.imagewall.entity.ImageWallEntity;
 import cn.javass.newfile.imagewall.entity.ImgWallLoveEntity;
+import cn.javass.newfile.imagewall.entity.ImgWallShowEntity;
 import cn.javass.newfile.imagewall.service.ImageWallService;
 import cn.javass.newfile.imagewall.service.ImgWallLoveService;
 import cn.javass.newfile.imagewall.service.ImgWallShowService;
 import cn.javass.newfile.user.model.UserModel;
 import cn.javass.spring.mvc.bind.annotation.RequestJsonParam;
 import cn.javass.sql.CommentHql;
+import cn.javass.util.Ai2YCOM;
 import cn.javass.util.DateUtil;
+import cn.javass.util.ImageCut;
 import cn.javass.util.WriteJson;
 import cn.javass.util.ajax.AjaxUtil;
 
@@ -50,6 +56,8 @@ public class ImageWallController
 
 	private final String HQL_IMGWALL_SHOW_BY_WALL_ID = " where pertainWallId = ?";
 
+	private static final String SQL_CLICK_NUM_ADDONE = "update tbl_image_wall set click_num=click_num+1 where id = ?";
+
 	@Autowired
 	@Qualifier("ImageWallService")
 	private ImageWallService imageWallService;
@@ -61,7 +69,7 @@ public class ImageWallController
 	@Autowired
 	@Qualifier("ImgWallShowService")
 	private ImgWallShowService imgWallShowService;
-	
+
 	@Autowired
 	@Qualifier("CommentService")
 	private CommentService commentService;
@@ -140,9 +148,9 @@ public class ImageWallController
 			ImageWallDTO imageWallDTO = new ImageWallDTO();
 			imageWallDTO.setFilePath(imageWall.getFilePath());
 			imageWallDTO.setId(imageWall.getId());
-			imageWallDTO.setCommentList(commentService.listAll(CommentHql.HQL_COMMENT_TOP_TRHEE, null, 1, 3, 1,imageWall.getId()));
-			imageWallDTO.setCommentNum(commentService.countAll(CommentHql.HQL_COMMENT_COUNT, 1,imageWall.getId()));
-			imageWallDTO.setLoveNum(imgWallLoveService.countAll(HQL_IMGWL_LOVE,imageWall.getId()));
+			imageWallDTO.setCommentList(commentService.listAll(CommentHql.HQL_COMMENT_TOP_TRHEE, null, 1, 3, 1, imageWall.getId()));
+			imageWallDTO.setCommentNum(commentService.countAll(CommentHql.HQL_COMMENT_COUNT, 1, imageWall.getId()));
+			imageWallDTO.setLoveNum(imgWallLoveService.countAll(HQL_IMGWL_LOVE, imageWall.getId()));
 			if (user != null)
 			{
 				ImgWallLoveEntity isImgWall = imgWallLoveService.JudgeIsExist(HQL_IMGWAL_LOVE_IW_UI, imageWall.getId(), user.getId());
@@ -194,7 +202,7 @@ public class ImageWallController
 		}
 		catch (Exception e)
 		{
-			ajax.setFailMsg("服务器异常请稍后再试...");
+			ajax.setFailMsg(Ai2YCOM.FAIL_MSG);
 		}
 		return ajax;
 	}
@@ -202,9 +210,13 @@ public class ImageWallController
 	@RequestMapping(value = "/showImgWall_{id}.html")
 	public String showImgWall(@PathVariable Integer id, Model model)
 	{
-		model.addAttribute("showImgList", imgWallShowService.listAll(HQL_IMGWALL_SHOW_BY_WALL_ID, id));
-		model.addAttribute("imagewall",imageWallService.get(id));
-		return "imageWall/showimgwall";
+		List<ImgWallShowEntity> imageWall = imgWallShowService.listAll(HQL_IMGWALL_SHOW_BY_WALL_ID, id);
+		StringBuilder sb = new StringBuilder();
+		
+		imageWallService.updateSqlOne(SQL_CLICK_NUM_ADDONE, id);
+		model.addAttribute("showImgList", imageWall);
+		model.addAttribute("imagewall", imageWallService.get(id));
+		return "imageWall/picwall";//showimgwall
 	}
 
 	@RequestMapping(value = "/index")
@@ -237,20 +249,122 @@ public class ImageWallController
 	@RequestMapping(value = "/addImgWall")
 	public void addImgWall() throws Exception
 	{
-		String path = "D:\\2013\\04\\美女";
-		File file = new File(path);
-		File[] files = file.listFiles();
-		for (int i = 0; i < files.length; i++)
+		String path = "D:\\Workspaces\\eclipseword\\newlife\\WebContent\\girl";
+
+		File[] files1 = fileC(path);
+		for (File file1 : files1)
 		{
-			if (files[i].isDirectory())
+
+			if (file1.isDirectory())
 			{
-				ImageWallEntity iw = new ImageWallEntity();
-				iw.setContent(files[i].getPath());
-				iw.setCreateDate(DateUtil.timeToString(new Date()));
-				iw.setFilePath(files[i].getPath());
-				iw.setTitle(files[i].getPath());
-				imageWallService.save(iw);
+				ImageWallEntity iw = null;
+				File[] files2 = fileC(file1.getPath());
+				for (File file2 : files2)
+				{
+					if (!file2.isDirectory())
+					{
+						System.out.println(file2.getName());
+						iw = new ImageWallEntity();
+
+						iw.setContent(file1.getName());
+						iw.setCreateDate(DateUtil.timeNow());
+						iw.setFilePath(file2.getPath().substring(path.length() - 5).replaceAll("\\\\","/"));
+						iw.setName(file2.getName());
+						iw.setTitle(file1.getName());
+						int[] handh = null ;
+						try
+						{
+							handh = ImageCut.getImgHeightAndWidth(file2.getPath());
+						}
+						catch (Exception e)
+						{
+							handh[0] = 0;
+							handh[1] = 0;
+							System.out.println(file2.getPath());
+						}
+						iw.setImgWidth(handh[0]);
+						iw.setImgHeight(handh[1]);
+
+						imageWallService.save(iw);
+						continue;
+					}
+					File[] files3 = fileC(file2.getPath());
+					for (File file3 : files3)
+					{
+						if (!file3.isDirectory())
+						{
+							ImgWallShowEntity is = new ImgWallShowEntity();
+							is.setCreateDate(DateUtil.timeNow());
+							is.setDirections(file1.getName());
+							is.setFilePaths(file3.getPath().substring(path.length() - 5).replaceAll("\\\\","/"));
+							is.setName(file3.getName());
+							is.setFilePath(file3.getParent().substring(path.length() - 5).replaceAll("\\\\","/"));
+							is.setPertainWallId(iw.getId());
+							int[] handh = null ;
+							try
+							{
+								handh = ImageCut.getImgHeightAndWidth(file3.getPath());
+							}
+							catch (Exception e)
+							{
+								handh[0] = 0;
+								handh[1] = 0;
+								System.out.println(file3.getPath());
+							}
+							is.setImgWidth(handh[0]);
+							is.setImgHeight(handh[1]);
+							
+							imgWallShowService.save(is);
+							ImageCut.scale(file3.getPath(), file3.getParent() + "/thumbnails/" + file3.getName(), 105, 69);
+							
+						}
+					}
+				}
 			}
 		}
+	}
+
+	public static void main(String[] args)
+	{
+		
+		
+		
+		
+		/*String path = "D:\\2013\\美女";
+
+		File[] files1 = fileC(path);
+		for (File file1 : files1)
+		{
+
+			if (file1.isDirectory())
+			{
+				ImageWallEntity iw = null;
+				File[] files2 = fileC(file1.getPath());
+				for (File file2 : files2)
+				{
+					if (file2.isDirectory())
+					{
+						File[] files3 = fileC(file2.getPath());
+						for (File file3 : files3)
+						{
+							if (!file3.isDirectory())
+							{
+						//		WritePath.delDir(file3.getParent() + "/thumbnails/");
+								
+								ImageCut.scale(file3.getPath(), file3.getParent() + "/thumbnails/" + file3.getName(), 105, 69);
+								
+								System.out.println(file3.getParent() + "/thumbnails/" + file3.getName());
+							}
+						}
+					}
+					
+				}
+			}
+		}*/
+	}
+
+	public static File[] fileC(String path)
+	{
+		return new File(path).listFiles();
 	}
 }

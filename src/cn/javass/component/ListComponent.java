@@ -29,7 +29,7 @@ import cn.javass.util.email.SendEmail;
 @Component
 public class ListComponent
 {
-	private final String HQL_CRAWLRESOURCEBY_DOMAINNAME = "from CrawlResourceEntity where domainName = ? and status = 0";
+	private final String HQL_CRAWLRESOURCEBY_DOMAINNAME = " where domainName = ? and status = 0";
 
 	@Autowired
 	private Config config;

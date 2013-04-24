@@ -274,12 +274,15 @@ public class WritePath
 	 * 
 	 * @param path
 	 */
-	public void delDir(String path)
+	public static void delDir(String path)
 	{
 		File dir = new File(path);
 		if (dir.exists())
 		{
 			File[] tmp = dir.listFiles();
+			
+			System.out.println("删除了" + dir);
+			
 			for (int i = 0; i < tmp.length; i++)
 			{
 				if (tmp[i].isDirectory())

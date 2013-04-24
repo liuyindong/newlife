@@ -166,6 +166,6 @@
             </div>
         </footer>
         <!-- FOOTER END -->
-		</div>
+	<!-- 	</div> -->
 </body>
 </html>

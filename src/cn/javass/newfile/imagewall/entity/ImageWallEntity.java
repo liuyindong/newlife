@@ -11,10 +11,12 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import cn.javass.common.model.AbstractModel;
+
 /**
  * 图片墙信息
+ * 
  * @author LD
- *
+ * 
  */
 
 @Entity
@@ -28,25 +30,33 @@ public class ImageWallEntity extends AbstractModel
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "title")
 	private String title;
-	
+
 	@Column(name = "content")
 	private String content;
-	
+
 	@Column(name = "file_path")
 	private String filePath;
-	
+
+	@Column(name = "img_height")
+	private int imgHeight;
+
+	@Column(name = "img_width")
+	private int imgWidth;
+
 	@Column(name = "create_date")
 	private String createDate;
-	
+
 	@Column(name = "update_date")
 	private String updateDate;
 
+	@Column(name = "click_num")
+	private int clickNum;
 
 	public int getId()
 	{
@@ -116,6 +126,36 @@ public class ImageWallEntity extends AbstractModel
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+
+	public int getClickNum()
+	{
+		return clickNum;
+	}
+
+	public void setClickNum(int clickNum)
+	{
+		this.clickNum = clickNum;
+	}
+
+	public int getImgWidth()
+	{
+		return imgWidth;
+	}
+
+	public void setImgWidth(int imgWidth)
+	{
+		this.imgWidth = imgWidth;
+	}
+
+	public int getImgHeight()
+	{
+		return imgHeight;
+	}
+
+	public void setImgHeight(int imgHeight)
+	{
+		this.imgHeight = imgHeight;
 	}
 
 }

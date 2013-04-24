@@ -13,38 +13,35 @@ import cn.javass.newfile.user.model.UserModel;
 import cn.javass.newfile.user.model.UserQueryModel;
 import cn.javass.newfile.user.service.UserService;
 
-
 @Service("UserService")
-public class UserServiceImpl extends BaseService<UserModel, Integer> implements UserService {
+public class UserServiceImpl extends BaseService<UserModel, Integer> implements UserService
+{
 
- //   private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
+	// private static final Logger log =
+	// LoggerFactory.getLogger(UserServiceImpl.class);
 
-    private UserDao userDao;
+	private UserDao userDao;
 
-    @Autowired
-    @Qualifier("UserDao")
-    @Override
-    public void setBaseDao(IBaseDao<UserModel, Integer> userDao) {
-        this.baseDao = userDao;
-        this.userDao = (UserDao) userDao;
-    }
-    
-
-
-    @Override
-    public Page<UserModel> query(int pn, int pageSize, UserQueryModel command) {
-        return PageUtil.getPage(userDao.countQuery(command) ,pn, userDao.query(pn, pageSize, command), pageSize);
-    }
-
-
-
+	@Autowired
+	@Qualifier("UserDao")
 	@Override
-	public UserModel userLogin(String loginModel)
+	public void setBaseDao(IBaseDao<UserModel, Integer> userDao)
 	{
-		return userDao.userLogin(loginModel);
+		this.baseDao = userDao;
+		this.userDao = (UserDao) userDao;
 	}
 
+	@Override
+	public Page<UserModel> query(int pn, int pageSize, UserQueryModel command)
+	{
+		return PageUtil.getPage(userDao.countQuery(command), pn, userDao.query(pn, pageSize, command), pageSize);
+	}
 
+	@Override
+	public UserModel userLogin(String username, String pwd)
+	{
+		return userDao.userLogin(username, pwd);
+	}
 
 	@Override
 	public UserModel userIsExtis(String email)
@@ -52,5 +49,11 @@ public class UserServiceImpl extends BaseService<UserModel, Integer> implements 
 		return userDao.userIsExtis(email);
 	}
 
-   
+	@Override
+	public boolean quitUser()
+	{
+		
+		return false;
+	}
+
 }

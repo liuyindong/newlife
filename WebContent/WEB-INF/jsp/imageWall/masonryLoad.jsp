@@ -5,8 +5,7 @@
 	<div class="product_box fl">
 		<!--249*535 -->
 		<div class="img_box big">
-			<a href="${path}/imageWall/showImgWall_${listwall.id}.html">  <img
-				src="http://d04.res.meilishuo.net/pic/r/e6/37/3f7afc718b5ffac08be17eb76bd5_800_1080.c1.jpg" />
+			<a href="${path}/imageWall/showImgWall_${listwall.id}.html">  <img src="${path}/${listwall.filePath}" />
 				<!--20*284 -->
 			</a>
 			<div class="recive_btn">

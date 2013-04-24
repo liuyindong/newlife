@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="urf-8"?>
+
+<flash_parameters>
+  <preferences>
+    <global>
+      <basic_property movieWidth="980" movieHeight="600" html_title="Title" backgroundColor="0xffffff" anvsoftMenu="false" hideAdobeMenu="false" photoDynamicShow="true" enableURL="true" transitionArray=""/>
+      <title_property photoTitle="false" photoTitleX="5" photoTitleY="5" photoTitleSize="15" photoTitleFont="Verdana" photoTitleColor="0xffffff"/>
+      <music_property path="" stream="true" loop="true"/>
+      <photo_property topPadding="0" bottomPadding="65" leftPadding="0" rightPadding="0"/>
+      <frame_property frameColor="0x000000"/>
+      <properties enable="true" backgroundColor="0xffffff" backgroundAlpha="50" cssText="a:link{text-decoration: underline;} a:hover{color:#ff0000; text-decoration: none;} a:active{color:#0000ff;text-decoration: none;} .blue {color:#0000ff; font-size:15px; font-style:italic; text-decoration: underline;} .body{color:#ff5500;font-size:20px;}" align="bottom"/>
+    </global>
+    <thumbnail>
+      <basic_property backgroundColor="0x3c3c3c" buttonColor="0x000000" borderColor="0xb3b3b3"/>
+    </thumbnail>
+  </preferences>
+  <album>
+	<slide jpegURL="images/thumbs/t_0001.jpg" d_URL="images/p_0001.jpg" transition="0" panzoom="1" URLTarget="0" phototime="2" url="http://www.niutuku.com" title="Xxjpm2C000801_20080809_MVPFN1A001" width="980" height="535"><![CDATA[　8月9日，中国选手黄旭在资格赛鞍马比赛中（多重曝光拍摄）。新华社记者李钢摄]]></slide>
+  </album>
+</flash_parameters>

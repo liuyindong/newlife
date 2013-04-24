@@ -77,6 +77,12 @@ public abstract class BaseService<M extends java.io.Serializable, PK extends jav
 	}
 
 	@Override
+	public int updateSqlOne(String sql, final Object... paramlist)
+	{
+		return baseDao.updateSqlOne(sql, paramlist);
+	}
+
+	@Override
 	public List<M> listAll()
 	{
 		return baseDao.listAll();
@@ -138,15 +144,9 @@ public abstract class BaseService<M extends java.io.Serializable, PK extends jav
 	@Override
 	public Page<M> page(String hql, PK pk, int pn, int pageSize, Object... params)
 	{
-		Integer count = pageCount(hql, params);
+		Integer count = this.countAll(hql, params);
 		List<M> items = baseDao.page(hql, pk, pn, pageSize, params);
 		return PageUtil.getPage(count, pn, items, pageSize);
-	}
-
-	@Override
-	public int pageCount(String hql, Object... params)
-	{
-		return baseDao.pageCount(hql, params);
 	}
 
 	@Override
